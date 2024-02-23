@@ -1,0 +1,38 @@
+<?php
+$title = $block->escapeHtml($block->getMethod()->getTitle());
+$data = $block->getDataBankTransfer();
+?>
+
+<dl class="payment-method">
+    <dt class="title"><?= /* @noEscape */ $title; ?></dt>
+    <?php if ($data) { ?>
+    <dd style="margin: 0 !important; -webkit-margin-start: 0 !important;">
+        <table class="data-table admin__table-secondary">
+            <tbody>
+                <tr>
+                    <td>
+                        <strong><?= /* @noEscape */ __('CLABE:'); ?></strong>
+                        <br>
+                        <?= $block->escapeHtml($data["clabe"]); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong><?= /* @noEscape */ __('Bank Name:'); ?></strong>
+                        <br>
+                        <?= $block->escapeHtml($data["bank_name"]); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong><?= /* @noEscape */ __('Expires at:'); ?></strong>
+                        <br>
+                        <?= $block->escapeHtml(date("Y-m-d", (integer) $data["expires_at"])) ?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </dd>
+    <?php } ?>
+</dl>
+<?= $block->getChildHtml(); ?>

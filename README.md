@@ -1,0 +1,122 @@
+![alt tag](https://www.femsa.com/wp-content/uploads/2019/07/femsa.png)
+
+Magento 2 Plugin v.5.1.0 (Stable)
+========================
+
+Installation for Magento 2.3
+-----------
+
+1. First add this repository in your composer config
+```bash
+composer config repositories.femsa git https://github.com/femsa/customer-magento-plugin
+```
+
+2. Add composer dependency
+```bash
+composer require femsa/femsa_payments 5.1.0
+```
+
+3. Update Magento
+```bash
+php bin/magento setup:upgrade
+```
+
+4. Compile the component
+```bash
+php bin/magento setup:di:compile
+```
+
+5. Enable plugin
+```bash
+php bin/magento module:enable femsa_payments 
+```
+
+6. Update and/or enable cache
+```bash
+bin/magento c:f
+```
+
+Installation for Magento 2.4
+-----------
+
+1. First add this repository in your composer config
+```bash
+composer config repositories.femsa git https://github.com/femsa/customer-magento-plugin
+```
+
+2. Add composer dependency
+```bash
+composer require femsa/femsa_payments master
+```
+
+3. Update Magento
+```bash
+php bin/magento setup:upgrade
+```
+
+4. Compile the component
+```bash
+php bin/magento setup:di:compile
+```
+
+5. Enable plugin
+```bash
+php bin/magento module:enable femsa_payments 
+```
+
+6. Update and/or enable cache
+```bash
+bin/magento c:f
+```
+
+Plugin updates
+-----------
+
+1. List all the components
+```bash
+php bin/magento module:status 
+```
+2. Verify that the femsa_Payments component is listed
+
+3. Disable the module
+```bash
+php bin/magento module:disable Femsa_Payments --clear-static-content
+```
+
+4. If it exists, delete the generated files in the folder ```<path_magento>/generated/code/Femsa/```
+
+5. Add composer dependency
+```bash
+composer require femsa/femsa_payments master
+```
+
+6. Update Magento
+```bash
+php bin/magento setup:upgrade
+```
+
+7. Compile the component
+```bash
+php bin/magento setup:di:compile
+```
+
+8. Enable plugin
+```bash
+php bin/magento module:enable femsa_payments 
+```
+
+9. Update and/or enable cache
+```bash
+bin/magento c:f
+```
+
+Magento Version Compatibility
+-----------------------------
+The plugin has been tested in Magento 2.3 and 2.4 
+Support is not guaranteed for untested versions.
+
+
+#development local
+```
+ composer install --ignore-platform-req=ext-gd --ignore-platform-req=ext-intl --ignore-platform-req=ext-xsl
+``
