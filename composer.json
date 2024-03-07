@@ -3,10 +3,10 @@
     "description": "Femsa payment gateway",
     "require": {
         "php": ">=7.4",
-        "femsa/femsa-php": "dev-main"
+        "digitalfemsa/femsa-php": "dev-main"
     },
     "type": "magento2-module",
-    "version": "5.1.0",
+    "version": "5.1.2",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
@@ -24,7 +24,7 @@
         },
         {
             "type": "vcs",
-            "url":  "git@github.com:conekta/femsa-php.git"
+            "url":  "git@github.com:digitalfemsa/femsa-php.git"
         }
     ],
     "extra": {
