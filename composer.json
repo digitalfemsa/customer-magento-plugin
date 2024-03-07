@@ -24,7 +24,7 @@
         },
         {
             "type": "vcs",
-            "url":  "git@github.com:conekta/femsa-php.git"
+            "url":  "git@github.com:digitalfemsa/femsa-php.git"
         }
     ],
     "extra": {
