@@ -1,31 +1,31 @@
 <?php
 
-namespace Femsa\Payments\Api;
+namespace DigitalFemsa\Payments\Api;
 
-use Femsa\Api\ChargesApi;
-use Femsa\Api\CustomersApi;
-use Femsa\Api\OrdersApi;
-use Femsa\Api\PaymentMethodsApi;
-use Femsa\Api\WebhooksApi;
-use Femsa\ApiException;
-use Femsa\Configuration;
-use Femsa\Model\ChargeOrderResponse;
-use Femsa\Model\ChargeRequest;
-use Femsa\Model\ChargeResponse;
-use Femsa\Model\ChargeUpdateRequest;
-use Femsa\Model\Customer;
-use Femsa\Model\CustomerResponse;
-use Femsa\Model\GetWebhooksResponse;
-use Femsa\Model\OrderRefundRequest;
-use Femsa\Model\OrderRequest;
-use Femsa\Model\OrderResponse;
-use Femsa\Model\OrderUpdateRequest;
-use Femsa\Model\UpdateCustomer;
-use Femsa\Model\UpdateCustomerPaymentMethodsResponse;
-use Femsa\Model\WebhookRequest;
-use Femsa\Model\WebhookResponse;
-use Femsa\Model\WebhookUpdateRequest;
-use Femsa\Payments\Helper\Data as HelperData;
+use DigitalFemsa\Api\ChargesApi;
+use DigitalFemsa\Api\CustomersApi;
+use DigitalFemsa\Api\OrdersApi;
+use DigitalFemsa\Api\PaymentMethodsApi;
+use DigitalFemsa\Api\WebhooksApi;
+use DigitalFemsa\ApiException;
+use DigitalFemsa\Configuration;
+use DigitalFemsa\Model\ChargeOrderResponse;
+use DigitalFemsa\Model\ChargeRequest;
+use DigitalFemsa\Model\ChargeResponse;
+use DigitalFemsa\Model\ChargeUpdateRequest;
+use DigitalFemsa\Model\Customer;
+use DigitalFemsa\Model\CustomerResponse;
+use DigitalFemsa\Model\GetWebhooksResponse;
+use DigitalFemsa\Model\OrderRefundRequest;
+use DigitalFemsa\Model\OrderRequest;
+use DigitalFemsa\Model\OrderResponse;
+use DigitalFemsa\Model\OrderUpdateRequest;
+use DigitalFemsa\Model\UpdateCustomer;
+use DigitalFemsa\Model\UpdateCustomerPaymentMethodsResponse;
+use DigitalFemsa\Model\WebhookRequest;
+use DigitalFemsa\Model\WebhookResponse;
+use DigitalFemsa\Model\WebhookUpdateRequest;
+use DigitalFemsa\Payments\Helper\Data as HelperData;
 use GuzzleHttp\Client;
 
 class FemsaApiClient

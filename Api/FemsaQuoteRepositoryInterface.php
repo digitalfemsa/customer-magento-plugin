@@ -1,7 +1,7 @@
 <?php
-namespace Femsa\Payments\Api;
+namespace DigitalFemsa\Payments\Api;
 
-use Femsa\Payments\Api\Data\FemsaQuoteInterface;
+use DigitalFemsa\Payments\Api\Data\FemsaQuoteInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 
 interface FemsaQuoteRepositoryInterface
