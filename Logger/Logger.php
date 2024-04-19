@@ -1,8 +1,8 @@
 <?php
 
-namespace Femsa\Payments\Logger;
+namespace DigitalFemsa\Payments\Logger;
 
-use Femsa\Payments\Helper\Data;
+use DigitalFemsa\Payments\Helper\Data;
 use Exception;
 use Magento\Framework\App\ObjectManager;
 use Psr\Log\LoggerInterface;

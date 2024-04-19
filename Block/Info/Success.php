@@ -1,5 +1,5 @@
 <?php
-namespace Femsa\Payments\Block\Info;
+namespace DigitalFemsa\Payments\Block\Info;
 
 use Magento\Checkout\Block\Onepage\Success as CompleteCheckout;
 use Magento\Framework\Exception\LocalizedException;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Femsa\Payments\Helper;
+namespace DigitalFemsa\Payments\Helper;
 
-use Femsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ProductMetadataInterface;

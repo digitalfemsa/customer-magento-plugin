@@ -1,16 +1,16 @@
 <?php
 
-namespace Femsa\Payments\Model;
+namespace DigitalFemsa\Payments\Model;
 
-use Femsa\Model\OrderResponse;
-use Femsa\ApiException;
-use Femsa\Payments\Logger\Logger as FemsaLogger;
-use Femsa\Payments\Api\Data\FemsaQuoteInterface;
-use Femsa\Payments\Api\EmbedFormRepositoryInterface;
+use DigitalFemsa\Model\OrderResponse;
+use DigitalFemsa\ApiException;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Api\Data\FemsaQuoteInterface;
+use DigitalFemsa\Payments\Api\EmbedFormRepositoryInterface;
 use Exception;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Femsa\Payments\Api\FemsaApiClient;
-use Femsa\Payments\Exception\FemsaException;
+use DigitalFemsa\Payments\Api\FemsaApiClient;
+use DigitalFemsa\Payments\Exception\FemsaException;
 
 class EmbedFormRepository implements EmbedFormRepositoryInterface
 {

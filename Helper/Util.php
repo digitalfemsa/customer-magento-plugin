@@ -1,6 +1,6 @@
 <?php
 
-namespace Femsa\Payments\Helper;
+namespace DigitalFemsa\Payments\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 

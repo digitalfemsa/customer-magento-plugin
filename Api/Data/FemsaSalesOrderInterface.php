@@ -1,5 +1,5 @@
 <?php
-namespace Femsa\Payments\Api\Data;
+namespace DigitalFemsa\Payments\Api\Data;
 
 interface FemsaSalesOrderInterface
 {

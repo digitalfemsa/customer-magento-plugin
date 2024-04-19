@@ -1,10 +1,10 @@
 <?php
 
-namespace Femsa\Payments\Model;
+namespace DigitalFemsa\Payments\Model;
 
-use Femsa\Payments\Api\FemsaApiClient;
-use Femsa\Payments\Helper\Data as FemsaHelper;
-use Femsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Api\FemsaApiClient;
+use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Validator\Exception;
 

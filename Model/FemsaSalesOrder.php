@@ -1,9 +1,9 @@
 <?php
-namespace Femsa\Payments\Model;
+namespace DigitalFemsa\Payments\Model;
 
-use Femsa\Payments\Api\Data\FemsaSalesOrderInterface;
+use DigitalFemsa\Payments\Api\Data\FemsaSalesOrderInterface;
 use Magento\Framework\Model\AbstractModel;
-use Femsa\Payments\Model\ResourceModel\FemsaSalesOrder as ResourceFemsaSalesOrder;
+use DigitalFemsa\Payments\Model\ResourceModel\FemsaSalesOrder as ResourceFemsaSalesOrder;
 
 class FemsaSalesOrder extends AbstractModel implements FemsaSalesOrderInterface
 {

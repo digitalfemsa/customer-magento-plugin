@@ -1,8 +1,8 @@
 <?php
-namespace Femsa\Payments\Gateway\Request\Cash;
+namespace DigitalFemsa\Payments\Gateway\Request\Cash;
 
-use Femsa\Payments\Helper\Data as FemsaHelper;
-use Femsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
 use Magento\Payment\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 

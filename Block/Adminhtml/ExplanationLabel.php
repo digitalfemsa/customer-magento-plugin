@@ -1,6 +1,6 @@
 <?php
 
-namespace Femsa\Payments\Block\Adminhtml;
+namespace DigitalFemsa\Payments\Block\Adminhtml;
 
 use Magento\Framework\Escaper;
 use Magento\Framework\Data\Form\Element\Factory;

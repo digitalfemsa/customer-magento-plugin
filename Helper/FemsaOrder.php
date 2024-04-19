@@ -1,12 +1,12 @@
 <?php
 
-namespace Femsa\Payments\Helper;
+namespace DigitalFemsa\Payments\Helper;
 
-use Femsa\ApiException;
-use Femsa\Payments\Api\FemsaApiClient;
-use Femsa\Payments\Exception\FemsaException;
-use Femsa\Payments\Helper\Data as FemsaHelper;
-use Femsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\ApiException;
+use DigitalFemsa\Payments\Api\FemsaApiClient;
+use DigitalFemsa\Payments\Exception\FemsaException;
+use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
 use Exception;
 use Magento\Checkout\Model\Session;
 use Magento\Customer\Api\CustomerRepositoryInterface;

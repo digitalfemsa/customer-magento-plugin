@@ -1,6 +1,6 @@
 <?php
 
-namespace Femsa\Payments\Setup\Patch\Data;
+namespace DigitalFemsa\Payments\Setup\Patch\Data;
 
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Setup\CustomerSetupFactory;

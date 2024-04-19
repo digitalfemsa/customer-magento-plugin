@@ -1,7 +1,7 @@
 <?php
-namespace Femsa\Payments\Gateway\Request;
+namespace DigitalFemsa\Payments\Gateway\Request;
 
-use Femsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
 use InvalidArgumentException;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;

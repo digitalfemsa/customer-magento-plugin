@@ -1,11 +1,11 @@
 <?php
 
-namespace Femsa\Payments\Controller\Index;
+namespace DigitalFemsa\Payments\Controller\Index;
 
-use Femsa\Payments\Api\EmbedFormRepositoryInterface;
-use Femsa\Payments\Exception\FemsaException;
-use Femsa\Payments\Helper\FemsaOrder;
-use Femsa\Payments\Logger\Logger;
+use DigitalFemsa\Payments\Api\EmbedFormRepositoryInterface;
+use DigitalFemsa\Payments\Exception\FemsaException;
+use DigitalFemsa\Payments\Helper\FemsaOrder;
+use DigitalFemsa\Payments\Logger\Logger;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;

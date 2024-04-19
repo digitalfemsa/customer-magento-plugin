@@ -1,10 +1,10 @@
 <?php
-namespace Femsa\Payments\Gateway\Response\EmbedForm;
+namespace DigitalFemsa\Payments\Gateway\Response\EmbedForm;
 
-use Femsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
 use Magento\Payment\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Response\HandlerInterface;
-use Femsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
+use DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
 
 class TxnIdHandler implements HandlerInterface
 {

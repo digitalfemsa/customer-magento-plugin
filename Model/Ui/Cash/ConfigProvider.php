@@ -1,7 +1,7 @@
 <?php
-namespace Femsa\Payments\Model\Ui\Cash;
+namespace DigitalFemsa\Payments\Model\Ui\Cash;
 
-use Femsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;

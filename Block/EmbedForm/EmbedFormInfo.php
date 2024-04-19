@@ -1,7 +1,7 @@
 <?php
-namespace Femsa\Payments\Block\EmbedForm;
+namespace DigitalFemsa\Payments\Block\EmbedForm;
 
-use Femsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
+use DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Payment\Block\Info;
 use Magento\Payment\Model\Config;

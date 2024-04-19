@@ -1,7 +1,7 @@
 <?php
-namespace Femsa\Payments\Gateway\Command;
+namespace DigitalFemsa\Payments\Gateway\Command;
 
-use Femsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
 use Magento\Framework\Phrase;
 use Magento\Payment\Gateway\Command\CommandException;
 use Magento\Payment\Gateway\Command\ResultInterface;

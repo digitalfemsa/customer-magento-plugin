@@ -1,8 +1,8 @@
 <?php
-namespace Femsa\Payments\Model\Ui\EmbedForm;
+namespace DigitalFemsa\Payments\Model\Ui\EmbedForm;
 
-use Femsa\Payments\Helper\Data as FemsaHelper;
-use Femsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\Exception\LocalizedException;

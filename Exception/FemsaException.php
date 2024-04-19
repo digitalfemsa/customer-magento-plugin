@@ -1,6 +1,6 @@
 <?php
 
-namespace Femsa\Payments\Exception;
+namespace DigitalFemsa\Payments\Exception;
 
 class FemsaException extends \Exception
 {

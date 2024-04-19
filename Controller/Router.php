@@ -1,12 +1,12 @@
 <?php
 
-namespace Femsa\Payments\Controller;
+namespace DigitalFemsa\Payments\Controller;
 
 use Magento\Framework\App\ActionFactory;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\RouterInterface;
-use Femsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Url;
 

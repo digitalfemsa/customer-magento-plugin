@@ -1,8 +1,8 @@
 <?php
-namespace Femsa\Payments\Model;
+namespace DigitalFemsa\Payments\Model;
 
-use Femsa\Payments\Api\Data\FemsaQuoteInterface;
-use Femsa\Payments\Model\ResourceModel\FemsaQuote as ResourceFemsaQuote;
+use DigitalFemsa\Payments\Api\Data\FemsaQuoteInterface;
+use DigitalFemsa\Payments\Model\ResourceModel\FemsaQuote as ResourceFemsaQuote;
 use Magento\Framework\Model\AbstractModel;
 
 class FemsaQuote extends AbstractModel implements FemsaQuoteInterface

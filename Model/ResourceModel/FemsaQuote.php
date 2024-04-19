@@ -1,5 +1,5 @@
 <?php
-namespace Femsa\Payments\Model\ResourceModel;
+namespace DigitalFemsa\Payments\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
