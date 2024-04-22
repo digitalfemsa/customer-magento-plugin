@@ -4,9 +4,9 @@
     <type name="Magento\Checkout\Model\CompositeConfigProvider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="femsa_global_provider" xsi:type="object">Femsa\Payments\Model\Ui\ConfigProvider</item>
+                <item name="femsa_global_provider" xsi:type="object">DigitalFemsa\Payments\Model\Ui\ConfigProvider</item>
                 <!-- Embed Form -->
-                <item name="femsa_ef_provider" xsi:type="object">Femsa\Payments\Model\Ui\EmbedForm\ConfigProvider</item>
+                <item name="femsa_ef_provider" xsi:type="object">DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider</item>
             </argument>
         </arguments>
     </type>
@@ -16,7 +16,7 @@
         <arguments>
             <argument name="routerList" xsi:type="array">
                 <item name="femsarouter" xsi:type="array">
-                    <item name="class" xsi:type="string">Femsa\Payments\Controller\Router</item>
+                    <item name="class" xsi:type="string">DigitalFemsa\Payments\Controller\Router</item>
                     <item name="disable" xsi:type="boolean">false</item>
                     <item name="sortOrder" xsi:type="string">22</item>
                 </item>
@@ -25,7 +25,7 @@
     </type>
     <!-- // Femsa Config // -->
 
-    <type name="Femsa\Payments\Block\Info">
+    <type name="DigitalFemsa\Payments\Block\Info">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item xsi:type="string" name="is_secure_mode">1</item>
@@ -34,14 +34,14 @@
     </type>
 
     <!-- // Femsa Checkout Variables // -->
-    <virtualType name="Femsa\Payments\Model\Session\Storage" type="Magento\Framework\Session\Storage">
+    <virtualType name="DigitalFemsa\Payments\Model\Session\Storage" type="Magento\Framework\Session\Storage">
         <arguments>
             <argument name="namespace" xsi:type="string">femsacheckoutconfig</argument>
         </arguments>
     </virtualType>
-    <type name="Femsa\Payments\Model\Session">
+    <type name="DigitalFemsa\Payments\Model\Session">
         <arguments>
-            <argument name="storage" xsi:type="object">Femsa\Payments\Model\Session\Storage</argument>
+            <argument name="storage" xsi:type="object">DigitalFemsa\Payments\Model\Session\Storage</argument>
         </arguments>
     </type>
 </config>

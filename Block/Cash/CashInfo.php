@@ -1,5 +1,5 @@
 <?php
-namespace Femsa\Payments\Block\Cash;
+namespace DigitalFemsa\Payments\Block\Cash;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Element\Template\Context;

@@ -1,7 +1,7 @@
 <?php
-namespace Femsa\Payments\Model\Ui;
+namespace DigitalFemsa\Payments\Model\Ui;
 
-use Femsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\View\Asset\Repository as AssetRepository;
 

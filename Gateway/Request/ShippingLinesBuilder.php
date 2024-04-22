@@ -1,8 +1,8 @@
 <?php
-namespace Femsa\Payments\Gateway\Request;
+namespace DigitalFemsa\Payments\Gateway\Request;
 
-use Femsa\Payments\Helper\Data as FemsaHelper;
-use Femsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Payment\Gateway\Helper\SubjectReader;

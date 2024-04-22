@@ -1,13 +1,13 @@
 <?php
 
-namespace Femsa\Payments\Service;
+namespace DigitalFemsa\Payments\Service;
 
-use Femsa\Payments\Api\FemsaApiClient;
-use Femsa\Payments\Helper\Data as FemsaData;
-use Femsa\Payments\Helper\Util;
-use Femsa\Payments\Logger\Logger as FemsaLogger;
-use Femsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
-use Femsa\Payments\Model\WebhookRepository;
+use DigitalFemsa\Payments\Api\FemsaApiClient;
+use DigitalFemsa\Payments\Helper\Data as FemsaData;
+use DigitalFemsa\Payments\Helper\Util;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
+use DigitalFemsa\Payments\Model\WebhookRepository;
 use Magento\Catalog\Model\Product;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\App\ObjectManager;

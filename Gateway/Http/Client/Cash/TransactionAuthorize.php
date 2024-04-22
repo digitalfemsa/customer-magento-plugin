@@ -1,12 +1,12 @@
 <?php
 
-namespace Femsa\Payments\Gateway\Http\Client\Cash;
+namespace DigitalFemsa\Payments\Gateway\Http\Client\Cash;
 
-use Femsa\Payments\Api\FemsaApiClient;
-use Femsa\Payments\Helper\Data as FemsaHelper;
-use Femsa\Payments\Logger\Logger as FemsaLogger;
-use Femsa\Payments\Api\Data\FemsaSalesOrderInterface;
-use Femsa\Payments\Model\FemsaSalesOrderFactory;
+use DigitalFemsa\Payments\Api\FemsaApiClient;
+use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Api\Data\FemsaSalesOrderInterface;
+use DigitalFemsa\Payments\Model\FemsaSalesOrderFactory;
 use Magento\Payment\Gateway\Http\ClientInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Model\Method\Logger;

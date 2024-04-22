@@ -1,12 +1,12 @@
 {
-    "name": "femsa/femsa_payments",
+    "name": "digitalfemsa/femsa_payments",
     "description": "Femsa payment gateway",
     "require": {
         "php": ">=7.4",
         "digitalfemsa/femsa-php": "dev-main"
     },
     "type": "magento2-module",
-    "version": "5.1.2",
+    "version": "5.1.0",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
@@ -14,7 +14,7 @@
     "autoload": {
         "files": [ "registration.php" ],
         "psr-4": {
-            "Femsa\\Payments\\": ""
+            "DigitalFemsa\\Payments\\": ""
         }
     },
     "repositories": [

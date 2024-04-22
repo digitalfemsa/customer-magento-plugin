@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Femsa\Payments\Model\System\Config\Source;
+namespace DigitalFemsa\Payments\Model\System\Config\Source;
 
 use Magento\Framework\Option\ArrayInterface;
 use Magento\Sales\Model\ResourceModel\Order;

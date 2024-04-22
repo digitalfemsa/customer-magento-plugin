@@ -1,7 +1,7 @@
 <?php
-namespace Femsa\Payments\Gateway\Config\Cash;
+namespace DigitalFemsa\Payments\Gateway\Config\Cash;
 
-use Femsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
 use Magento\Payment\Gateway\Config\ValueHandlerInterface;
 
 class PaymentActionValueHandler implements ValueHandlerInterface

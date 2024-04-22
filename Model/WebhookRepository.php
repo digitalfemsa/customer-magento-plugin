@@ -1,9 +1,9 @@
 <?php
 
-namespace Femsa\Payments\Model;
+namespace DigitalFemsa\Payments\Model;
 
-use Femsa\Payments\Logger\Logger as FemsaLogger;
-use Femsa\Payments\Api\Data\FemsaSalesOrderInterface;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Api\Data\FemsaSalesOrderInterface;
 use Exception;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Api\Data\OrderInterface;

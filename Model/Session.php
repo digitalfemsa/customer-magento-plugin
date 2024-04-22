@@ -1,6 +1,6 @@
 <?php
 
-namespace Femsa\Payments\Model;
+namespace DigitalFemsa\Payments\Model;
 
 use Magento\Framework\Session\Config\ConfigInterface;
 use Magento\Framework\Session\SaveHandlerInterface;

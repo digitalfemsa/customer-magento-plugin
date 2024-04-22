@@ -1,10 +1,10 @@
 <?php
-namespace Femsa\Payments\Gateway\Request\EmbedForm;
+namespace DigitalFemsa\Payments\Gateway\Request\EmbedForm;
 
-use Femsa\Payments\Helper\Data as FemsaHelper;
-use Femsa\Payments\Logger\Logger as FemsaLogger;
-use Femsa\Payments\Model\Config;
-use Femsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
+use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Model\Config;
+use DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Payment\Gateway\ConfigInterface;

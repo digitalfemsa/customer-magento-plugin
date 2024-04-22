@@ -1,7 +1,7 @@
 <?php
-namespace Femsa\Payments\Gateway\Config\EmbedForm;
+namespace DigitalFemsa\Payments\Gateway\Config\EmbedForm;
 
-use Femsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
 use Magento\Payment\Gateway\Config\ValueHandlerInterface;
 
 class ActiveValueHandler implements ValueHandlerInterface

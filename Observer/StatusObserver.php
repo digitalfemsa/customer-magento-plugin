@@ -1,9 +1,9 @@
 <?php
 
-namespace Femsa\Payments\Observer;
+namespace DigitalFemsa\Payments\Observer;
 
-use Femsa\Payments\Logger\Logger;
-use Femsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
+use DigitalFemsa\Payments\Logger\Logger;
+use DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Sales\Model\Order;

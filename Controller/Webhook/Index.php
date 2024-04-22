@@ -1,9 +1,9 @@
 <?php
-namespace Femsa\Payments\Controller\Webhook;
+namespace DigitalFemsa\Payments\Controller\Webhook;
 
-use Femsa\Payments\Logger\Logger as FemsaLogger;
-use Femsa\Payments\Model\WebhookRepository;
-use Femsa\Payments\Service\MissingOrders;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Model\WebhookRepository;
+use DigitalFemsa\Payments\Service\MissingOrders;
 use Exception;
 use Laminas\Http\Response;
 use Magento\Framework\App\Action\Action;

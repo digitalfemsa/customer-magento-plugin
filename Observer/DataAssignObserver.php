@@ -1,5 +1,5 @@
 <?php
-namespace Femsa\Payments\Observer;
+namespace DigitalFemsa\Payments\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Exception\LocalizedException;

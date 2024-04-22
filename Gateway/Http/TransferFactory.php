@@ -1,10 +1,10 @@
 <?php
-namespace Femsa\Payments\Gateway\Http;
+namespace DigitalFemsa\Payments\Gateway\Http;
 
 use Magento\Payment\Gateway\Http\TransferBuilder;
 use Magento\Payment\Gateway\Http\TransferFactoryInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
-use Femsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
 
 class TransferFactory implements TransferFactoryInterface
 {

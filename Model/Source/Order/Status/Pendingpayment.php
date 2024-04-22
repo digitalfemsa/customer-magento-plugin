@@ -1,6 +1,6 @@
 <?php
 
-namespace Femsa\Payments\Model\Source\Order\Status;
+namespace DigitalFemsa\Payments\Model\Source\Order\Status;
 
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Config\Source\Order\Status;

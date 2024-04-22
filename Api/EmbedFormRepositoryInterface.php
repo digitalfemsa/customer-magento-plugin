@@ -1,7 +1,7 @@
 <?php
-namespace Femsa\Payments\Api;
+namespace DigitalFemsa\Payments\Api;
 
-use Femsa\Model\OrderResponse;
+use DigitalFemsa\Model\OrderResponse;
 
 interface EmbedFormRepositoryInterface
 {

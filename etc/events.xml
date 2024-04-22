@@ -3,13 +3,13 @@
 
     <!-- Notification Status Change -->
     <event name="femsa_payment_notification_status_change">
-        <observer name="femsa_payment_notification_status_change_observer" instance="Femsa\Payments\Observer\NotificationObserver" />
+        <observer name="femsa_payment_notification_status_change_observer" instance="DigitalFemsa\Payments\Observer\NotificationObserver" />
     </event>
 
     <event name="payment_method_assign_data">
-        <observer name="femsa_payment_gateway_data_assign" instance="Femsa\Payments\Observer\DataAssignObserver" />
+        <observer name="femsa_payment_gateway_data_assign" instance="DigitalFemsa\Payments\Observer\DataAssignObserver" />
     </event>
     <event name="sales_order_place_after">
-        <observer name="femsa_payments_status_observer" instance="Femsa\Payments\Observer\StatusObserver" />
+        <observer name="femsa_payments_status_observer" instance="DigitalFemsa\Payments\Observer\StatusObserver" />
     </event>
 </config>

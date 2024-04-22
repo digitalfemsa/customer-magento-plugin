@@ -1,5 +1,5 @@
 <?php
-namespace Femsa\Payments\Logger;
+namespace DigitalFemsa\Payments\Logger;
 
 use Magento\Framework\Logger\Handler\Base;
 use Monolog\Logger;

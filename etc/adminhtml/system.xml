@@ -10,7 +10,7 @@
                 <group id="femsa_global" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>General Configuration</label>
                     <comment>
-                        <![CDATA[<a href="https://femsa.io/" target="_blank">Click here to sign up for Femsa account</a>]]>
+                        <![CDATA[<a href="https://digitalfemsa.io/" target="_blank">Click here to sign up for Femsa account</a>]]>
                     </comment>
                     <field id="sandbox_mode" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                         <label>Sandbox</label>
@@ -35,26 +35,26 @@
                     <field id="femsa_webhook" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
                         <label>Webhook</label>
                         <comment>
-                            <![CDATA[Default webhook is: <strong>your_magento_host/femsa/webhook/index</strong>]]>
+                            <![CDATA[Default webhook is: <strong>your_magento_host/digitalfemsa/webhook/index</strong>]]>
                         </comment>
                     </field>
                     <field id="debug" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0" >
                         <label>Debug</label>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     </field>
-                    <field id="explanation" translate="label" type="Femsa\Payments\Block\Adminhtml\ExplanationLabel" sortOrder="75" showInDefault="1" showInWebsite="1" showInStore="0"/>
+                    <field id="explanation" translate="label" type="DigitalFemsa\Payments\Block\Adminhtml\ExplanationLabel" sortOrder="75" showInDefault="1" showInWebsite="1" showInStore="0"/>
                     <field id="metadata_additional_products" translate="label" type="multiselect" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
                         <label>Additional products attributes to send in metadata</label>
                         <tooltip>(Ctrl + Click to select more options)</tooltip>
                         <can_be_empty>1</can_be_empty>
-                        <source_model>Femsa\Payments\Model\System\Config\Source\MetadataProduct</source_model>
+                        <source_model>DigitalFemsa\Payments\Model\System\Config\Source\MetadataProduct</source_model>
                         <validate>validate-product-attributes</validate>
                     </field>
                     <field id="metadata_additional_order" translate="label" type="multiselect" sortOrder="81" showInDefault="1" showInWebsite="1" showInStore="0">
                         <label>Additional order attributes to send in metadata</label>
                         <tooltip>(Ctrl + Click to select more options)</tooltip>
                         <can_be_empty>1</can_be_empty>
-                        <source_model>Femsa\Payments\Model\System\Config\Source\MetadataOrder</source_model>
+                        <source_model>DigitalFemsa\Payments\Model\System\Config\Source\MetadataOrder</source_model>
                         <validate>validate-order-attributes</validate>
                     </field>
                     <field id="expiry_days" translate="label" type="text" sortOrder="91" showInDefault="1" showInWebsite="1" showInStore="0">
@@ -100,7 +100,7 @@
 	                </field>
                     <field id="order_status" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
                         <label>New Order Status</label>
-                        <source_model>Femsa\Payments\Model\Source\Order\Status\Pendingpayment</source_model>
+                        <source_model>DigitalFemsa\Payments\Model\Source\Order\Status\Pendingpayment</source_model>
                         <depends>
                             <field id="active">1</field>
                         </depends>
