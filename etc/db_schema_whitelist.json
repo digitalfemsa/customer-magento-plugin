@@ -1,28 +1,28 @@
 {
-  "femsa_salesorder": {
+  "digitalfemsa_salesorder": {
     "column": {
       "id": true,
-      "femsa_order_id": true,
+      "digitalfemsa_order_id": true,
       "increment_order_id": true,
       "created_at": true,
       "updated_at": true
     },
     "constraint": {
       "PRIMARY": true,
-      "FEMSA_SALESORDER_FEMSA_ORDER_ID_INCREMENT_ORDER_ID": true
+      "DIGITALFEMSA_SALESORDER_DIGITALFEMSA_ORDER_ID_INCREMENT_ORDER_ID": true
     }
   },
-  "femsa_quote": {
+  "digitalfemsa_quote": {
     "column": {
       "quote_id": true,
-      "femsa_order_id": true,
+      "digitalfemsa_order_id": true,
       "created_at": true,
       "updated_at": true
     },
     "constraint": {
       "PRIMARY": true,
-      "FEMSA_QUOTE_FEMSA_ORDER_ID": true,
-      "FEMSA_QUOTE_QUOTE_ID_QUOTE_ENTITY_ID": true
+      "DIGITALFEMSA_QUOTE_DIGITALFEMSA_ORDER_ID": true,
+      "DIGITALFEMSA_QUOTE_QUOTE_ID_QUOTE_ENTITY_ID": true
     }
   }
 }

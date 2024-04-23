@@ -30,7 +30,7 @@ class Logger
         $objectManager = ObjectManager::getInstance();
         $femsaHelper = $objectManager->create(Data::class);
 
-        if ((int)$femsaHelper->getConfigData('femsa/femsa_global', 'debug')) {
+        if ((int)$femsaHelper->getConfigData('digitalfemsa/femsa_global', 'debug')) {
             return $this->logger->addRecord($level, $message, $context);
         }
 

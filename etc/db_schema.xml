@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
-    <table name="femsa_salesorder" resource="default" engine="innodb" comment="Femsa payments orders">
+    <table name="digitalfemsa_salesorder" resource="default" engine="innodb" comment="Digitalfemsa payments orders">
         <column xsi:type="int" name="id" nullable="false" unsigned="true" identity="true"
-                comment="femsa Sales Orders ID"/>
-        <column xsi:type="varchar" name="femsa_order_id" nullable="false" length="255" comment="Femsa Order"/>
+                comment="digitalfemsa Sales Orders ID"/>
+        <column xsi:type="varchar" name="digitalfemsa_order_id" nullable="false" length="255" comment="Digitalfemsa Order"/>
         <column xsi:type="varchar" name="increment_order_id" nullable="false" length="255"
                 comment="Sales Order Increment Id"/>
         <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
@@ -14,15 +14,15 @@
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id" />
         </constraint>
-        <constraint xsi:type="unique" referenceId="FEMSA_ORDER_ID_INCREMENT_ID">
-            <column name="femsa_order_id"/>
+        <constraint xsi:type="unique" referenceId="Digitalfemsa_ORDER_ID_INCREMENT_ID">
+            <column name="digitalfemsa_order_id"/>
             <column name="increment_order_id"/>
         </constraint>
     </table>
-    <table name="femsa_quote" resource="default" engine="innodb" comment="Map Table Femsa Orders and Quotes">
+    <table name="digitalfemsa_quote" resource="default" engine="innodb" comment="Map Table Digitalfemsa Orders and Quotes">
         <column xsi:type="int" name="quote_id" padding="10" unsigned="true" nullable="false" identity="true"
-                comment="Femsa Quote ID"/>
-        <column xsi:type="varchar" name="femsa_order_id" nullable="false" length="255" comment="Femsa Order"/>
+                comment="digitalfemsa Quote ID"/>
+        <column xsi:type="varchar" name="digitalfemsa_order_id" nullable="false" length="255" comment="Digitalfemsa Order"/>
         <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
                 comment="Date of Template Creation"/>
         <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
@@ -30,11 +30,11 @@
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="quote_id" />
         </constraint>
-        <constraint xsi:type="unique" referenceId="UN_FEMSA_ORDER_ID_QUOTE">
-            <column name="femsa_order_id"/>
+        <constraint xsi:type="unique" referenceId="UN_DIGITALFEMSA_ORDER_ID_QUOTE">
+            <column name="digitalfemsa_order_id"/>
         </constraint>
-        <constraint xsi:type="foreign" referenceId="FK_FEMSA_QUOTE_QUOTE"
-                    table="femsa_quote" column="quote_id" referenceTable="quote"
+        <constraint xsi:type="foreign" referenceId="FK_DIGITALFEMSA_QUOTE_QUOTE"
+                    table="digitalfemsa_quote" column="quote_id" referenceTable="quote"
                     referenceColumn="entity_id" onDelete="CASCADE"/>
     </table>
 </schema>

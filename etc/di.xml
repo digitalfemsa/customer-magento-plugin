@@ -80,7 +80,7 @@
             </argument>
         </arguments>
     </virtualType>
-    <type name="Femsa\Payments\Gateway\Request\EmbedForm\CaptureRequest">
+    <type name="DigitalFemsa\Payments\Gateway\Request\EmbedForm\CaptureRequest">
         <arguments>
             <argument name="config" xsi:type="object">FemsaPaymentsEmbedFormConfig</argument>
         </arguments>
