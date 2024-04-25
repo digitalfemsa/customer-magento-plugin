@@ -32,9 +32,9 @@ class Session extends SessionManager
      * @param string|null $url
      * @return $this
      */
-    public function setFemsaCheckoutId(?string $url): Session
+    public function setDigitalFemsaCheckoutId(?string $url): Session
     {
-        $this->storage->setData('femsa_checkout_id', $url);
+        $this->storage->setData('digitalfemsa_checkout_id', $url);
         return $this;
     }
 
@@ -43,10 +43,10 @@ class Session extends SessionManager
      *
      * @return string|null
      */
-    public function getFemsaCheckoutId(): ?string
+    public function getDigitalFemsaCheckoutId(): ?string
     {
-        if ($this->storage->getData('femsa_checkout_id')) {
-            return $this->storage->getData('femsa_checkout_id');
+        if ($this->storage->getData('digitalfemsa_checkout_id')) {
+            return $this->storage->getData('digitalfemsa_checkout_id');
         }
         return null;
     }
