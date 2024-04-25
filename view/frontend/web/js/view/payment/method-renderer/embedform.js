@@ -280,7 +280,7 @@ define(
             renderizeEmbedForm: function () {
                 var self = this;
                 document.getElementById("femsaIframeContainer").innerHTML = "";
-                window.ConektaCheckoutComponents.Integration({
+                window.DigitalFemsaCheckoutComponents.Integration({
                     targetIFrame: '#femsaIframeContainer',
                     checkoutRequestId: this.checkoutId(),
                     publicKey: this.getPublicKey(),
