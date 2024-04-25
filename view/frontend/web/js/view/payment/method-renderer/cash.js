@@ -25,7 +25,7 @@ define(
             },
 
             getCode: function () {
-                return 'femsa_cash';
+                return 'digitalfemsa_cash';
             },
 
             isActive: function () {

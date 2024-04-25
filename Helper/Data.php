@@ -150,7 +150,7 @@ class Data extends Util
      */
     public function getPrivateKey(): string
     {
-        $sandboxMode = $this->getConfigData('femsa/femsa_global', 'sandbox_mode');
+        $sandboxMode = $this->getConfigData('digitalfemsa/digitalfemsa_global', 'sandbox_mode');
 
         if ($sandboxMode) {
             $privateKey = $this->_encryptor->decrypt(
@@ -256,7 +256,7 @@ class Data extends Util
      */
     public function isCashEnabled(): bool
     {
-        return (boolean)$this->getConfigData('femsa_cash', 'active');
+        return (boolean)$this->getConfigData('digitalfemsa_cash', 'active');
     }
 
 
@@ -512,7 +512,7 @@ class Data extends Util
      */
     public function getUrlWebhookOrDefault()
     {
-        $urlWebhook = $this->getConfigData('digitalfemsa/femsa_global', 'femsa_webhook');
+        $urlWebhook = $this->getConfigData('digitalfemsa/digitalfemsa_global', 'digitalfemsa_webhook');
         if (empty($urlWebhook)) {
             $baseUrl = $this->_storeManager->getStore()->getBaseUrl();
             $urlWebhook = $baseUrl . "digitalfemsa/webhook/index";

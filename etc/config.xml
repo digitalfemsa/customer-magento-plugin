@@ -3,7 +3,7 @@
     <default>
         <payment>
             <!-- Femsa Cash -->
-            <femsa_cash>
+            <digitalfemsa_cash>
                 <active>0</active>
                 <title>Pago en Efectivo</title>
                 <model>FemsaPaymentsCashFacade</model>
@@ -22,7 +22,7 @@
                 <can_void>0</can_void>
                 <can_cancel>1</can_cancel>
                 <can_edit>1</can_edit>
-            </femsa_cash>
+            </digitalfemsa_cash>
             <!-- // Femsa Cash // -->
             <!-- Femsa EMBED FORM -->
             <femsa_ef>

@@ -18,7 +18,7 @@ class Success extends CompleteCheckout
     {
         if ($type == 'cash') {
             return $this->_scopeConfig->getValue(
-                'payment/femsa_cash/instructions',
+                'payment/digitalfemsa_cash/instructions',
                 ScopeInterface::SCOPE_STORE
             );
         }

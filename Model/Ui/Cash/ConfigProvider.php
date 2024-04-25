@@ -12,7 +12,7 @@ use Magento\Quote\Model\Quote;
 
 class ConfigProvider implements ConfigProviderInterface
 {
-    public const CODE = 'femsa_cash';
+    public const CODE = 'digitalfemsa_cash';
     /**
      * @var Session
      */

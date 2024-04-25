@@ -7,7 +7,7 @@
                 <fieldset_css>complex femsa-section</fieldset_css>
                 <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Fieldset\Payment</frontend_model>
                 <!--global-->
-                <group id="femsa_global" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <group id="digitalfemsa_global" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>General Configuration</label>
                     <comment>
                         <![CDATA[<a href="https://digitalfemsa.io/" target="_blank">Click here to sign up for Femsa account</a>]]>
@@ -104,7 +104,7 @@
                         <depends>
                             <field id="active">1</field>
                         </depends>
-                        <config_path>payment/fdigitalfemsa_cash/order_status</config_path>
+                        <config_path>payment/digitalfemsa_cash/order_status</config_path>
                     </field>
                     <field id="sort_order" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
                         <label>Sort Order</label>
@@ -112,7 +112,7 @@
                             <field id="active">1</field>
                         </depends>
                         <frontend_class>validate-number</frontend_class>
-                        <config_path>payment/femsa_cash/sort_order</config_path>
+                        <config_path>payment/digitalfemsa_cash/sort_order</config_path>
                     </field>
                 </group>
                 <!-- // Femsa CASH // -->
