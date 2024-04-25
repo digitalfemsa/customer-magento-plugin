@@ -3,7 +3,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="order.success.additional.info">
-            <block class="Femsa\Payments\Block\Info\Success" name="onepage.success.femsa" template="Femsa_Payments::checkout/success.phtml"/>
+            <block class="DigitalFemsa\Payments\Block\Info\Success" name="onepage.success.femsa" template="Femsa_Payments::checkout/success.phtml"/>
         </referenceContainer>
     </body>
 </page>
