@@ -7,12 +7,12 @@ define(
 
         return Component.extend({
             defaults: {
-                template: 'Femsa_Payments/payment/base-form',
+                template: 'DigitalFemsa_Payments/payment/base-form',
                 transactionResult: ''
             },
 
             getFormTemplate: function(){
-                return 'Femsa_Payments/payment/cash/form'
+                return 'DigitalFemsa_Payments/payment/cash/form'
             },
 
             initialize: function() {

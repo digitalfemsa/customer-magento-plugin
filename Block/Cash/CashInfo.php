@@ -16,7 +16,7 @@ class CashInfo extends Info
     /**
      * @var string
      */
-    protected $_template = 'Femsa_Payments::info/cash.phtml';
+    protected $_template = 'DigitalFemsa_Payments::info/cash.phtml';
 
     /**
      * @param Context $context

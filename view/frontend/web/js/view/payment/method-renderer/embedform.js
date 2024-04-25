@@ -21,7 +21,7 @@ define(
 
         return Component.extend({
             defaults: {
-                template: 'Femsa_Payments/payment/base-form',
+                template: 'DigitalFemsa_Payments/payment/base-form',
                 transactionResult: '',
                 renderProperties: {
                     shippingMethodCode: '',
@@ -34,7 +34,7 @@ define(
             },
 
             getFormTemplate: function () {
-                return 'Femsa_Payments/payment/embedform/form'
+                return 'DigitalFemsa_Payments/payment/embedform/form'
             },
 
             initObservable: function () {

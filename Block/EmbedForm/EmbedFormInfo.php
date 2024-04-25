@@ -17,7 +17,7 @@ class EmbedFormInfo extends Info
     /**
      * @var string
      */
-    protected $_template = 'Femsa_Payments::info/embedform.phtml';
+    protected $_template = 'DigitalFemsa_Payments::info/embedform.phtml';
 
     /**
      * @param Context $context

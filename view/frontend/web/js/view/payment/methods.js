@@ -11,7 +11,7 @@ define(
         rendererList.push(
             {
                 type: 'femsa_ef',
-                component: 'Femsa_Payments/js/view/payment/method-renderer/embedform'
+                component: 'DigitalFemsa_Payments/js/view/payment/method-renderer/embedform'
             }
         );
         return Component.extend({});
