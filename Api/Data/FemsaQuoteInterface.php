@@ -4,7 +4,7 @@ namespace DigitalFemsa\Payments\Api\Data;
 interface FemsaQuoteInterface
 {
     public const QUOTE_ID = 'quote_id';
-    public const FEMSA_ORDER_ID = 'femsa_order_id';
+    public const DIGITALFEMSA_ORDER_ID = 'digitalfemsa_order_id';
     public const MINIMUM_AMOUNT_PER_QUOTE = 20;
 
     /**

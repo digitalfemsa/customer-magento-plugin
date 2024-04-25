@@ -4,7 +4,7 @@ namespace DigitalFemsa\Payments\Api\Data;
 interface FemsaSalesOrderInterface
 {
 
-    public const FEMSA_ORDER_ID = 'femsa_order_id';
+    public const DIGITALFEMSA_ORDER_ID = 'digitalfemsa_order_id';
     public const INCREMENT_ORDER_ID = 'increment_order_id';
 
     /**

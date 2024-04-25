@@ -46,7 +46,7 @@ class FemsaQuote extends AbstractModel implements FemsaQuoteInterface
      */
     public function setFemsaOrderId($value)
     {
-        $this->setData(FemsaQuoteInterface::FEMSA_ORDER_ID, $value);
+        $this->setData(FemsaQuoteInterface::DIGITALFEMSA_ORDER_ID, $value);
     }
 
     /**
@@ -56,7 +56,7 @@ class FemsaQuote extends AbstractModel implements FemsaQuoteInterface
      */
     public function getFemsaOrderId()
     {
-        return $this->getData(FemsaQuoteInterface::FEMSA_ORDER_ID);
+        return $this->getData(FemsaQuoteInterface::DIGITALFEMSA_ORDER_ID);
     }
 
     /**

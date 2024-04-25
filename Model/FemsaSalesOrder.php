@@ -25,7 +25,7 @@ class FemsaSalesOrder extends AbstractModel implements FemsaSalesOrderInterface
      */
     public function setFemsaOrderId($value)
     {
-        $this->setData(FemsaSalesOrderInterface::FEMSA_ORDER_ID, $value);
+        $this->setData(FemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID, $value);
     }
 
     /**
@@ -35,7 +35,7 @@ class FemsaSalesOrder extends AbstractModel implements FemsaSalesOrderInterface
      */
     public function getFemsaOrderId()
     {
-        return $this->getData(FemsaSalesOrderInterface::FEMSA_ORDER_ID);
+        return $this->getData(FemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID);
     }
 
     /**
@@ -67,7 +67,7 @@ class FemsaSalesOrder extends AbstractModel implements FemsaSalesOrderInterface
      */
     public function loadByFemsaOrderId($femsaOrderId)
     {
-        return $this->loadByAttribute(FemsaSalesOrderInterface::FEMSA_ORDER_ID, $femsaOrderId);
+        return $this->loadByAttribute(FemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID, $femsaOrderId);
     }
 
     /**

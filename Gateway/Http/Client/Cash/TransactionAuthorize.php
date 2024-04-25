@@ -105,7 +105,7 @@ class TransactionAuthorize implements ClientInterface
                 $this->femsaSalesOrderFactory
                     ->create()
                     ->setData([
-                        FemsaSalesOrderInterface::FEMSA_ORDER_ID => $ord_id,
+                        FemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID => $ord_id,
                         FemsaSalesOrderInterface::INCREMENT_ORDER_ID => $orderParams['metadata']['order_id']
                     ])
                     ->save();
