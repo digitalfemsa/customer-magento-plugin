@@ -12,6 +12,6 @@ class FemsaSalesOrder extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('femsa_salesorder', 'id');
+        $this->_init('digitalfemsa_salesorder', 'id');
     }
 }
