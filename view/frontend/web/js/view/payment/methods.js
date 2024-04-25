@@ -10,7 +10,7 @@ define(
         'use strict';
         rendererList.push(
             {
-                type: 'femsa_ef',
+                type: 'digital_ef',
                 component: 'DigitalFemsa_Payments/js/view/payment/method-renderer/embedform'
             }
         );

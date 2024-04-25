@@ -155,14 +155,14 @@ class Data extends Util
         if ($sandboxMode) {
             $privateKey = $this->_encryptor->decrypt(
                 $this->getConfigData(
-                    'digitalfemsa/femsa_global',
+                    'digitalfemsa/digitalfemsa_global',
                     'test_private_api_key'
                 )
             );
         } else {
             $privateKey = $this->_encryptor->decrypt(
                 $this->getConfigData(
-                    'digitalfemsa/femsa_global',
+                    'digitalfemsa/digitalfemsa_global',
                     'live_private_api_key'
                 )
             );
@@ -177,11 +177,11 @@ class Data extends Util
      */
     public function getPublicKey()
     {
-        $sandboxMode = $this->getConfigData('digitalfemsa/femsa_global', 'sandbox_mode');
+        $sandboxMode = $this->getConfigData('digitalfemsa/digitalfemsa_global', 'sandbox_mode');
         if ($sandboxMode) {
-            $publicKey = $this->getConfigData('digitalfemsa/femsa_global', 'test_public_api_key');
+            $publicKey = $this->getConfigData('digitalfemsa/digitalfemsa_global', 'test_public_api_key');
         } else {
-            $publicKey = $this->getConfigData('digitalfemsa/femsa_global', 'live_public_api_key');
+            $publicKey = $this->getConfigData('digitalfemsa/digitalfemsa_global', 'live_public_api_key');
         }
         return $publicKey;
     }
@@ -243,7 +243,7 @@ class Data extends Util
      */
     public function getMetadataAttributes($metadataPath)
     {
-        $attributes = $this->getConfigData('digitalfemsa/femsa_global', $metadataPath);
+        $attributes = $this->getConfigData('digitalfemsa/digitalfemsa_global', $metadataPath);
         return explode(",", $attributes  ?? '');
     }
 
@@ -268,14 +268,14 @@ class Data extends Util
      */
     public function getExpiredAt(): int
     {
-        $timeFormat = $this->getConfigData('digitalfemsa/femsa_global', 'days_or_hours');
+        $timeFormat = $this->getConfigData('digitalfemsa/digitalfemsa_global', 'days_or_hours');
 
         //hours expiration disabled temporally
         if (! $timeFormat && false) {
-            $expirationValue = $this->getConfigData('digitalfemsa/femsa_global', 'expiry_hours');
+            $expirationValue = $this->getConfigData('digitalfemsa/digitalfemsa_global', 'expiry_hours');
             $expirationUnit = "hours";
         } else {
-            $expirationValue = $this->getConfigData('digitalfemsa/femsa_global', 'expiry_days');
+            $expirationValue = $this->getConfigData('digitalfemsa/digitalfemsa_global', 'expiry_days');
             $expirationUnit = "days";
         }
 
@@ -428,7 +428,7 @@ class Data extends Util
         return [
             'plugin'                 => 'Magento',
             'magento_version'        => $this->getMageVersion(),
-            'plugin_femsa_version' => $this->pluginVersion(),
+            'plugin_digitalfemsa_version' => $this->pluginVersion(),
             'store'                  => $this->getStore()->getId(),
             'remote_ip'              => $this->_remoteAddress->getRemoteAddress()
         ];

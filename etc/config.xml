@@ -25,7 +25,7 @@
             </digitalfemsa_cash>
             <!-- // Femsa Cash // -->
             <!-- Femsa EMBED FORM -->
-            <femsa_ef>
+            <digitalfemsa_ef>
                 <active>1</active>
                 <title>Femsa - Paga con  efectivo </title>
                 <group>Femsa</group>
@@ -45,7 +45,7 @@
                 <debugReplaceKeys>MERCHANT_KEY</debugReplaceKeys>
                 <paymentInfoKeys>FRAUD_MSG_LIST</paymentInfoKeys>
                 <privateInfoKeys>FRAUD_MSG_LIST</privateInfoKeys>
-            </femsa_ef>
+            </digitalfemsa_ef>
         </payment>
         <femsa>
             <global>

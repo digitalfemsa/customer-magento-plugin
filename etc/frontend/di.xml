@@ -4,9 +4,9 @@
     <type name="Magento\Checkout\Model\CompositeConfigProvider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="femsa_global_provider" xsi:type="object">DigitalFemsa\Payments\Model\Ui\ConfigProvider</item>
+                <item name="digitalfemsa_global_provider" xsi:type="object">DigitalFemsa\Payments\Model\Ui\ConfigProvider</item>
                 <!-- Embed Form -->
-                <item name="femsa_ef_provider" xsi:type="object">DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider</item>
+                <item name="digitalfemsa_ef_provider" xsi:type="object">DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider</item>
             </argument>
         </arguments>
     </type>

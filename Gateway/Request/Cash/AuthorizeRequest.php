@@ -40,7 +40,7 @@ class AuthorizeRequest implements BuilderInterface
         $request['metadata'] = [
             'plugin' => 'Magento',
             'plugin_version' => $this->_femsaHelper->getMageVersion(),
-            'plugin_femsa_version' => $this->_femsaHelper->pluginVersion(),
+            'plugin_digitalfemsa_version' => $this->_femsaHelper->pluginVersion(),
             'order_id'       => $order->getOrderIncrementId(),
             'soft_validations'  => 'true'
         ];

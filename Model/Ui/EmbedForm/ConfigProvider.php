@@ -16,7 +16,7 @@ class ConfigProvider implements ConfigProviderInterface
     /**
      * Payment method code
      */
-    public const CODE = 'femsa_ef';
+    public const CODE = 'digitalfemsa_ef';
     public const PAYMENT_METHOD_CASH = 'cash';
 
     public const URL_PANEL_PAYMENTS = "https://panel.digitalfemsa.io/transactions/payments";

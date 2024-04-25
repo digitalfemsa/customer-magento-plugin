@@ -33,11 +33,11 @@ define(
             },
 
             getGlobalConfig: function() {
-                return window.checkoutConfig.payment.femsa_global
+                return window.checkoutConfig.payment.digitalfemsa_global
             },
 
-            getFemsaLogo: function() {
-                return this.getGlobalConfig().femsa_logo;
+            getDigitalFemsaLogo: function() {
+                return this.getGlobalConfig().digitalfemsa_logo;
             },
 
             /** Returns send check to info */

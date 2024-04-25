@@ -4,7 +4,7 @@
 
     <?php
 
-    if (in_array($block->getMethod(), ["femsa_ef"])):
+    if (in_array($block->getMethod(), ["digitalfemsa_ef"])):
         $data = $block->getOfflineInfo();
         if (!empty($data) && isset($data["type"]) && in_array($data["type"], ['oxxo', 'cash'])):
         ?>
@@ -26,7 +26,7 @@
                             <strong><?= /* @noEscape */
                                 __('Reference Number:'); ?></strong>
                             <span
-                                class="femsa_payment_reference"><?= $block->escapeHtml($data["data"]["reference"]); ?></span>
+                                class="digitalfemsa_payment_reference"><?= $block->escapeHtml($data["data"]["reference"]); ?></span>
                         </td>
                     </tr>
                     <tr>

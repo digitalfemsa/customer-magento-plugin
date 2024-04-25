@@ -7,7 +7,7 @@ use Magento\Framework\View\Asset\Repository as AssetRepository;
 
 class ConfigProvider implements ConfigProviderInterface
 {
-    public const CODE = 'femsa_global';
+    public const CODE = 'digitalfemsa_global';
     /**
      * @var FemsaHelper
      */

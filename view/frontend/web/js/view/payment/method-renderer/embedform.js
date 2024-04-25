@@ -353,7 +353,7 @@ define(
             },
 
             getCode: function () {
-                return 'femsa_ef';
+                return 'digitalfemsa_ef';
             },
 
             isActive: function () {
@@ -361,11 +361,11 @@ define(
             },
 
             getGlobalConfig: function () {
-                return window.checkoutConfig.payment.femsa_global
+                return window.checkoutConfig.payment.digitalfemsa_global
             },
 
             getMethodConfig: function () {
-                return window.checkoutConfig.payment.femsa_ef
+                return window.checkoutConfig.payment.digitalfemsa_ef
             },
 
             getPublicKey: function () {
@@ -376,8 +376,8 @@ define(
                 return this.getMethodConfig().paymentMethods;
             },
 
-            getFemsaLogo: function () {
-                return this.getGlobalConfig().femsa_logo;
+            getDigitalFemsaLogo: function () {
+                return this.getGlobalConfig().digitalfemsa_logo;
             },
 
             getcreateOrderUrl: function () {
