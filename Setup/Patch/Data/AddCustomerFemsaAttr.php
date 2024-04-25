@@ -65,10 +65,10 @@ class AddCustomerFemsaAttr implements DataPatchInterface
         $customerSetup = $this->customerSetupFactory->create(['setup' => $this->moduleDataSetup]);
         $customerSetup->addAttribute(
             Customer::ENTITY,
-            'femsa_customer_id',
+            'digitalfemsa_customer_id',
             [
                 'type' => 'varchar',
-                'label' => 'Femsa Customer Id',
+                'label' => 'DigitalFemsa Customer Id',
                 'input' => 'text',
                 'required' => false,
                 'sort_order' => 87,
@@ -77,7 +77,7 @@ class AddCustomerFemsaAttr implements DataPatchInterface
                 'system' => 0
             ]
         );
-        $erpAttribute = $customerSetup->getEavConfig()->getAttribute(Customer::ENTITY, 'femsa_customer_id');
+        $erpAttribute = $customerSetup->getEavConfig()->getAttribute(Customer::ENTITY, 'digitalfemsa_customer_id');
         $erpAttribute->setData(
             'used_in_forms',
             ['adminhtml_customer']

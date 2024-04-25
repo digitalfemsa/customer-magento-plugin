@@ -64,11 +64,11 @@ class Config
                     'url' => $urlWebhook
                 ]);
             } else {
-                $this->_femsaLogger->info('[Femsa]: El webhook ' . $urlWebhook . ' ya se encuentra en Femsa!');
+                $this->_femsaLogger->info('[DigitalFemsa]: El webhook ' . $urlWebhook . ' ya se encuentra en DigitalFemsa!');
             }
         } catch (\Exception $e) {
             $errorMessage = $e->getMessage();
-            $this->_femsaLogger->info('[Femsa]: Webhook error, Message: ' . $errorMessage . ' URL: ' . $urlWebhook);
+            $this->_femsaLogger->info('[DigitalFemsa]: Webhook error, Message: ' . $errorMessage . ' URL: ' . $urlWebhook);
 
             throw new Exception(
                 __('Can not register this webhook ' . $urlWebhook . '<br>'

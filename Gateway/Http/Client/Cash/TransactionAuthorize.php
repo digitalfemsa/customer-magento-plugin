@@ -113,7 +113,7 @@ class TransactionAuthorize implements ClientInterface
                 $result_code = 666;
             }
         } catch (\Exception $e) {
-            $this->_femsaLogger->error(__('[Femsa]: Payment capturing error.'));
+            $this->_femsaLogger->error(__('[DigitalFemsa]: Payment capturing error.'));
             $this->logger->debug(
                 [
                     'request' => $request,

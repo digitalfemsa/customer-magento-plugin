@@ -100,8 +100,8 @@ class FemsaOrder extends Util
         $customerRequest = [];
         try {
             $customer = $this->customerSession->getCustomer();
-            $femsaCustomerId = $customer->getFemsaCustomerId();
-            $this->femsaLogger->info('looking customer id', ["femsa_customer_id"=>$femsaCustomerId]);
+            $femsaCustomerId = $customer->getDigitalFemsaCustomerId();
+            $this->femsaLogger->info('looking customer id', ["digitalfemsa_customer_id"=>$femsaCustomerId]);
             if(!empty($femsaCustomerId)) {
                 try {
                     $this->femsaApiClient->findCustomerByID($femsaCustomerId);
@@ -140,7 +140,7 @@ class FemsaOrder extends Util
                 $femsaCustomerId = $femsaCustomer->getId();
                 if ($customerId) {
                     $customer = $this->customerRepository->getById($customerId);
-                    $customer->setCustomAttribute('femsa_customer_id', $femsaCustomerId);
+                    $customer->setCustomAttribute('digitalfemsa_customer_id', $femsaCustomerId);
                     $this->customerRepository->save($customer);
                 }
             } else {

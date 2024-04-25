@@ -11,7 +11,7 @@
         </arguments>
     </type>
 
-    <!-- Femsa Config -->
+    <!-- DigitalFemsa Config -->
     <type name="Magento\Framework\App\RouterList">
         <arguments>
             <argument name="routerList" xsi:type="array">
@@ -23,7 +23,7 @@
             </argument>
         </arguments>
     </type>
-    <!-- // Femsa Config // -->
+    <!-- // DigitalFemsa Config // -->
 
     <type name="DigitalFemsa\Payments\Block\Info">
         <arguments>
@@ -33,7 +33,7 @@
         </arguments>
     </type>
 
-    <!-- // Femsa Checkout Variables // -->
+    <!-- // DigitalFemsa Checkout Variables // -->
     <virtualType name="DigitalFemsa\Payments\Model\Session\Storage" type="Magento\Framework\Session\Storage">
         <arguments>
             <argument name="namespace" xsi:type="string">femsacheckoutconfig</argument>

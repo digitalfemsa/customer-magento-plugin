@@ -2,7 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <payment>
-            <!-- Femsa Cash -->
+            <!-- DigitalFemsa Cash -->
             <digitalfemsa_cash>
                 <active>0</active>
                 <title>Pago en Efectivo</title>
@@ -23,12 +23,12 @@
                 <can_cancel>1</can_cancel>
                 <can_edit>1</can_edit>
             </digitalfemsa_cash>
-            <!-- // Femsa Cash // -->
-            <!-- Femsa EMBED FORM -->
+            <!-- // DigitalFemsa Cash // -->
+            <!-- DigitalFemsa EMBED FORM -->
             <digitalfemsa_ef>
                 <active>1</active>
-                <title>Femsa - Paga con  efectivo </title>
-                <group>Femsa</group>
+                <title>DigitalFemsa - Paga con  efectivo </title>
+                <group>DigitalFemsa</group>
                 <model>FemsaPaymentsEmbedFormFacade</model>
                 <iframe_enabled>0</iframe_enabled>
                 <sort_order>1</sort_order>
@@ -47,12 +47,12 @@
                 <privateInfoKeys>FRAUD_MSG_LIST</privateInfoKeys>
             </digitalfemsa_ef>
         </payment>
-        <femsa>
+        <digitalfemsa>
             <global>
                 <api_version><![CDATA[2.0.0]]></api_version>
                 <plugin_type><![CDATA[Magento 2]]></plugin_type>
                 <plugin_version><![CDATA[5.1.0]]></plugin_version>
             </global>
-        </femsa>
+        </digitalfemsa>
     </default>
 </config>

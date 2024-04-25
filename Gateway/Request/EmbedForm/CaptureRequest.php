@@ -99,7 +99,7 @@ class CaptureRequest implements BuilderInterface
         $request['order_id'] = $iframeOrderId;
         $request['txn_id'] = $txnId;
 
-        $request['femsa_customer_id'] = $payment->getAdditionalInformation('femsa_customer_id');
+        $request['digitalfemsa_customer_id'] = $payment->getAdditionalInformation('digitalfemsa_customer_id');
 
         $this->_femsaLogger->info('Request CaptureRequest :: build : return request', $request);
 

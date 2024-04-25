@@ -7,7 +7,7 @@ use Magento\Framework\Exception\NoSuchEntityException;
 interface FemsaQuoteRepositoryInterface
 {
      /**
-      * Get Femsa quote by ID
+      * Get DigitalFemsa quote by ID
       *
       * @param int $id
       * @return FemsaQuoteInterface
@@ -16,7 +16,7 @@ interface FemsaQuoteRepositoryInterface
     public function getById($id);
 
     /**
-     * Save Femsa quote
+     * Save DigitalFemsa quote
      *
      * @param FemsaQuoteInterface $femsaQuote
      * @return FemsaQuoteInterface

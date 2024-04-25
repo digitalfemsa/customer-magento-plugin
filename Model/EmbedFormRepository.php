@@ -156,26 +156,26 @@ class EmbedFormRepository implements EmbedFormRepositoryInterface
 
         try {
             /**
-             * Creates new Femsa order-checkout if:
+             * Creates new DigitalFemsa order-checkout if:
              *   1- Not exist row in map table femsa_quote
              *   2- Exist row in map table and:
-             *      2.1- femsa order has payment_status OR
-             *      2.2- femsa order checkout has expired
+             *      2.1- DigitalFemsa order has payment_status OR
+             *      2.2- DigitalFemsa order checkout has expired
              *      2.3- checkout parameters has changed
              */
             if ($hasToCreateNewOrder) {
-                $this->_femsaLogger->info('EmbedFormRepository::generate Creates femsa order', $orderParams);
+                $this->_femsaLogger->info('EmbedFormRepository::generate Creates DigitalFemsa order', $orderParams);
                 //Creates checkout order
                 $femsaOrder = $this->femsaOrderApi->createOrder($orderParams);
 
-                //Save map femsa order and quote
+                //Save map DigitalFemsa order and quote
                 $femsaQuote = $this->femsaQuoteFactory->create();
                 $femsaQuote->setQuoteId($quoteId);
                 $femsaQuote->setFemsaOrderId($femsaOrder->getId());
                 $femsaQuoteRepo->save($femsaQuote);
             } else {
-                $this->_femsaLogger->info('EmbedFormRepository::generate  Updates femsa order', $orderParams);
-                //If map between femsa order and quote exist, then just updated femsa order
+                $this->_femsaLogger->info('EmbedFormRepository::generate  Updates DigitalFemsa order', $orderParams);
+                //If map between DigitalFemsa order and quote exist, then just updated DigitalFemsa order
 
                 unset($orderParams['customer_info']);
                 $femsaOrder = $this->femsaOrderApi->updateOrder($femsaQuote->getFemsaOrderId(), $orderParams);

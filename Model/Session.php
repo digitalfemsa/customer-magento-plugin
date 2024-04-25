@@ -51,9 +51,9 @@ class Session extends SessionManager
         return null;
     }
 
-    public function getFemsaCustomerId(){
-        if ($this->storage->getData('femsa_customer_id')) {
-            return $this->storage->getData('femsa_customer_id');
+    public function getDigitalFemsaCustomerId(){
+        if ($this->storage->getData('digitalfemsa_customer_id')) {
+            return $this->storage->getData('digitalfemsa_customer_id');
         }
         return null;
     }

@@ -23,14 +23,14 @@ interface FemsaQuoteInterface
     public function setQuoteId($value);
 
     /**
-     * Get Femsa Order Id
+     * Get DigitalFemsa Order Id
      *
      * @return string
      */
     public function getFemsaOrderId();
 
     /**
-     * Set Femsa Order Id
+     * Set DigitalFemsa Order Id
      *
      * @param string $value
      * @return void

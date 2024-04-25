@@ -183,7 +183,7 @@ class MissingOrders
                 'txn_id' =>  $femsaOrder["charges"]["data"][0]["id"],
                 'quote_id'=> $quoteCreated->getId(),
                 'payment_method' => $this->getPaymentMethod($femsaOrder["charges"]["data"][0]["payment_method"]["object"]),
-                'femsa_customer_id' => $femsaCustomer["customer_id"]
+                'digitalfemsa_customer_id' => $femsaCustomer["customer_id"]
             ];
             $quoteCreated->getPayment()->setAdditionalInformation(   $additionalInformation);
             // Collect Totals & Save Quote

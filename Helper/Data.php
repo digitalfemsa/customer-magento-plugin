@@ -350,7 +350,7 @@ class Data extends Util
     }
 
     /**
-     * Get Metadata Attributes femsa
+     * Get Metadata Attributes DigitalFemsa
      *
      * @param mixed $items
      * @return array

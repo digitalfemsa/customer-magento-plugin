@@ -8,21 +8,21 @@ interface FemsaSalesOrderInterface
     public const INCREMENT_ORDER_ID = 'increment_order_id';
 
     /**
-     * Get Femsa ID
+     * Get DigitalFemsa ID
      *
      * @return mixed
      */
     public function getId();
 
     /**
-     * Get Femsa Order Id
+     * Get DigitalFemsa Order Id
      *
      * @return mixed
      */
     public function getFemsaOrderId();
 
     /**
-     * Set Femsa Order Id
+     * Set DigitalFemsa Order Id
      *
      * @param mixed $value
      * @return mixed
