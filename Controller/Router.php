@@ -51,7 +51,7 @@ class Router implements RouterInterface
      */
     public function match(RequestInterface $request)
     {
-        if ($request->getModuleName() === 'femsa') {
+        if ($request->getModuleName() === 'digitalfemsa') {
             return;
         }
         
@@ -63,7 +63,7 @@ class Router implements RouterInterface
 
         //If paths are identical, then redirects to webhook controller
         if ($pathRequest === $pathWebhook) {
-            $request->setModuleName('femsa')->setControllerName('webhook')->setActionName('index');
+            $request->setModuleName('digitalfemsa')->setControllerName('webhook')->setActionName('index');
             $request->setAlias(Url::REWRITE_REQUEST_PATH_ALIAS, $pathRequest);
         }
     }

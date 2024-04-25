@@ -155,14 +155,14 @@ class Data extends Util
         if ($sandboxMode) {
             $privateKey = $this->_encryptor->decrypt(
                 $this->getConfigData(
-                    'femsa/femsa_global',
+                    'digitalfemsa/femsa_global',
                     'test_private_api_key'
                 )
             );
         } else {
             $privateKey = $this->_encryptor->decrypt(
                 $this->getConfigData(
-                    'femsa/femsa_global',
+                    'digitalfemsa/femsa_global',
                     'live_private_api_key'
                 )
             );
@@ -177,11 +177,11 @@ class Data extends Util
      */
     public function getPublicKey()
     {
-        $sandboxMode = $this->getConfigData('femsa/femsa_global', 'sandbox_mode');
+        $sandboxMode = $this->getConfigData('digitalfemsa/femsa_global', 'sandbox_mode');
         if ($sandboxMode) {
-            $publicKey = $this->getConfigData('femsa/femsa_global', 'test_public_api_key');
+            $publicKey = $this->getConfigData('digitalfemsa/femsa_global', 'test_public_api_key');
         } else {
-            $publicKey = $this->getConfigData('femsa/femsa_global', 'live_public_api_key');
+            $publicKey = $this->getConfigData('digitalfemsa/femsa_global', 'live_public_api_key');
         }
         return $publicKey;
     }
@@ -194,7 +194,7 @@ class Data extends Util
     public function getApiVersion()
     {
         return $this->scopeConfig->getValue(
-            'femsa/global/api_version',
+            'digitalfemsa/global/api_version',
             ScopeInterface::SCOPE_STORE
         );
     }
@@ -207,7 +207,7 @@ class Data extends Util
     public function pluginType()
     {
         return $this->scopeConfig->getValue(
-            'femsa/global/plugin_type',
+            'digitalfemsa/global/plugin_type',
             ScopeInterface::SCOPE_STORE
         );
     }
@@ -220,7 +220,7 @@ class Data extends Util
     public function pluginVersion()
     {
         return $this->scopeConfig->getValue(
-            'femsa/global/plugin_version',
+            'digitalfemsa/global/plugin_version',
             ScopeInterface::SCOPE_STORE
         );
     }
@@ -243,7 +243,7 @@ class Data extends Util
      */
     public function getMetadataAttributes($metadataPath)
     {
-        $attributes = $this->getConfigData('femsa/femsa_global', $metadataPath);
+        $attributes = $this->getConfigData('digitalfemsa/femsa_global', $metadataPath);
         return explode(",", $attributes  ?? '');
     }
 
@@ -268,14 +268,14 @@ class Data extends Util
      */
     public function getExpiredAt(): int
     {
-        $timeFormat = $this->getConfigData('femsa/femsa_global', 'days_or_hours');
+        $timeFormat = $this->getConfigData('digitalfemsa/femsa_global', 'days_or_hours');
 
         //hours expiration disabled temporally
         if (! $timeFormat && false) {
-            $expirationValue = $this->getConfigData('femsa/femsa_global', 'expiry_hours');
+            $expirationValue = $this->getConfigData('digitalfemsa/femsa_global', 'expiry_hours');
             $expirationUnit = "hours";
         } else {
-            $expirationValue = $this->getConfigData('femsa/femsa_global', 'expiry_days');
+            $expirationValue = $this->getConfigData('digitalfemsa/femsa_global', 'expiry_days');
             $expirationUnit = "days";
         }
 
@@ -512,10 +512,10 @@ class Data extends Util
      */
     public function getUrlWebhookOrDefault()
     {
-        $urlWebhook = $this->getConfigData('femsa/femsa_global', 'femsa_webhook');
+        $urlWebhook = $this->getConfigData('digitalfemsa/femsa_global', 'femsa_webhook');
         if (empty($urlWebhook)) {
             $baseUrl = $this->_storeManager->getStore()->getBaseUrl();
-            $urlWebhook = $baseUrl . "femsa/webhook/index";
+            $urlWebhook = $baseUrl . "digitalfemsa/webhook/index";
         }
         return $urlWebhook;
     }

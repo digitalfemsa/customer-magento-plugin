@@ -6,5 +6,5 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_WebsiteRestriction:etc/webrestrictions.xsd">
-    <action path="femsa_webhook_index" type="generic" />
+    <action path="digitalfemsa_webhook_index" type="generic" />
 </config>

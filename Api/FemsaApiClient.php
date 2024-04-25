@@ -72,7 +72,8 @@ class FemsaApiClient
     {
         $this->client = $client;
         $this->helperData = $helperData;
-        $this->config = Configuration::getDefaultConfiguration()->setAccessToken($this->helperData->getPrivateKey());
+        $this->config = Configuration::getDefaultConfiguration()->setAccessToken($this->helperData->getPrivateKey())
+            ->setHost("https://api.stg.digitalfemsa.io");
         $this->orderInstance = new OrdersApi($this->client, $this->config);
         $this->customerInstance = new CustomersApi($this->client, $this->config);
         $this->chargeInstance = new ChargesApi($this->client, $this->config);
@@ -202,7 +203,7 @@ class FemsaApiClient
      */
     public function createWebhook(array $webhookData): WebhookResponse
     {
-        $webhookRequest =  new WebhookRequest($webhookData);
+        $webhookRequest = new WebhookRequest($webhookData);
         return $this->webhooks->createWebhook($webhookRequest);
     }
 
@@ -214,7 +215,7 @@ class FemsaApiClient
      */
     public function updateWebhook(string $webhookID, array $webhookData): WebhookResponse
     {
-        $webhookRequest =  new WebhookUpdateRequest($webhookData);
+        $webhookRequest = new WebhookUpdateRequest($webhookData);
         return $this->webhooks->updateWebhook($webhookID, $webhookRequest);
     }
 
