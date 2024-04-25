@@ -1,5 +1,5 @@
 {
-    "name": "digitalfemsa/femsa_payments",
+    "name": "digitalfemsa/digitalfemsa_payments",
     "description": "Femsa payment gateway",
     "require": {
         "php": ">=7.4",
