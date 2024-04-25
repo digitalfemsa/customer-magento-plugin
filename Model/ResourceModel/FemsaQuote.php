@@ -12,7 +12,7 @@ class FemsaQuote extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('femsa_quote', 'quote_id');
+        $this->_init('digitalfemsa_quote', 'quote_id');
         $this->_isPkAutoIncrement = false;
     }
 }

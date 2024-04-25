@@ -157,7 +157,7 @@ class EmbedFormRepository implements EmbedFormRepositoryInterface
         try {
             /**
              * Creates new DigitalFemsa order-checkout if:
-             *   1- Not exist row in map table femsa_quote
+             *   1- Not exist row in map table digitalfemsa_quote
              *   2- Exist row in map table and:
              *      2.1- DigitalFemsa order has payment_status OR
              *      2.2- DigitalFemsa order checkout has expired
