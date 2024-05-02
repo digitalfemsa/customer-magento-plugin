@@ -2,10 +2,10 @@
 
 namespace DigitalFemsa\Payments\Service;
 
-use DigitalFemsa\Payments\Api\FemsaApiClient;
+use DigitalFemsa\Payments\Api\DigitalFemsaApiClient;
 use DigitalFemsa\Payments\Helper\Data as FemsaData;
 use DigitalFemsa\Payments\Helper\Util;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
 use DigitalFemsa\Payments\Model\WebhookRepository;
 use Magento\Catalog\Model\Product;
@@ -27,7 +27,7 @@ class MissingOrders
      */
     private WebhookRepository $webhookRepository;
 
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_femsaLogger;
     private StoreManagerInterface $_storeManager;
 
     private QuoteFactory $quote;
@@ -39,21 +39,21 @@ class MissingOrders
     private CustomerFactory $customerFactory;
     private CustomerRepositoryInterface $customerRepository;
     private QuoteManagement $quoteManagement;
-    private FemsaApiClient $femsaApiClient;
+    private DigitalFemsaApiClient $femsaApiClient;
 
     public function __construct(
         WebhookRepository           $webhookRepository,
-        FemsaLogger                 $femsaLogger,
+        DigitalFemsaLogger                 $digitalFemsaLogger,
         StoreManagerInterface       $storeManager,
         QuoteFactory                $quote,
         Product                     $product,
         CustomerFactory             $customerFactory,
         CustomerRepositoryInterface $customerRepository,
         QuoteManagement             $quoteManagement,
-        FemsaApiClient $femsaApiClient
+        DigitalFemsaApiClient $femsaApiClient
     ){
         $this->webhookRepository = $webhookRepository;
-        $this->_femsaLogger = $femsaLogger;
+        $this->_femsaLogger = $digitalFemsaLogger;
         $this->_storeManager = $storeManager;
         $this->quote = $quote;
         $this->_product = $product;

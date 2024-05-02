@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request;
 
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use InvalidArgumentException;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
@@ -9,12 +9,12 @@ use Magento\Payment\Gateway\Request\BuilderInterface;
 class CustomerInfoBuilder implements BuilderInterface
 {
 
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_femsaLogger;
 
     public function __construct(
-        FemsaLogger $femsaLogger
+        DigitalFemsaLogger $digitalFemsaLogger
     ) {
-        $this->_femsaLogger = $femsaLogger;
+        $this->_femsaLogger = $digitalFemsaLogger;
         $this->_femsaLogger->info('Request LineItemsBuilder :: __construct');
     }
 

@@ -1,11 +1,11 @@
 <?php
 namespace DigitalFemsa\Payments\Model;
 
-use DigitalFemsa\Payments\Api\Data\FemsaQuoteInterface;
-use DigitalFemsa\Payments\Model\ResourceModel\FemsaQuote as ResourceFemsaQuote;
+use DigitalFemsa\Payments\Api\Data\DigitalFemsaQuoteInterface;
+use DigitalFemsa\Payments\Model\ResourceModel\DigitalFemsaQuote as ResourceFemsaQuote;
 use Magento\Framework\Model\AbstractModel;
 
-class FemsaQuote extends AbstractModel implements FemsaQuoteInterface
+class DigitalFemsaQuote extends AbstractModel implements DigitalFemsaQuoteInterface
 {
     /**
      * Construct
@@ -25,7 +25,7 @@ class FemsaQuote extends AbstractModel implements FemsaQuoteInterface
      */
     public function setQuoteId($value)
     {
-        $this->setData(FemsaQuoteInterface::QUOTE_ID, $value);
+        $this->setData(DigitalFemsaQuoteInterface::QUOTE_ID, $value);
     }
 
     /**
@@ -35,7 +35,7 @@ class FemsaQuote extends AbstractModel implements FemsaQuoteInterface
      */
     public function getQuoteId()
     {
-        return $this->getData(FemsaQuoteInterface::QUOTE_ID);
+        return $this->getData(DigitalFemsaQuoteInterface::QUOTE_ID);
     }
 
     /**
@@ -46,7 +46,7 @@ class FemsaQuote extends AbstractModel implements FemsaQuoteInterface
      */
     public function setFemsaOrderId($value)
     {
-        $this->setData(FemsaQuoteInterface::DIGITALFEMSA_ORDER_ID, $value);
+        $this->setData(DigitalFemsaQuoteInterface::DIGITALFEMSA_ORDER_ID, $value);
     }
 
     /**
@@ -56,7 +56,7 @@ class FemsaQuote extends AbstractModel implements FemsaQuoteInterface
      */
     public function getFemsaOrderId()
     {
-        return $this->getData(FemsaQuoteInterface::DIGITALFEMSA_ORDER_ID);
+        return $this->getData(DigitalFemsaQuoteInterface::DIGITALFEMSA_ORDER_ID);
     }
 
     /**
@@ -67,7 +67,7 @@ class FemsaQuote extends AbstractModel implements FemsaQuoteInterface
      */
     public function loadByFemsaOrderId($femsaOrderId)
     {
-        return $this->loadByAttribute(FemsaQuoteInterface::FEMSA_ORDER_ID, $femsaOrderId);
+        return $this->loadByAttribute(DigitalFemsaQuoteInterface::FEMSA_ORDER_ID, $femsaOrderId);
     }
 
     /**

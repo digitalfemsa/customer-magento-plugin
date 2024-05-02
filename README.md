@@ -1,52 +1,19 @@
 ![alt tag](https://www.femsa.com/wp-content/uploads/2019/07/femsa.png)
 
-Magento 2 Plugin v.5.1.0 (Stable)
+Magento 2 Plugin v.1.0.0 (Stable)
 ========================
-
-Installation for Magento 2.3
------------
-
-1. First add this repository in your composer config
-```bash
-composer config repositories.femsa git https://github.com/digitalfemsa/customer-magento-plugin
-```
-
-2. Add composer dependency
-```bash
-composer require femsa/femsa_payments 5.1.0
-```
-
-3. Update Magento
-```bash
-php bin/magento setup:upgrade
-```
-
-4. Compile the component
-```bash
-php bin/magento setup:di:compile
-```
-
-5. Enable plugin
-```bash
-php bin/magento module:enable femsa_payments 
-```
-
-6. Update and/or enable cache
-```bash
-bin/magento c:f
-```
 
 Installation for Magento 2.4
 -----------
 
 1. First add this repository in your composer config
 ```bash
-composer config repositories.femsa git https://github.com/digitalfemsa/customer-magento-plugin
+composer config repositories.digitalfemsa git https://github.com/digitalfemsa/customer-magento-plugin
 ```
 
 2. Add composer dependency
 ```bash
-composer require femsa/femsa_payments master
+composer require digitalfemsa/digitalfemsa_payments main
 ```
 
 3. Update Magento
@@ -61,7 +28,7 @@ php bin/magento setup:di:compile
 
 5. Enable plugin
 ```bash
-php bin/magento module:enable femsa_payments 
+php bin/magento module:enable digitalfemsa_payments 
 ```
 
 6. Update and/or enable cache
@@ -76,18 +43,18 @@ Plugin updates
 ```bash
 php bin/magento module:status 
 ```
-2. Verify that the femsa_Payments component is listed
+2. Verify that the DigitalFemsa_Payments component is listed
 
 3. Disable the module
 ```bash
-php bin/magento module:disable Femsa_Payments --clear-static-content
+php bin/magento module:disable DigitalFemsa_Payments --clear-static-content
 ```
 
 4. If it exists, delete the generated files in the folder ```<path_magento>/generated/code/DigitalFemsa/```
 
 5. Add composer dependency
 ```bash
-composer require femsa/femsa_payments master
+composer require digitalfemsa/digitalfemsa_payments main
 ```
 
 6. Update Magento
@@ -102,7 +69,7 @@ php bin/magento setup:di:compile
 
 8. Enable plugin
 ```bash
-php bin/magento module:enable femsa_payments 
+php bin/magento module:enable digitalfemsa_payments 
 ```
 
 9. Update and/or enable cache

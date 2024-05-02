@@ -1,16 +1,16 @@
 <?php
 namespace DigitalFemsa\Payments\Api;
 
-use DigitalFemsa\Payments\Api\Data\FemsaQuoteInterface;
+use DigitalFemsa\Payments\Api\Data\DigitalFemsaQuoteInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 
-interface FemsaQuoteRepositoryInterface
+interface DigitalFemsaQuoteRepositoryInterface
 {
      /**
       * Get DigitalFemsa quote by ID
       *
       * @param int $id
-      * @return FemsaQuoteInterface
+      * @return DigitalFemsaQuoteInterface
       * @throws NoSuchEntityException
       */
     public function getById($id);
@@ -18,8 +18,8 @@ interface FemsaQuoteRepositoryInterface
     /**
      * Save DigitalFemsa quote
      *
-     * @param FemsaQuoteInterface $femsaQuote
-     * @return FemsaQuoteInterface
+     * @param DigitalFemsaQuoteInterface $femsaQuote
+     * @return DigitalFemsaQuoteInterface
      */
-    public function save(FemsaQuoteInterface $femsaQuote);
+    public function save(DigitalFemsaQuoteInterface $femsaQuote);
 }

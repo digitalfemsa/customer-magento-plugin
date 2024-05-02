@@ -1,8 +1,8 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request;
 
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Payment\Gateway\Helper\SubjectReader;
@@ -12,19 +12,19 @@ class ShippingContactBuilder implements BuilderInterface
 {
     private SubjectReader $subjectReader;
 
-    private FemsaLogger $_logger;
+    private DigitalFemsaLogger $_logger;
 
-    private FemsaHelper $_femsaHelper;
+    private DigitalFemsaFemsaHelper $_digitalFemsaHelper;
 
     public function __construct(
         SubjectReader $subjectReader,
-        FemsaLogger   $femsaLogger,
-        FemsaHelper $femsaHelper
+        DigitalFemsaLogger   $digitalFemsaLogger,
+        DigitalFemsaFemsaHelper $digitalFemsaHelper
     ) {
-        $this->_logger = $femsaLogger;
+        $this->_logger = $digitalFemsaLogger;
         $this->_logger->info('Request ShippingContactBuilder :: __construct');
         $this->subjectReader = $subjectReader;
-        $this->_femsaHelper = $femsaHelper;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
     }
 
     /**
@@ -39,7 +39,7 @@ class ShippingContactBuilder implements BuilderInterface
         $payment = $paymentDO->getPayment();
         $quoteId = $payment->getAdditionalInformation('quote_id');
 
-        $request['shipping_contact'] = $this->_femsaHelper->getShippingContact($quoteId);
+        $request['shipping_contact'] = $this->_digitalFemsaHelper->getShippingContact($quoteId);
 
         if (empty($request['shipping_contact'])) {
             throw new LocalizedException(__('Missing shipping contact information'));

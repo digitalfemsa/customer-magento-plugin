@@ -3,10 +3,10 @@
 namespace DigitalFemsa\Payments\Helper;
 
 use DigitalFemsa\ApiException;
-use DigitalFemsa\Payments\Api\FemsaApiClient;
-use DigitalFemsa\Payments\Exception\FemsaException;
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Api\DigitalFemsaApiClient;
+use DigitalFemsa\Payments\Exception\DigitalFemsaException;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Exception;
 use Magento\Checkout\Model\Session;
 use Magento\Customer\Api\CustomerRepositoryInterface;
@@ -19,12 +19,12 @@ use Magento\Framework\Exception\State\InputMismatchException;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Api\Data\CartInterface;
 
-class FemsaOrder extends Util
+class DigitalFemsaOrder extends Util
 {
     /**
-     * @var FemsaLogger
+     * @var DigitalFemsaLogger
      */
-    protected FemsaLogger $femsaLogger;
+    protected DigitalFemsaLogger $digitalFemsaLogger;
 
     /**
      * @var CustomerSession
@@ -33,7 +33,7 @@ class FemsaOrder extends Util
     /**
      * @var Data
      */
-    protected Data $_femsaHelper;
+    protected Data $_digitalFemsaHelper;
     /**
      * @var Session
      */
@@ -48,35 +48,35 @@ class FemsaOrder extends Util
     protected CustomerRepositoryInterface $customerRepository;
 
     /**
-     * @var FemsaApiClient
+     * @var DigitalFemsaApiClient
      */
-    private FemsaApiClient $femsaApiClient;
+    private DigitalFemsaApiClient $femsaApiClient;
 
     /**
-     * FemsaOrder constructor.
+     * DigitalFemsaOrder constructor.
      *
      * @param Context $context
-     * @param FemsaHelper $femsaHelper
-     * @param FemsaLogger $femsaLogger
-     * @param FemsaApiClient $femsaApiClient
+     * @param DigitalFemsaFemsaHelper $digitalFemsaHelper
+     * @param DigitalFemsaLogger $digitalFemsaLogger
+     * @param DigitalFemsaApiClient $femsaApiClient
      * @param CustomerSession $customerSession
      * @param Session $_checkoutSession
      * @param CustomerRepositoryInterface $customerRepository
      */
     public function __construct(
         Context                     $context,
-        FemsaHelper                 $femsaHelper,
-        FemsaLogger                 $femsaLogger,
-        FemsaApiClient              $femsaApiClient,
+        DigitalFemsaFemsaHelper     $digitalFemsaHelper,
+        DigitalFemsaLogger          $digitalFemsaLogger,
+        DigitalFemsaApiClient       $femsaApiClient,
         CustomerSession             $customerSession,
         Session                     $_checkoutSession,
         CustomerRepositoryInterface $customerRepository
     ) {
         parent::__construct($context);
         $this->femsaApiClient = $femsaApiClient;
-        $this->femsaLogger = $femsaLogger;
+        $this->femsaLogger = $digitalFemsaLogger;
         $this->customerSession = $customerSession;
-        $this->_femsaHelper = $femsaHelper;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
         $this->_checkoutSession = $_checkoutSession;
         $this->customerRepository = $customerRepository;
     }
@@ -87,7 +87,7 @@ class FemsaOrder extends Util
      *
      * @param mixed $guestEmail
      * @return array
-     * @throws FemsaException
+     * @throws DigitalFemsaException
      * @throws InputException
      * @throws LocalizedException
      * @throws NoSuchEntityException
@@ -95,7 +95,7 @@ class FemsaOrder extends Util
      */
     public function generateOrderParams($guestEmail): array
     {
-        $this->femsaLogger->info('FemsaOrder.generateOrderParams init');
+        $this->femsaLogger->info('DigitalFemsaOrder.generateOrderParams init');
 
         $customerRequest = [];
         try {
@@ -129,7 +129,7 @@ class FemsaOrder extends Util
             
             if (strlen($customerRequest['phone']) < 10) {
                 $this->femsaLogger->info('Helper.CreateOrder phone validation error', $customerRequest);
-                throw new FemsaException(__('Télefono no válido. 
+                throw new DigitalFemsaException(__('Télefono no válido. 
                     El télefono debe tener al menos 10 carácteres. 
                     Los caracteres especiales se desestimaran, solo se puede ingresar como 
                     primer carácter especial: +'));
@@ -149,23 +149,23 @@ class FemsaOrder extends Util
             }
         } catch (ApiException $e) {
             $this->femsaLogger->info($e->getMessage(), $customerRequest);
-            throw new FemsaException(__($e->getMessage()));
+            throw new DigitalFemsaException(__($e->getMessage()));
         }
         $orderItems = $this->getQuote()->getAllItems();
 
         $validOrderWithCheckout = [];
-        $validOrderWithCheckout['line_items'] = $this->_femsaHelper->getLineItems($orderItems);
-        $validOrderWithCheckout['discount_lines'] = $this->_femsaHelper->getDiscountLines();
-        $validOrderWithCheckout['tax_lines'] = $this->_femsaHelper->getTaxLines($orderItems);
-        $validOrderWithCheckout['shipping_lines'] = $this->_femsaHelper->getShippingLines(
+        $validOrderWithCheckout['line_items'] = $this->_digitalFemsaHelper->getLineItems($orderItems);
+        $validOrderWithCheckout['discount_lines'] = $this->_digitalFemsaHelper->getDiscountLines();
+        $validOrderWithCheckout['tax_lines'] = $this->_digitalFemsaHelper->getTaxLines($orderItems);
+        $validOrderWithCheckout['shipping_lines'] = $this->_digitalFemsaHelper->getShippingLines(
             $this->getQuote()->getId()
         );
 
         //always needs shipping due to api does not provide info about merchant type (drop_shipping, virtual)
-        $validOrderWithCheckout['shipping_contact'] = $this->_femsaHelper->getShippingContact(
+        $validOrderWithCheckout['shipping_contact'] = $this->_digitalFemsaHelper->getShippingContact(
             $this->getQuote()->getId()
         );
-        $validOrderWithCheckout['fiscal_entity'] = $this->_femsaHelper->getBillingAddress(
+        $validOrderWithCheckout['fiscal_entity'] = $this->_digitalFemsaHelper->getBillingAddress(
             $this->getQuote()->getId()
         );
 
@@ -175,10 +175,10 @@ class FemsaOrder extends Util
         
         $validOrderWithCheckout['checkout']    = [
             'allowed_payment_methods'      => $this->getAllowedPaymentMethods(),
-            'expires_at'                   => $this->_femsaHelper->getExpiredAt(),
+            'expires_at'                   => $this->_digitalFemsaHelper->getExpiredAt(),
             'needs_shipping_contact'       => true
         ];
-        $validOrderWithCheckout['currency']= $this->_femsaHelper->getCurrencyCode();
+        $validOrderWithCheckout['currency']= $this->_digitalFemsaHelper->getCurrencyCode();
         $validOrderWithCheckout['metadata'] = $this->getMetadataOrder($orderItems);
         
         return $validOrderWithCheckout;
@@ -198,7 +198,7 @@ class FemsaOrder extends Util
         $methods = [];
 
         $total = $this->getQuote()->getSubtotal();
-        if ($this->_femsaHelper->isCashEnabled() &&
+        if ($this->_digitalFemsaHelper->isCashEnabled() &&
             $total <= 10000
         ) {
             $methods[] = 'cash';
@@ -243,12 +243,12 @@ class FemsaOrder extends Util
     public function getMetadataOrder($orderItems): array
     {
         return array_merge(
-            $this->_femsaHelper->getMagentoMetadata(),
+            $this->_digitalFemsaHelper->getMagentoMetadata(),
             [
                 'quote_id'                     => $this->getQuote()->getId(),
                  CartInterface::KEY_IS_VIRTUAL => $this->getQuote()->isVirtual()
             ],
-            $this->_femsaHelper->getMetadataAttributesFemsa($orderItems)
+            $this->_digitalFemsaHelper->getMetadataAttributesFemsa($orderItems)
         );
     }
 }

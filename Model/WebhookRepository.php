@@ -2,8 +2,8 @@
 
 namespace DigitalFemsa\Payments\Model;
 
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
-use DigitalFemsa\Payments\Api\Data\FemsaSalesOrderInterface;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
+use DigitalFemsa\Payments\Api\Data\DigitalFemsaSalesOrderInterface;
 use Exception;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Api\Data\OrderInterface;
@@ -31,29 +31,29 @@ class WebhookRepository
      */
     protected Transaction $transaction;
     /**
-     * @var FemsaLogger
+     * @var DigitalFemsaLogger
      */
-    private FemsaLogger $_logger;
+    private DigitalFemsaLogger $_logger;
     /**
-     * @var FemsaSalesOrderInterface
+     * @var DigitalFemsaSalesOrderInterface
      */
-    private FemsaSalesOrderInterface $femsaOrderSalesInterface;
+    private DigitalFemsaSalesOrderInterface $femsaOrderSalesInterface;
 
     /**
      * @param OrderInterface $orderInterface
      * @param InvoiceService $invoiceService
      * @param InvoiceSender $invoiceSender
      * @param Transaction $transaction
-     * @param FemsaLogger $logger
-     * @param FemsaSalesOrderInterface $femsaOrderSalesInterface
+     * @param DigitalFemsaLogger $logger
+     * @param DigitalFemsaSalesOrderInterface $femsaOrderSalesInterface
      */
     public function __construct(
         OrderInterface           $orderInterface,
         InvoiceService           $invoiceService,
         InvoiceSender            $invoiceSender,
         Transaction              $transaction,
-        FemsaLogger              $logger,
-        FemsaSalesOrderInterface $femsaOrderSalesInterface
+        DigitalFemsaLogger              $logger,
+        DigitalFemsaSalesOrderInterface $femsaOrderSalesInterface
     ) {
         $this->orderInterface = $orderInterface;
         $this->invoiceService = $invoiceService;

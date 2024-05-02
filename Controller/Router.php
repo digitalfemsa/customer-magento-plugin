@@ -6,7 +6,7 @@ use Magento\Framework\App\ActionFactory;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\RouterInterface;
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Url;
 
@@ -23,24 +23,24 @@ class Router implements RouterInterface
     protected ResponseInterface $_response;
 
     /**
-     * @var FemsaHelper
+     * @var DigitalFemsaFemsaHelper
      */
-    private FemsaHelper $_femsaHelper;
+    private DigitalFemsaFemsaHelper $_digitalFemsaHelper;
 
 
     /**
      * @param ActionFactory $actionFactory
      * @param ResponseInterface $response
-     * @param FemsaHelper $femsaHelper
+     * @param DigitalFemsaFemsaHelper $digitalFemsaHelper
      */
     public function __construct(
         ActionFactory $actionFactory,
         ResponseInterface $response,
-        FemsaHelper $femsaHelper
+        DigitalFemsaFemsaHelper $digitalFemsaHelper
     ) {
         $this->actionFactory = $actionFactory;
         $this->_response = $response;
-        $this->_femsaHelper = $femsaHelper;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
     }
 
     /**
@@ -57,7 +57,7 @@ class Router implements RouterInterface
         
         $pathRequest = trim($request->getPathInfo(), '/');
 
-        $urlWebhook = $this->_femsaHelper->getUrlWebhookOrDefault();
+        $urlWebhook = $this->_digitalFemsaHelper->getUrlWebhookOrDefault();
         $urlWebhook = trim($urlWebhook, '/');
         $pathWebhook = substr($urlWebhook, -strlen($pathRequest));
 

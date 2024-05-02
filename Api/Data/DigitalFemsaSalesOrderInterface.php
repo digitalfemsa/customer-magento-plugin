@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Api\Data;
 
-interface FemsaSalesOrderInterface
+interface DigitalFemsaSalesOrderInterface
 {
 
     public const DIGITALFEMSA_ORDER_ID = 'digitalfemsa_order_id';

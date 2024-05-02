@@ -3,8 +3,8 @@
 namespace DigitalFemsa\Payments\Controller\Index;
 
 use DigitalFemsa\Payments\Api\EmbedFormRepositoryInterface;
-use DigitalFemsa\Payments\Exception\FemsaException;
-use DigitalFemsa\Payments\Helper\FemsaOrder;
+use DigitalFemsa\Payments\Exception\DigitalFemsaException;
+use DigitalFemsa\Payments\Helper\DigitalFemsaOrder;
 use DigitalFemsa\Payments\Logger\Logger;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
@@ -35,7 +35,7 @@ class CreateOrder extends Action implements HttpPostActionInterface
      */
     protected $logger;
     /**
-     * @var FemsaOrder
+     * @var DigitalFemsaOrder
      */
     protected $femsaOrderHelper;
     /**
@@ -53,7 +53,7 @@ class CreateOrder extends Action implements HttpPostActionInterface
      * @param Context $context
      * @param PageFactory $resultPageFactory
      * @param JsonFactory $jsonFactory
-     * @param FemsaOrder $femsaOrderHelper
+     * @param DigitalFemsaOrder $femsaOrderHelper
      * @param Logger $logger
      * @param EmbedFormRepositoryInterface $embedFormRepository
      * @param Session $checkoutSession
@@ -62,7 +62,7 @@ class CreateOrder extends Action implements HttpPostActionInterface
         Context                      $context,
         PageFactory                  $resultPageFactory,
         JsonFactory                  $jsonFactory,
-        FemsaOrder                 $femsaOrderHelper,
+        DigitalFemsaOrder            $femsaOrderHelper,
         Logger                       $logger,
         EmbedFormRepositoryInterface $embedFormRepository,
         Session                      $checkoutSession
@@ -110,7 +110,7 @@ class CreateOrder extends Action implements HttpPostActionInterface
             } catch (\Exception $e) {
                 $errorMessage = 'Ha ocurrido un error inesperado. Notifique al dueño de la tienda.';
                 $errorMessage = $e->getMessage();
-                if ($e instanceof FemsaException) {
+                if ($e instanceof DigitalFemsaException) {
                     $errorMessage = $e->getMessage();
                 } else {
                     $this->logger->critical($e, $orderParams);

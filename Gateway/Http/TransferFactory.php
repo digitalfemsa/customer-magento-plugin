@@ -4,7 +4,7 @@ namespace DigitalFemsa\Payments\Gateway\Http;
 use Magento\Payment\Gateway\Http\TransferBuilder;
 use Magento\Payment\Gateway\Http\TransferFactoryInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 
 class TransferFactory implements TransferFactoryInterface
 {
@@ -13,16 +13,16 @@ class TransferFactory implements TransferFactoryInterface
      */
     private TransferBuilder $transferBuilder;
 
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_femsaLogger;
 
     /**
      * @param TransferBuilder $transferBuilder
      */
     public function __construct(
         TransferBuilder $transferBuilder,
-        FemsaLogger $femsaLogger
+        DigitalFemsaLogger $digitalFemsaLogger
     ) {
-        $this->_femsaLogger = $femsaLogger;
+        $this->_femsaLogger = $digitalFemsaLogger;
         $this->_femsaLogger->info('HTTP TransferFactory :: __construct');
 
         $this->transferBuilder = $transferBuilder;

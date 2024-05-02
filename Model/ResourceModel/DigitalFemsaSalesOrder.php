@@ -3,7 +3,7 @@ namespace DigitalFemsa\Payments\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
-class FemsaQuote extends AbstractDb
+class DigitalFemsaSalesOrder extends AbstractDb
 {
     /**
      * Construct
@@ -12,7 +12,6 @@ class FemsaQuote extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('digitalfemsa_quote', 'quote_id');
-        $this->_isPkAutoIncrement = false;
+        $this->_init('digitalfemsa_salesorder', 'id');
     }
 }

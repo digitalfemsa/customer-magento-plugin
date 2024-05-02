@@ -1,25 +1,25 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request;
 
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 
 class LineItemsBuilder implements BuilderInterface
 {
 
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_femsaLogger;
 
-    protected FemsaHelper $_femsaHelper;
+    protected DigitalFemsaFemsaHelper $_digitalFemsaHelper;
 
     public function __construct(
-        FemsaHelper $femsaHelper,
-        FemsaLogger $femsaLogger
+        DigitalFemsaFemsaHelper $digitalFemsaHelper,
+        DigitalFemsaLogger $digitalFemsaLogger
     ) {
-        $this->_femsaLogger = $femsaLogger;
+        $this->_femsaLogger = $digitalFemsaLogger;
         $this->_femsaLogger->info('Request LineItemsBuilder :: __construct');
-        $this->_femsaHelper = $femsaHelper;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
     }
 
     public function build(array $buildSubject)
@@ -35,7 +35,7 @@ class LineItemsBuilder implements BuilderInterface
         $payment = $buildSubject['payment'];
         $order = $payment->getOrder();
         $items = $order->getItems();
-        $request['line_items'] = $this->_femsaHelper->getLineItems($items, false);
+        $request['line_items'] = $this->_digitalFemsaHelper->getLineItems($items, false);
 
         $this->_femsaLogger->info('Request LineItemsBuilder :: build : return request', $request);
 

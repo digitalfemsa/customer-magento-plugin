@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Controller\Webhook;
 
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use DigitalFemsa\Payments\Model\WebhookRepository;
 use DigitalFemsa\Payments\Service\MissingOrders;
 use Exception;
@@ -41,9 +41,9 @@ class Index extends Action implements CsrfAwareActionInterface
     protected Data $helper;
 
     /**
-     * @var FemsaLogger
+     * @var DigitalFemsaLogger
      */
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_femsaLogger;
     /**
      * @var WebhookRepository
      */
@@ -56,7 +56,7 @@ class Index extends Action implements CsrfAwareActionInterface
      * @param JsonFactory $resultJsonFactory
      * @param RawFactory $resultRawFactory
      * @param Data $helper
-     * @param FemsaLogger $femsaLogger
+     * @param DigitalFemsaLogger $digitalFemsaLogger
      * @param WebhookRepository $webhookRepository
      * @param MissingOrders $_missingOrders
      */
@@ -65,12 +65,12 @@ class Index extends Action implements CsrfAwareActionInterface
         JsonFactory       $resultJsonFactory,
         RawFactory        $resultRawFactory,
         Data              $helper,
-        FemsaLogger       $femsaLogger,
+        DigitalFemsaLogger       $digitalFemsaLogger,
         WebhookRepository $webhookRepository,
         MissingOrders     $_missingOrders
     ) {
         parent::__construct($context);
-        $this->_femsaLogger = $femsaLogger;
+        $this->_femsaLogger = $digitalFemsaLogger;
         $this->resultJsonFactory = $resultJsonFactory;
         $this->resultRawFactory = $resultRawFactory;
         $this->helper = $helper;

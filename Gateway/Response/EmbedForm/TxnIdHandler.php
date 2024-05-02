@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Response\EmbedForm;
 
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Payment\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
@@ -12,20 +12,20 @@ class TxnIdHandler implements HandlerInterface
 
     const ORD_ID = 'ORD_ID';
 
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_femsaLogger;
 
     private SubjectReader $subjectReader;
 
     /**
      * TxnIdHandler constructor.
-     * @param FemsaLogger $femsaLogger
+     * @param DigitalFemsaLogger $digitalFemsaLogger
      * @param SubjectReader $subjectReader
      */
     public function __construct(
-        FemsaLogger   $femsaLogger,
+        DigitalFemsaLogger   $digitalFemsaLogger,
         SubjectReader $subjectReader
     ) {
-        $this->_femsaLogger = $femsaLogger;
+        $this->_femsaLogger = $digitalFemsaLogger;
         $this->_femsaLogger->info('Response TxnIdHandler :: __construct');
 
         $this->subjectReader = $subjectReader;

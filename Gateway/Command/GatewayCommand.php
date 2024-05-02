@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Command;
 
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Framework\Phrase;
 use Magento\Payment\Gateway\Command\CommandException;
 use Magento\Payment\Gateway\Command\ResultInterface;
@@ -42,15 +42,15 @@ class GatewayCommand implements CommandInterface
     private $validator;
 
     /**
-     * @var FemsaLogger
+     * @var DigitalFemsaLogger
      */
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_femsaLogger;
 
     /**
      * @param BuilderInterface $requestBuilder
      * @param TransferFactoryInterface $transferFactory
      * @param ClientInterface $client
-     * @param FemsaLogger $femsaLogger
+     * @param DigitalFemsaLogger $digitalFemsaLogger
      * @param HandlerInterface|null $handler
      * @param ValidatorInterface|null $validator
      */
@@ -58,7 +58,7 @@ class GatewayCommand implements CommandInterface
         BuilderInterface         $requestBuilder,
         TransferFactoryInterface $transferFactory,
         ClientInterface          $client,
-        FemsaLogger              $femsaLogger,
+        DigitalFemsaLogger              $digitalFemsaLogger,
         HandlerInterface         $handler = null,
         ValidatorInterface       $validator = null
     ) {
@@ -67,7 +67,7 @@ class GatewayCommand implements CommandInterface
         $this->client = $client;
         $this->handler = $handler;
         $this->validator = $validator;
-        $this->_femsaLogger = $femsaLogger;
+        $this->_femsaLogger = $digitalFemsaLogger;
         $this->_femsaLogger->info('Command GatewayCommand :: __construct');
     }
 

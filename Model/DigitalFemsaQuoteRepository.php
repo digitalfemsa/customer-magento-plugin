@@ -1,12 +1,12 @@
 <?php
 namespace DigitalFemsa\Payments\Model;
 
-use DigitalFemsa\Payments\Api\FemsaQuoteRepositoryInterface;
-use DigitalFemsa\Payments\Api\Data\FemsaQuoteInterface;
-use DigitalFemsa\Payments\Model\ResourceModel\FemsaQuote as FemsaQuoteResource;
+use DigitalFemsa\Payments\Api\DigitalFemsaQuoteRepositoryInterface;
+use DigitalFemsa\Payments\Api\Data\DigitalFemsaQuoteInterface;
+use DigitalFemsa\Payments\Model\ResourceModel\DigitalFemsaQuote as FemsaQuoteResource;
 use Magento\Framework\Exception\NoSuchEntityException;
 
-class FemsaQuoteRepository implements FemsaQuoteRepositoryInterface
+class DigitalFemsaQuoteRepository implements DigitalFemsaQuoteRepositoryInterface
 {
     /**
      * @var FemsaQuoteFactory
@@ -33,10 +33,10 @@ class FemsaQuoteRepository implements FemsaQuoteRepositoryInterface
      * Get by ID
      *
      * @param mixed $id
-     * @return FemsaQuoteInterface
+     * @return DigitalFemsaQuoteInterface
      * @throws NoSuchEntityException
      */
-    public function getById($id): FemsaQuoteInterface
+    public function getById($id): DigitalFemsaQuoteInterface
     {
         $femsaQuote = $this->femsaQuoteFactory->create();
         $this->femsaQuoteResource->load($femsaQuote, $id);
@@ -46,7 +46,7 @@ class FemsaQuoteRepository implements FemsaQuoteRepositoryInterface
         return $femsaQuote;
     }
 
-    public function save(FemsaQuoteInterface $femsaQuote): FemsaQuoteInterface
+    public function save(DigitalFemsaQuoteInterface $femsaQuote): DigitalFemsaQuoteInterface
     {
         $this->femsaQuoteResource->save($femsaQuote);
         return $femsaQuote;

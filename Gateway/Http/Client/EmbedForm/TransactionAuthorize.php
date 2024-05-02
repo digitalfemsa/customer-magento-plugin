@@ -3,10 +3,10 @@
 namespace DigitalFemsa\Payments\Gateway\Http\Client\EmbedForm;
 
 use DigitalFemsa\Model\ChargeResponse;
-use DigitalFemsa\Payments\Api\FemsaApiClient;
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
-use DigitalFemsa\Payments\Api\Data\FemsaSalesOrderInterface;
+use DigitalFemsa\Payments\Api\DigitalFemsaApiClient;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
+use DigitalFemsa\Payments\Api\Data\DigitalFemsaSalesOrderInterface;
 use DigitalFemsa\Payments\Model\FemsaSalesOrderFactory;
 use DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
 use Magento\Payment\Gateway\Http\ClientInterface;
@@ -32,14 +32,14 @@ class TransactionAuthorize implements ClientInterface
      */
     private $logger;
 
-    protected $_femsaHelper;
+    protected $_digitalFemsaHelper;
 
     private $_femsaLogger;
 
     protected $femsaSalesOrderFactory;
 
     /**
-     * @var FemsaApiClient
+     * @var DigitalFemsaApiClient
      */
     private $femsaApiClient;
 
@@ -50,21 +50,21 @@ class TransactionAuthorize implements ClientInterface
 
     /**
      * @param Logger $logger
-     * @param FemsaHelper $femsaHelper
-     * @param FemsaLogger $FemsaLogger
-     * @param FemsaApiClient $femsaApiClient
+     * @param DigitalFemsaFemsaHelper $digitalFemsaHelper
+     * @param DigitalFemsaLogger $DigitalFemsaLogger
+     * @param DigitalFemsaApiClient $femsaApiClient
      * @param FemsaSalesOrderFactory $femsaSalesOrderFactory
      */
     public function __construct(
-        Logger                   $logger,
-        FemsaHelper              $femsaHelper,
-        FemsaLogger              $FemsaLogger,
-        FemsaApiClient           $femsaApiClient,
-        FemsaSalesOrderFactory   $femsaSalesOrderFactory
+        Logger                  $logger,
+        DigitalFemsaFemsaHelper $digitalFemsaHelper,
+        DigitalFemsaLogger      $DigitalFemsaLogger,
+        DigitalFemsaApiClient   $femsaApiClient,
+        FemsaSalesOrderFactory  $femsaSalesOrderFactory
     )
     {
-        $this->_femsaHelper = $femsaHelper;
-        $this->_femsaLogger = $FemsaLogger;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
+        $this->_femsaLogger = $DigitalFemsaLogger;
         $this->_femsaLogger->info('HTTP Client TransactionCapture :: __construct');
         $this->logger = $logger;
         $this->femsaSalesOrderFactory = $femsaSalesOrderFactory;
@@ -88,8 +88,8 @@ class TransactionAuthorize implements ClientInterface
         $this->femsaSalesOrderFactory
             ->create()
             ->setData([
-                FemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID => $request['order_id'],
-                FemsaSalesOrderInterface::INCREMENT_ORDER_ID => $request['metadata']['order_id']
+                DigitalFemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID => $request['order_id'],
+                DigitalFemsaSalesOrderInterface::INCREMENT_ORDER_ID => $request['metadata']['order_id']
             ])
             ->save();
 

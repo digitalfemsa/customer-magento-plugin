@@ -2,7 +2,7 @@
 
 namespace DigitalFemsa\Payments\Exception;
 
-class FemsaException extends \Exception
+class DigitalFemsaException extends \Exception
 {
     public const INVALID_PHONE_MESSAGE = 'Télefono no válido. 
         El télefono debe tener al menos 10 carácteres.

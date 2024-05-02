@@ -1,8 +1,8 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request\Cash;
 
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Payment\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 
@@ -11,17 +11,17 @@ class AuthorizeRequest implements BuilderInterface
 
     private SubjectReader $subjectReader;
 
-    protected FemsaHelper $_femsaHelper;
+    protected DigitalFemsaFemsaHelper $_digitalFemsaHelper;
 
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_femsaLogger;
 
     public function __construct(
         SubjectReader $subjectReader,
-        FemsaHelper   $femsaHelper,
-        FemsaLogger $femsaLogger
+        DigitalFemsaFemsaHelper   $digitalFemsaHelper,
+        DigitalFemsaLogger $digitalFemsaLogger
     ) {
-        $this->_femsaHelper = $femsaHelper;
-        $this->_femsaLogger = $femsaLogger;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
+        $this->_femsaLogger = $digitalFemsaLogger;
         $this->_femsaLogger->info('Request Cash AuthorizeRequest :: __construct');
 
         $this->subjectReader = $subjectReader;
@@ -34,13 +34,13 @@ class AuthorizeRequest implements BuilderInterface
         $paymentDO = $this->subjectReader->readPayment($buildSubject);
         $order = $paymentDO->getOrder();
         
-        $expiry_date = $this->_femsaHelper->getExpiredAt();
-        $amount = $this->_femsaHelper->convertToApiPrice($order->getGrandTotalAmount());
+        $expiry_date = $this->_digitalFemsaHelper->getExpiredAt();
+        $amount = $this->_digitalFemsaHelper->convertToApiPrice($order->getGrandTotalAmount());
 
         $request['metadata'] = [
             'plugin' => 'Magento',
-            'plugin_version' => $this->_femsaHelper->getMageVersion(),
-            'plugin_digitalfemsa_version' => $this->_femsaHelper->pluginVersion(),
+            'plugin_version' => $this->_digitalFemsaHelper->getMageVersion(),
+            'plugin_digitalfemsa_version' => $this->_digitalFemsaHelper->pluginVersion(),
             'order_id'       => $order->getOrderIncrementId(),
             'soft_validations'  => 'true'
         ];

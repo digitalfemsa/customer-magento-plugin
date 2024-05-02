@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Api\Data;
 
-interface FemsaQuoteInterface
+interface DigitalFemsaQuoteInterface
 {
     public const QUOTE_ID = 'quote_id';
     public const DIGITALFEMSA_ORDER_ID = 'digitalfemsa_order_id';

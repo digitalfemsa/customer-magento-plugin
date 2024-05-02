@@ -1,24 +1,24 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request;
 
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 
 class TaxLinesBuilder implements BuilderInterface
 {
-    private FemsaLogger $_logger;
+    private DigitalFemsaLogger $_logger;
 
-    private FemsaHelper $_femsaHelper;
+    private DigitalFemsaFemsaHelper $_digitalFemsaHelper;
 
     public function __construct(
-        FemsaLogger $femsaLogger,
-        FemsaHelper $femsaHelper
+        DigitalFemsaLogger $digitalFemsaLogger,
+        DigitalFemsaFemsaHelper $digitalFemsaHelper
     ) {
-        $this->_logger = $femsaLogger;
+        $this->_logger = $digitalFemsaLogger;
         $this->_logger->info('Request TaxLinesBuilder :: __construct');
-        $this->_femsaHelper = $femsaHelper;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
     }
 
     public function build(array $buildSubject): array
@@ -36,7 +36,7 @@ class TaxLinesBuilder implements BuilderInterface
 
         $request = [];
 
-        $request['tax_lines'] = $this->_femsaHelper->getTaxLines($order->getItems());
+        $request['tax_lines'] = $this->_digitalFemsaHelper->getTaxLines($order->getItems());
 
         $this->_logger->info('Request TaxLinesBuilder :: build : return request', $request);
 

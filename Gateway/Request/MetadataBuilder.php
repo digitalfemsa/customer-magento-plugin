@@ -1,8 +1,8 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request;
 
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
@@ -12,20 +12,20 @@ use Magento\Payment\Gateway\Helper\SubjectReader;
 
 class MetadataBuilder implements BuilderInterface
 {
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_femsaLogger;
 
-    protected FemsaHelper $_femsaHelper;
+    protected DigitalFemsaFemsaHelper $_digitalFemsaHelper;
 
     private SubjectReader $subjectReader;
 
     public function __construct(
-        FemsaHelper   $femsaHelper,
-        FemsaLogger   $femsaLogger,
+        DigitalFemsaFemsaHelper   $digitalFemsaHelper,
+        DigitalFemsaLogger   $digitalFemsaLogger,
         SubjectReader $subjectReader
     ) {
-        $this->_femsaLogger = $femsaLogger;
+        $this->_femsaLogger = $digitalFemsaLogger;
         $this->_femsaLogger->info('Request MetadataBuilder :: __construct');
-        $this->_femsaHelper = $femsaHelper;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
         $this->subjectReader = $subjectReader;
     }
 
@@ -46,7 +46,7 @@ class MetadataBuilder implements BuilderInterface
         $payment = $this->subjectReader->readPayment($buildSubject);
         $order = $payment->getOrder();
         $items = $order->getItems();
-        $request['metadata'] = $this->_femsaHelper->getMetadataAttributesFemsa($items);
+        $request['metadata'] = $this->_digitalFemsaHelper->getMetadataAttributesFemsa($items);
 
         $this->_femsaLogger->info('Request MetadataBuilder :: build : return request', $request);
 

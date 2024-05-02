@@ -1,8 +1,8 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request;
 
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Payment\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Request\BuilderInterface;
@@ -10,25 +10,25 @@ use Magento\Quote\Api\CartRepositoryInterface;
 
 class DiscountLinesBuilder implements BuilderInterface
 {
-    private FemsaLogger $_logger;
+    private DigitalFemsaLogger $_logger;
 
     private SubjectReader $subjectReader;
 
     protected CartRepositoryInterface $_cartRepository;
 
-    private FemsaHelper $_femsaHelper;
+    private DigitalFemsaFemsaHelper $_digitalFemsaHelper;
 
     public function __construct(
-        FemsaLogger             $femsaLogger,
+        DigitalFemsaLogger      $digitalFemsaLogger,
         SubjectReader           $subjectReader,
         CartRepositoryInterface $cartRepository,
-        FemsaHelper $femsaHelper
+        DigitalFemsaFemsaHelper $digitalFemsaHelper
     ) {
-        $this->_logger = $femsaLogger;
+        $this->_logger = $digitalFemsaLogger;
         $this->_logger->info('Request DiscountLinesBuilder :: __construct');
         $this->subjectReader = $subjectReader;
         $this->_cartRepository = $cartRepository;
-        $this->_femsaHelper = $femsaHelper;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
     }
 
     /**
@@ -46,7 +46,7 @@ class DiscountLinesBuilder implements BuilderInterface
         $totalDiscount = abs(round($totalDiscount, 2));
 
         if (!empty($totalDiscount)) {
-            $totalDiscount = $this->_femsaHelper->convertToApiPrice($totalDiscount);
+            $totalDiscount = $this->_digitalFemsaHelper->convertToApiPrice($totalDiscount);
             $discountLine["code"] = $quote->getCouponCode() ?? "Discounts";
             $discountLine["type"] = $quote->getCouponCode() ? "coupon" : "Discounts";
             $discountLine["amount"] = $totalDiscount;

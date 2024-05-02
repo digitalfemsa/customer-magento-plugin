@@ -1,8 +1,8 @@
 <?php
 namespace DigitalFemsa\Payments\Model\Ui\EmbedForm;
 
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\Exception\LocalizedException;
@@ -25,17 +25,17 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public const CREATEORDER_URL = 'digitalfemsa/index/createorder';
     /**
-     * @var FemsaHelper
+     * @var DigitalFemsaFemsaHelper
      */
-    protected FemsaHelper $_femsaHelper;
+    protected DigitalFemsaFemsaHelper $_digitalFemsaHelper;
     /**
      * @var Session
      */
     protected $_checkoutSession;
     /**
-     * @var FemsaLogger
+     * @var DigitalFemsaLogger
      */
-    protected FemsaLogger $femsaLogger;
+    protected DigitalFemsaLogger $digitalFemsaLogger;
     /**
      * @var UrlInterface
      */
@@ -44,20 +44,20 @@ class ConfigProvider implements ConfigProviderInterface
     /**
      * ConfigProvider constructor.
      *
-     * @param FemsaHelper $femsaHelper
+     * @param DigitalFemsaFemsaHelper $digitalFemsaHelper
      * @param Session $checkoutSession
-     * @param FemsaLogger $femsaLogger
+     * @param DigitalFemsaLogger $digitalFemsaLogger
      * @param UrlInterface $url
      */
     public function __construct(
-        FemsaHelper  $femsaHelper,
+        DigitalFemsaFemsaHelper  $digitalFemsaHelper,
         Session      $checkoutSession,
-        FemsaLogger  $femsaLogger,
+        DigitalFemsaLogger  $digitalFemsaLogger,
         UrlInterface $url
     ) {
-        $this->_femsaHelper = $femsaHelper;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
         $this->_checkoutSession = $checkoutSession;
-        $this->femsaLogger = $femsaLogger;
+        $this->femsaLogger = $digitalFemsaLogger;
         $this->url = $url;
     }
 
@@ -102,7 +102,7 @@ class ConfigProvider implements ConfigProviderInterface
     public function getPaymentMethodsActive(): array
     {
         $methods = [];
-        if ($this->_femsaHelper->isCashEnabled()) {
+        if ($this->_digitalFemsaHelper->isCashEnabled()) {
             $methods[] = 'Cash';
         }
         return $methods;
