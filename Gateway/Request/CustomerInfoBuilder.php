@@ -9,18 +9,18 @@ use Magento\Payment\Gateway\Request\BuilderInterface;
 class CustomerInfoBuilder implements BuilderInterface
 {
 
-    private DigitalFemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
 
     public function __construct(
         DigitalFemsaLogger $digitalFemsaLogger
     ) {
-        $this->_femsaLogger = $digitalFemsaLogger;
-        $this->_femsaLogger->info('Request LineItemsBuilder :: __construct');
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
+        $this->_digitalFemsaLogger->info('Request LineItemsBuilder :: __construct');
     }
 
     public function build(array $buildSubject)
     {
-        $this->_femsaLogger->info('Request CustomerInfoBuilder :: build');
+        $this->_digitalFemsaLogger->info('Request CustomerInfoBuilder :: build');
 
         if (!isset($buildSubject['payment'])
             || !$buildSubject['payment'] instanceof PaymentDataObjectInterface
@@ -42,7 +42,7 @@ class CustomerInfoBuilder implements BuilderInterface
             ]
         ];
 
-        $this->_femsaLogger->info('Request CustomerInfoBuilder :: build : return request', $request);
+        $this->_digitalFemsaLogger->info('Request CustomerInfoBuilder :: build : return request', $request);
 
         return $request;
     }

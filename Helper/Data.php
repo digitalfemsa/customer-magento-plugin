@@ -83,7 +83,7 @@ class Data extends Util
         ModuleListInterface      $moduleList,
         EncryptorInterface       $encryptor,
         ProductMetadataInterface $productMetadata,
-        DigitalFemsaLogger              $digitalFemsaLogger,
+        DigitalFemsaLogger       $digitalFemsaLogger,
         CheckoutSession          $checkoutSession,
         CustomerSession          $customerSession,
         ProductRepository        $productRepository,

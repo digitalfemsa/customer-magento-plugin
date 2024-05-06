@@ -6,7 +6,7 @@
         "digitalfemsa/femsa-php": "dev-main"
     },
     "type": "magento2-module",
-    "version": "5.1.0",
+    "version": "1.0.0",
     "license": [
         "OSL-3.0",
         "AFL-3.0"

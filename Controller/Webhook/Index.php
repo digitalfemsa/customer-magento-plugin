@@ -43,7 +43,7 @@ class Index extends Action implements CsrfAwareActionInterface
     /**
      * @var DigitalFemsaLogger
      */
-    private DigitalFemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
     /**
      * @var WebhookRepository
      */
@@ -61,16 +61,16 @@ class Index extends Action implements CsrfAwareActionInterface
      * @param MissingOrders $_missingOrders
      */
     public function __construct(
-        Context           $context,
-        JsonFactory       $resultJsonFactory,
-        RawFactory        $resultRawFactory,
-        Data              $helper,
-        DigitalFemsaLogger       $digitalFemsaLogger,
-        WebhookRepository $webhookRepository,
-        MissingOrders     $_missingOrders
+        Context             $context,
+        JsonFactory         $resultJsonFactory,
+        RawFactory          $resultRawFactory,
+        Data                $helper,
+        DigitalFemsaLogger  $digitalFemsaLogger,
+        WebhookRepository   $webhookRepository,
+        MissingOrders       $_missingOrders
     ) {
         parent::__construct($context);
-        $this->_femsaLogger = $digitalFemsaLogger;
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
         $this->resultJsonFactory = $resultJsonFactory;
         $this->resultRawFactory = $resultRawFactory;
         $this->helper = $helper;
@@ -123,7 +123,7 @@ class Index extends Action implements CsrfAwareActionInterface
 
             $event = $body['type'];
 
-            $this->_femsaLogger->info('Controller Index :: execute body json ', ['event' => $event]);
+            $this->_digitalFemsaLogger->info('Controller Index :: execute body json ', ['event' => $event]);
 
             switch ($event) {
                 case self::EVENT_WEBHOOK_PING:
@@ -152,7 +152,7 @@ class Index extends Action implements CsrfAwareActionInterface
             }
 
         } catch (Exception $e) {
-            $this->_femsaLogger->error('Controller Index :: '. $e->getMessage());
+            $this->_digitalFemsaLogger->error('Controller Index :: '. $e->getMessage());
             $errorResponse = [
                 'error' => 'Internal Server Error',
                 'message' => $e->getMessage(),

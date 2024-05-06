@@ -5,7 +5,7 @@ namespace DigitalFemsa\Payments\Helper;
 use DigitalFemsa\ApiException;
 use DigitalFemsa\Payments\Api\DigitalFemsaApiClient;
 use DigitalFemsa\Payments\Exception\DigitalFemsaException;
-use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Exception;
 use Magento\Checkout\Model\Session;
@@ -56,7 +56,7 @@ class DigitalFemsaOrder extends Util
      * DigitalFemsaOrder constructor.
      *
      * @param Context $context
-     * @param DigitalFemsaFemsaHelper $digitalFemsaHelper
+     * @param DigitalFemsaHelper $digitalFemsaHelper
      * @param DigitalFemsaLogger $digitalFemsaLogger
      * @param DigitalFemsaApiClient $femsaApiClient
      * @param CustomerSession $customerSession
@@ -65,7 +65,7 @@ class DigitalFemsaOrder extends Util
      */
     public function __construct(
         Context                     $context,
-        DigitalFemsaFemsaHelper     $digitalFemsaHelper,
+        DigitalFemsaHelper          $digitalFemsaHelper,
         DigitalFemsaLogger          $digitalFemsaLogger,
         DigitalFemsaApiClient       $femsaApiClient,
         CustomerSession             $customerSession,

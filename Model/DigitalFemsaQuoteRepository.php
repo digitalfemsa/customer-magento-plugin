@@ -3,30 +3,30 @@ namespace DigitalFemsa\Payments\Model;
 
 use DigitalFemsa\Payments\Api\DigitalFemsaQuoteRepositoryInterface;
 use DigitalFemsa\Payments\Api\Data\DigitalFemsaQuoteInterface;
-use DigitalFemsa\Payments\Model\ResourceModel\DigitalFemsaQuote as FemsaQuoteResource;
+use DigitalFemsa\Payments\Model\ResourceModel\DigitalFemsaQuote as DigitalFemsaQuoteResource;
 use Magento\Framework\Exception\NoSuchEntityException;
 
 class DigitalFemsaQuoteRepository implements DigitalFemsaQuoteRepositoryInterface
 {
     /**
-     * @var FemsaQuoteFactory
+     * @var DigitalFemsaQuoteFactory
      */
-    private FemsaQuoteFactory $femsaQuoteFactory;
+    private DigitalFemsaQuoteFactory $digitalDigitalFemsaQuoteFactory;
     /**
-     * @var FemsaQuoteResource
+     * @var DigitalFemsaQuoteResource
      */
-    private  $femsaQuoteResource;
+    private  $digitalFemsaQuoteResource;
 
     /**
-     * @param FemsaQuoteFactory $femsaQuoteFactory
-     * @param FemsaQuoteResource $femsaQuoteResource
+     * @param DigitalFemsaQuoteFactory $digitalDigitalFemsaQuoteFactory
+     * @param DigitalFemsaQuoteResource $digitalFemsaQuoteResource
      */
     public function __construct(
-        FemsaQuoteFactory $femsaQuoteFactory,
-        FemsaQuoteResource $femsaQuoteResource
+        DigitalFemsaQuoteFactory    $digitalDigitalFemsaQuoteFactory,
+        DigitalFemsaQuoteResource   $digitalFemsaQuoteResource
     ) {
-        $this->femsaQuoteFactory = $femsaQuoteFactory;
-        $this->femsaQuoteResource = $femsaQuoteResource;
+        $this->digitalDigitalFemsaQuoteFactory = $digitalDigitalFemsaQuoteFactory;
+        $this->digitalFemsaQuoteResource = $digitalFemsaQuoteResource;
     }
 
     /**
@@ -38,8 +38,8 @@ class DigitalFemsaQuoteRepository implements DigitalFemsaQuoteRepositoryInterfac
      */
     public function getById($id): DigitalFemsaQuoteInterface
     {
-        $femsaQuote = $this->femsaQuoteFactory->create();
-        $this->femsaQuoteResource->load($femsaQuote, $id);
+        $femsaQuote = $this->digitalDigitalFemsaQuoteFactory->create();
+        $this->digitalFemsaQuoteResource->load($femsaQuote, $id);
         if (!$femsaQuote->getId()) {
             throw new NoSuchEntityException(__('Unable to find femsa quote with ID "%1"', $id));
         }
@@ -48,7 +48,7 @@ class DigitalFemsaQuoteRepository implements DigitalFemsaQuoteRepositoryInterfac
 
     public function save(DigitalFemsaQuoteInterface $femsaQuote): DigitalFemsaQuoteInterface
     {
-        $this->femsaQuoteResource->save($femsaQuote);
+        $this->digitalFemsaQuoteResource->save($femsaQuote);
         return $femsaQuote;
     }
 }

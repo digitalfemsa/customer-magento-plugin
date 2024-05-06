@@ -9,7 +9,7 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 
-class AddCustomerFemsaAttr implements DataPatchInterface
+class AddCustomerDigitalFemsaAttr implements DataPatchInterface
 {
     /**
      * @var ModuleDataSetupInterface
@@ -27,8 +27,8 @@ class AddCustomerFemsaAttr implements DataPatchInterface
      * @param CustomerSetupFactory $customerSetupFactory
      */
     public function __construct(
-        ModuleDataSetupInterface $moduleDataSetup,
-        CustomerSetupFactory $customerSetupFactory
+        ModuleDataSetupInterface    $moduleDataSetup,
+        CustomerSetupFactory        $customerSetupFactory
     ) {
         $this->moduleDataSetup = $moduleDataSetup;
         $this->customerSetupFactory = $customerSetupFactory;

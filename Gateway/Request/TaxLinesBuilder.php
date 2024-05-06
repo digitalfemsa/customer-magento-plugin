@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request;
 
-use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
@@ -10,11 +10,11 @@ class TaxLinesBuilder implements BuilderInterface
 {
     private DigitalFemsaLogger $_logger;
 
-    private DigitalFemsaFemsaHelper $_digitalFemsaHelper;
+    private DigitalFemsaHelper $_digitalFemsaHelper;
 
     public function __construct(
         DigitalFemsaLogger $digitalFemsaLogger,
-        DigitalFemsaFemsaHelper $digitalFemsaHelper
+        DigitalFemsaHelper $digitalFemsaHelper
     ) {
         $this->_logger = $digitalFemsaLogger;
         $this->_logger->info('Request TaxLinesBuilder :: __construct');

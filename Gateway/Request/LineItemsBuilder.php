@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request;
 
-use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
@@ -9,22 +9,22 @@ use Magento\Payment\Gateway\Request\BuilderInterface;
 class LineItemsBuilder implements BuilderInterface
 {
 
-    private DigitalFemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
 
-    protected DigitalFemsaFemsaHelper $_digitalFemsaHelper;
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
 
     public function __construct(
-        DigitalFemsaFemsaHelper $digitalFemsaHelper,
+        DigitalFemsaHelper $digitalFemsaHelper,
         DigitalFemsaLogger $digitalFemsaLogger
     ) {
-        $this->_femsaLogger = $digitalFemsaLogger;
-        $this->_femsaLogger->info('Request LineItemsBuilder :: __construct');
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
+        $this->_digitalFemsaLogger->info('Request LineItemsBuilder :: __construct');
         $this->_digitalFemsaHelper = $digitalFemsaHelper;
     }
 
     public function build(array $buildSubject)
     {
-        $this->_femsaLogger->info('Request LineItemsBuilder :: build');
+        $this->_digitalFemsaLogger->info('Request LineItemsBuilder :: build');
 
         if (!isset($buildSubject['payment'])
             || !$buildSubject['payment'] instanceof PaymentDataObjectInterface
@@ -37,7 +37,7 @@ class LineItemsBuilder implements BuilderInterface
         $items = $order->getItems();
         $request['line_items'] = $this->_digitalFemsaHelper->getLineItems($items, false);
 
-        $this->_femsaLogger->info('Request LineItemsBuilder :: build : return request', $request);
+        $this->_digitalFemsaLogger->info('Request LineItemsBuilder :: build : return request', $request);
 
         return $request;
     }

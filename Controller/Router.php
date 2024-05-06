@@ -6,7 +6,7 @@ use Magento\Framework\App\ActionFactory;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\RouterInterface;
-use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Url;
 
@@ -23,20 +23,20 @@ class Router implements RouterInterface
     protected ResponseInterface $_response;
 
     /**
-     * @var DigitalFemsaFemsaHelper
+     * @var DigitalFemsaHelper
      */
-    private DigitalFemsaFemsaHelper $_digitalFemsaHelper;
+    private DigitalFemsaHelper $_digitalFemsaHelper;
 
 
     /**
      * @param ActionFactory $actionFactory
      * @param ResponseInterface $response
-     * @param DigitalFemsaFemsaHelper $digitalFemsaHelper
+     * @param DigitalFemsaHelper $digitalFemsaHelper
      */
     public function __construct(
-        ActionFactory $actionFactory,
-        ResponseInterface $response,
-        DigitalFemsaFemsaHelper $digitalFemsaHelper
+        ActionFactory       $actionFactory,
+        ResponseInterface   $response,
+        DigitalFemsaHelper  $digitalFemsaHelper
     ) {
         $this->actionFactory = $actionFactory;
         $this->_response = $response;

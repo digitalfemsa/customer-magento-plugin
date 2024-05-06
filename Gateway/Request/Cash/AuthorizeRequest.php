@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request\Cash;
 
-use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Payment\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Request\BuilderInterface;
@@ -11,25 +11,25 @@ class AuthorizeRequest implements BuilderInterface
 
     private SubjectReader $subjectReader;
 
-    protected DigitalFemsaFemsaHelper $_digitalFemsaHelper;
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
 
-    private DigitalFemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
 
     public function __construct(
-        SubjectReader $subjectReader,
-        DigitalFemsaFemsaHelper   $digitalFemsaHelper,
-        DigitalFemsaLogger $digitalFemsaLogger
+        SubjectReader       $subjectReader,
+        DigitalFemsaHelper  $digitalFemsaHelper,
+        DigitalFemsaLogger  $digitalFemsaLogger
     ) {
         $this->_digitalFemsaHelper = $digitalFemsaHelper;
-        $this->_femsaLogger = $digitalFemsaLogger;
-        $this->_femsaLogger->info('Request Cash AuthorizeRequest :: __construct');
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
+        $this->_digitalFemsaLogger->info('Request Cash AuthorizeRequest :: __construct');
 
         $this->subjectReader = $subjectReader;
     }
 
     public function build(array $buildSubject): array
     {
-        $this->_femsaLogger->info('Request Cash AuthorizeRequest :: build');
+        $this->_digitalFemsaLogger->info('Request Cash AuthorizeRequest :: build');
 
         $paymentDO = $this->subjectReader->readPayment($buildSubject);
         $order = $paymentDO->getOrder();

@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Model\Ui\Cash;
 
-use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -22,19 +22,19 @@ class ConfigProvider implements ConfigProviderInterface
      */
     protected $_assetRepository;
     /**
-     * @var DigitalFemsaFemsaHelper
+     * @var DigitalFemsaHelper
      */
-    protected DigitalFemsaFemsaHelper $_digitalFemsaHelper;
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
 
     /**
      * @param Session $checkoutSession
      * @param Repository $assetRepository
-     * @param DigitalFemsaFemsaHelper $digitalFemsaHelper
+     * @param DigitalFemsaHelper $digitalFemsaHelper
      */
     public function __construct(
-        Session $checkoutSession,
-        Repository $assetRepository,
-        DigitalFemsaFemsaHelper $digitalFemsaHelper
+        Session             $checkoutSession,
+        Repository          $assetRepository,
+        DigitalFemsaHelper  $digitalFemsaHelper
     ) {
         $this->_checkoutSession = $checkoutSession;
         $this->_assetRepository = $assetRepository;

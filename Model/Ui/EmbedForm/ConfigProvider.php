@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Model\Ui\EmbedForm;
 
-use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Checkout\Model\Session;
@@ -25,9 +25,9 @@ class ConfigProvider implements ConfigProviderInterface
      */
     public const CREATEORDER_URL = 'digitalfemsa/index/createorder';
     /**
-     * @var DigitalFemsaFemsaHelper
+     * @var DigitalFemsaHelper
      */
-    protected DigitalFemsaFemsaHelper $_digitalFemsaHelper;
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
     /**
      * @var Session
      */
@@ -44,13 +44,13 @@ class ConfigProvider implements ConfigProviderInterface
     /**
      * ConfigProvider constructor.
      *
-     * @param DigitalFemsaFemsaHelper $digitalFemsaHelper
+     * @param DigitalFemsaHelper $digitalFemsaHelper
      * @param Session $checkoutSession
      * @param DigitalFemsaLogger $digitalFemsaLogger
      * @param UrlInterface $url
      */
     public function __construct(
-        DigitalFemsaFemsaHelper  $digitalFemsaHelper,
+        DigitalFemsaHelper  $digitalFemsaHelper,
         Session      $checkoutSession,
         DigitalFemsaLogger  $digitalFemsaLogger,
         UrlInterface $url

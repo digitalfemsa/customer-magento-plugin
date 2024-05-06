@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request;
 
-use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -14,12 +14,12 @@ class ShippingLinesBuilder implements BuilderInterface
 
     private DigitalFemsaLogger $_logger;
 
-    private DigitalFemsaFemsaHelper $_digitalFemsaHelper;
+    private DigitalFemsaHelper $_digitalFemsaHelper;
 
     public function __construct(
-        SubjectReader $subjectReader,
-        DigitalFemsaLogger   $logger,
-        DigitalFemsaFemsaHelper   $digitalFemsaHelper
+        SubjectReader       $subjectReader,
+        DigitalFemsaLogger  $logger,
+        DigitalFemsaHelper  $digitalFemsaHelper
     ) {
         $this->_logger = $logger;
         $this->_logger->info('Request ShippingLinesBuilder :: __construct');

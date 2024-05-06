@@ -3,7 +3,7 @@
 namespace DigitalFemsa\Payments\Service;
 
 use DigitalFemsa\Payments\Api\DigitalFemsaApiClient;
-use DigitalFemsa\Payments\Helper\Data as FemsaData;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaData;
 use DigitalFemsa\Payments\Helper\Util;
 use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
@@ -27,12 +27,12 @@ class MissingOrders
      */
     private WebhookRepository $webhookRepository;
 
-    private DigitalFemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
     private StoreManagerInterface $_storeManager;
 
     private QuoteFactory $quote;
     /**
-     * @var FemsaData|mixed
+     * @var DigitalFemsaData|mixed
      */
     private Util $utilHelper;
     private Product $_product;
@@ -43,17 +43,17 @@ class MissingOrders
 
     public function __construct(
         WebhookRepository           $webhookRepository,
-        DigitalFemsaLogger                 $digitalFemsaLogger,
+        DigitalFemsaLogger          $digitalFemsaLogger,
         StoreManagerInterface       $storeManager,
         QuoteFactory                $quote,
         Product                     $product,
         CustomerFactory             $customerFactory,
         CustomerRepositoryInterface $customerRepository,
         QuoteManagement             $quoteManagement,
-        DigitalFemsaApiClient $femsaApiClient
+        DigitalFemsaApiClient       $femsaApiClient
     ){
         $this->webhookRepository = $webhookRepository;
-        $this->_femsaLogger = $digitalFemsaLogger;
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
         $this->_storeManager = $storeManager;
         $this->quote = $quote;
         $this->_product = $product;
@@ -63,7 +63,7 @@ class MissingOrders
         $this->femsaApiClient = $femsaApiClient;
 
         $objectManager = ObjectManager::getInstance();
-        $this->utilHelper = $objectManager->create(FemsaData::class);
+        $this->utilHelper = $objectManager->create(DigitalFemsaData::class);
     }
 
     /**
@@ -75,7 +75,7 @@ class MissingOrders
             $femsaOrderFound = $this->webhookRepository->findByMetadataOrderId($event);
 
             if ($femsaOrderFound->getId() != null || !empty($femsaOrderFound->getId()) ) {
-                $this->_femsaLogger->info('order is ready', ['order' => $femsaOrderFound, 'is_set', isset($femsaOrderFound)]);
+                $this->_digitalFemsaLogger->info('order is ready', ['order' => $femsaOrderFound, 'is_set', isset($femsaOrderFound)]);
                 return;
             }
             $femsaOrder = $event['data']['object'];
@@ -100,7 +100,7 @@ class MissingOrders
                 $customer = $this->customerFactory->create();
                 $customer->setWebsiteId($store->getWebsiteId());
                 $customer->load($femsaCustomer['customer_custom_reference']);// load customer by id
-                $this->_femsaLogger->info('end customer', ['email' =>$femsaCustomer['email'] ]);
+                $this->_digitalFemsaLogger->info('end customer', ['email' =>$femsaCustomer['email'] ]);
 
                 $customer= $this->customerRepository->getById($customer->getEntityId());
                 $quoteCreated->assignCustomer($customer); //Assign quote to customer
@@ -161,7 +161,7 @@ class MissingOrders
                 ->setShippingAmount($this->utilHelper->convertFromApiPrice($femsaShippingLines[0]["amount"]))
                 ->setShippingMethod($femsaShippingLines[0]["method"]);
 
-            $this->_femsaLogger->info('end $femsaShippingLines');
+            $this->_digitalFemsaLogger->info('end $femsaShippingLines');
 
 
             //discount lines
@@ -173,7 +173,7 @@ class MissingOrders
             $quoteCreated->setPaymentMethod(ConfigProvider::CODE);
             $quoteCreated->setInventoryProcessed(false);
             $quoteCreated->save();
-            $this->_femsaLogger->info('end save quote');
+            $this->_digitalFemsaLogger->info('end save quote');
 
 
             // Set Sales Order Payment
@@ -188,11 +188,11 @@ class MissingOrders
             $quoteCreated->getPayment()->setAdditionalInformation(   $additionalInformation);
             // Collect Totals & Save Quote
             $quoteCreated->collectTotals()->save();
-            $this->_femsaLogger->info('Collect Totals & Save Quote');
+            $this->_digitalFemsaLogger->info('Collect Totals & Save Quote');
 
             // Create Order From Quote
             $order = $this->quoteManagement->submit($quoteCreated);
-            $this->_femsaLogger->info('end submit');
+            $this->_digitalFemsaLogger->info('end submit');
 
 
             $increment_id = $order->getRealOrderId();
@@ -205,7 +205,7 @@ class MissingOrders
             $this->updateFemsaReference($femsaOrder["charges"]["data"][0]["id"],  $increment_id);
 
         } catch (Exception $e) {
-            $this->_femsaLogger->error('creating order '.$e->getMessage());
+            $this->_digitalFemsaLogger->error('creating order '.$e->getMessage());
             throw  $e;
         }
     }
@@ -220,7 +220,7 @@ class MissingOrders
         try {
             $this->femsaApiClient->updateCharge($chargeId,  $chargeUpdate);
         }catch (Exception $e) {
-            $this->_femsaLogger->error("updating femsa charge". $e->getMessage(), ["charge_id"=> $chargeId, "reference_id"=> $orderId]);
+            $this->_digitalFemsaLogger->error("updating femsa charge". $e->getMessage(), ["charge_id"=> $chargeId, "reference_id"=> $orderId]);
         }
     }
     private function applyCoupon(array $discountLines, Quote $quote)  {

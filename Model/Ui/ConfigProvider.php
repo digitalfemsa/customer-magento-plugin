@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Model\Ui;
 
-use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\View\Asset\Repository as AssetRepository;
 
@@ -9,21 +9,21 @@ class ConfigProvider implements ConfigProviderInterface
 {
     public const CODE = 'digitalfemsa_global';
     /**
-     * @var DigitalFemsaFemsaHelper
+     * @var DigitalFemsaHelper
      */
-    protected DigitalFemsaFemsaHelper $_digitalFemsaHelper;
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
     /**
      * @var mixed
      */
     private $_assetRepository;
 
     /**
-     * @param DigitalFemsaFemsaHelper $digitalFemsaHelper
+     * @param DigitalFemsaHelper $digitalFemsaHelper
      * @param AssetRepository $assetRepository
      */
     public function __construct(
-        DigitalFemsaFemsaHelper     $digitalFemsaHelper,
-        AssetRepository $assetRepository
+        DigitalFemsaHelper  $digitalFemsaHelper,
+        AssetRepository     $assetRepository
     ) {
         $this->_digitalFemsaHelper = $digitalFemsaHelper;
         $this->_assetRepository = $assetRepository;

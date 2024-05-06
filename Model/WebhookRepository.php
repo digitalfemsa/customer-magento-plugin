@@ -48,10 +48,10 @@ class WebhookRepository
      * @param DigitalFemsaSalesOrderInterface $femsaOrderSalesInterface
      */
     public function __construct(
-        OrderInterface           $orderInterface,
-        InvoiceService           $invoiceService,
-        InvoiceSender            $invoiceSender,
-        Transaction              $transaction,
+        OrderInterface                  $orderInterface,
+        InvoiceService                  $invoiceService,
+        InvoiceSender                   $invoiceSender,
+        Transaction                     $transaction,
         DigitalFemsaLogger              $logger,
         DigitalFemsaSalesOrderInterface $femsaOrderSalesInterface
     ) {

@@ -17,44 +17,44 @@ class EmbedFormRepository implements EmbedFormRepositoryInterface
     /**
      * @var DigitalFemsaLogger
      */
-    private DigitalFemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
     /**
      * @var DigitalFemsaQuoteInterface
      */
-    private DigitalFemsaQuoteInterface $femsaQuoteInterface;
+    private DigitalFemsaQuoteInterface $digitalFemsaQuoteInterface;
     /**
      * @var DigitalFemsaApiClient
      */
-    protected DigitalFemsaApiClient $femsaOrderApi;
+    protected DigitalFemsaApiClient $digitalFemsaOrderApi;
     /**
-     * @var FensaQuoteFactory
+     * @var DigitalFemsaQuoteFactory
      */
-    private $femsaQuoteFactory;
+    private $digitalDigitalFemsaQuoteFactory;
     /**
-     * @var FemsaQuoteRepositoryFactory
+     * @var DigitalFemsaQuoteRepositoryFactory
      */
-    private $femsaQuoteRepositoryFactory;
+    private $digitalDigitalFemsaQuoteRepositoryFactory;
 
     /**
      * @param DigitalFemsaLogger $digitalFemsaLogger
-     * @param DigitalFemsaQuoteInterface $femsaQuoteInterface
-     * @param DigitalFemsaApiClient $femsaOrderApi
-     * @param FemsaQuoteFactory $femsaQuoteFactory
-     * @param FemsaQuoteRepositoryFactory $femsaQuoteRepositoryFactory
+     * @param DigitalFemsaQuoteInterface $digitalFemsaQuoteInterface
+     * @param DigitalFemsaApiClient $digitalFemsaOrderApi
+     * @param DigitalFemsaQuoteFactory $digitalDigitalFemsaQuoteFactory
+     * @param DigitalFemsaQuoteRepositoryFactory $digitalDigitalFemsaQuoteRepositoryFactory
      */
     public function __construct(
-        DigitalFemsaLogger          $digitalFemsaLogger,
-        DigitalFemsaQuoteInterface  $femsaQuoteInterface,
-        DigitalFemsaApiClient       $femsaOrderApi,
-        FemsaQuoteFactory           $femsaQuoteFactory,
-        FemsaQuoteRepositoryFactory $femsaQuoteRepositoryFactory
+        DigitalFemsaLogger                  $digitalFemsaLogger,
+        DigitalFemsaQuoteInterface          $digitalFemsaQuoteInterface,
+        DigitalFemsaApiClient               $digitalFemsaOrderApi,
+        DigitalFemsaQuoteFactory            $digitalDigitalFemsaQuoteFactory,
+        DigitalFemsaQuoteRepositoryFactory  $digitalDigitalFemsaQuoteRepositoryFactory
     )
     {
-        $this->_femsaLogger = $digitalFemsaLogger;
-        $this->femsaQuoteInterface = $femsaQuoteInterface;
-        $this->femsaQuoteRepositoryFactory = $femsaQuoteRepositoryFactory;
-        $this->femsaQuoteFactory = $femsaQuoteFactory;
-        $this->femsaOrderApi = $femsaOrderApi;
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
+        $this->digitalFemsaQuoteInterface = $digitalFemsaQuoteInterface;
+        $this->digitalDigitalFemsaQuoteRepositoryFactory = $digitalDigitalFemsaQuoteRepositoryFactory;
+        $this->digitalDigitalFemsaQuoteFactory = $digitalDigitalFemsaQuoteFactory;
+        $this->digitalFemsaOrderApi = $digitalFemsaOrderApi;
     }
 
     /**
@@ -123,14 +123,14 @@ class EmbedFormRepository implements EmbedFormRepositoryInterface
         //Validate params
         $this->validateOrderParameters($orderParams, $orderTotal);
 
-        $femsaQuoteRepo = $this->femsaQuoteRepositoryFactory->create();
+        $femsaQuoteRepo = $this->digitalDigitalFemsaQuoteRepositoryFactory->create();
 
         $femsaQuote = null;
         $femsaOrder = null;
         $hasToCreateNewOrder = false;
         try {
             $femsaQuote = $femsaQuoteRepo->getByid($quoteId);
-            $femsaOrder = $this->femsaOrderApi->getOrderByID($femsaQuote->getFemsaOrderId());
+            $femsaOrder = $this->digitalFemsaOrderApi->getOrderByID($femsaQuote->getFemsaOrderId());
 
             if (!empty($femsaOrder)) {
                 $checkoutParams = $orderParams['checkout'];
@@ -164,26 +164,26 @@ class EmbedFormRepository implements EmbedFormRepositoryInterface
              *      2.3- checkout parameters has changed
              */
             if ($hasToCreateNewOrder) {
-                $this->_femsaLogger->info('EmbedFormRepository::generate Creates DigitalFemsa order', $orderParams);
+                $this->_digitalFemsaLogger->info('EmbedFormRepository::generate Creates DigitalFemsa order', $orderParams);
                 //Creates checkout order
-                $femsaOrder = $this->femsaOrderApi->createOrder($orderParams);
+                $femsaOrder = $this->digitalFemsaOrderApi->createOrder($orderParams);
 
                 //Save map DigitalFemsa order and quote
-                $femsaQuote = $this->femsaQuoteFactory->create();
+                $femsaQuote = $this->digitalDigitalFemsaQuoteFactory->create();
                 $femsaQuote->setQuoteId($quoteId);
                 $femsaQuote->setFemsaOrderId($femsaOrder->getId());
                 $femsaQuoteRepo->save($femsaQuote);
             } else {
-                $this->_femsaLogger->info('EmbedFormRepository::generate  Updates DigitalFemsa order', $orderParams);
+                $this->_digitalFemsaLogger->info('EmbedFormRepository::generate  Updates DigitalFemsa order', $orderParams);
                 //If map between DigitalFemsa order and quote exist, then just updated DigitalFemsa order
 
                 unset($orderParams['customer_info']);
-                $femsaOrder = $this->femsaOrderApi->updateOrder($femsaQuote->getFemsaOrderId(), $orderParams);
+                $femsaOrder = $this->digitalFemsaOrderApi->updateOrder($femsaQuote->getFemsaOrderId(), $orderParams);
             }
 
             return $femsaOrder;
         } catch (Exception $e) {
-            $this->_femsaLogger->error('EmbedFormRepository::generate Error: ' . $e->getMessage());
+            $this->_digitalFemsaLogger->error('EmbedFormRepository::generate Error: ' . $e->getMessage());
             throw new DigitalFemsaException(__($e->getMessage()));
         }
     }

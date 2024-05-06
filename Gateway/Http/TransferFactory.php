@@ -13,7 +13,7 @@ class TransferFactory implements TransferFactoryInterface
      */
     private TransferBuilder $transferBuilder;
 
-    private DigitalFemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
 
     /**
      * @param TransferBuilder $transferBuilder
@@ -22,8 +22,8 @@ class TransferFactory implements TransferFactoryInterface
         TransferBuilder $transferBuilder,
         DigitalFemsaLogger $digitalFemsaLogger
     ) {
-        $this->_femsaLogger = $digitalFemsaLogger;
-        $this->_femsaLogger->info('HTTP TransferFactory :: __construct');
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
+        $this->_digitalFemsaLogger->info('HTTP TransferFactory :: __construct');
 
         $this->transferBuilder = $transferBuilder;
     }
@@ -36,7 +36,7 @@ class TransferFactory implements TransferFactoryInterface
      */
     public function create(array $request)
     {
-        $this->_femsaLogger->info('HTTP TransferFactory :: create');
+        $this->_digitalFemsaLogger->info('HTTP TransferFactory :: create');
 
         return $this->transferBuilder
             ->setBody($request)

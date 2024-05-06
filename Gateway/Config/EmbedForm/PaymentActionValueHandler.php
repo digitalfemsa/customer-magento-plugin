@@ -1,21 +1,21 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Config\EmbedForm;
 
-use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use Magento\Payment\Gateway\Config\ValueHandlerInterface;
 
 class PaymentActionValueHandler implements ValueHandlerInterface
 {
     /**
-     * @var DigitalFemsaFemsaHelper
+     * @var DigitalFemsaHelper
      */
-    protected DigitalFemsaFemsaHelper $_digitalFemsaHelper;
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
 
     /**
-     * @param DigitalFemsaFemsaHelper $digitalFemsaHelper
+     * @param DigitalFemsaHelper $digitalFemsaHelper
      */
     public function __construct(
-        DigitalFemsaFemsaHelper $digitalFemsaHelper
+        DigitalFemsaHelper $digitalFemsaHelper
     ) {
         $this->_digitalFemsaHelper = $digitalFemsaHelper;
     }

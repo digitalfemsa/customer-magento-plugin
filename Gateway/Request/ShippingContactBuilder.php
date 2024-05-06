@@ -2,7 +2,7 @@
 namespace DigitalFemsa\Payments\Gateway\Request;
 
 use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
-use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Payment\Gateway\Helper\SubjectReader;
@@ -14,12 +14,12 @@ class ShippingContactBuilder implements BuilderInterface
 
     private DigitalFemsaLogger $_logger;
 
-    private DigitalFemsaFemsaHelper $_digitalFemsaHelper;
+    private DigitalFemsaHelper $_digitalFemsaHelper;
 
     public function __construct(
-        SubjectReader $subjectReader,
-        DigitalFemsaLogger   $digitalFemsaLogger,
-        DigitalFemsaFemsaHelper $digitalFemsaHelper
+        SubjectReader       $subjectReader,
+        DigitalFemsaLogger  $digitalFemsaLogger,
+        DigitalFemsaHelper  $digitalFemsaHelper
     ) {
         $this->_logger = $digitalFemsaLogger;
         $this->_logger->info('Request ShippingContactBuilder :: __construct');

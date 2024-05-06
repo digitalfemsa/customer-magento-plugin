@@ -12,7 +12,7 @@ class TxnIdHandler implements HandlerInterface
 
     const ORD_ID = 'ORD_ID';
 
-    private DigitalFemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
 
     private SubjectReader $subjectReader;
 
@@ -22,11 +22,11 @@ class TxnIdHandler implements HandlerInterface
      * @param SubjectReader $subjectReader
      */
     public function __construct(
-        DigitalFemsaLogger   $digitalFemsaLogger,
-        SubjectReader $subjectReader
+        DigitalFemsaLogger  $digitalFemsaLogger,
+        SubjectReader       $subjectReader
     ) {
-        $this->_femsaLogger = $digitalFemsaLogger;
-        $this->_femsaLogger->info('Response TxnIdHandler :: __construct');
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
+        $this->_digitalFemsaLogger->info('Response TxnIdHandler :: __construct');
 
         $this->subjectReader = $subjectReader;
     }
@@ -40,7 +40,7 @@ class TxnIdHandler implements HandlerInterface
      */
     public function handle(array $handlingSubject, array $response)
     {
-        $this->_femsaLogger->info('Response TxnIdHandler :: handle', $response);
+        $this->_digitalFemsaLogger->info('Response TxnIdHandler :: handle', $response);
 
         $paymentDO = $this->subjectReader->readPayment($handlingSubject);
         $payment = $paymentDO->getPayment();

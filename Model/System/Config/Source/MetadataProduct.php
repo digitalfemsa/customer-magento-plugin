@@ -24,8 +24,8 @@ class MetadataProduct implements ArrayInterface
      * @param AttributeRepositoryInterface $attributeRepository
      */
     public function __construct(
-        SearchCriteriaBuilder $searchCriteriaBuilder,
-        AttributeRepositoryInterface $attributeRepository
+        SearchCriteriaBuilder           $searchCriteriaBuilder,
+        AttributeRepositoryInterface    $attributeRepository
     ) {
             $this->searchCriteriaBuilder = $searchCriteriaBuilder;
             $this->attributeRepository = $attributeRepository;

@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request;
 
-use DigitalFemsa\Payments\Helper\Data as DigitalFemsaFemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Payment\Gateway\Helper\SubjectReader;
@@ -16,13 +16,13 @@ class DiscountLinesBuilder implements BuilderInterface
 
     protected CartRepositoryInterface $_cartRepository;
 
-    private DigitalFemsaFemsaHelper $_digitalFemsaHelper;
+    private DigitalFemsaHelper $_digitalFemsaHelper;
 
     public function __construct(
         DigitalFemsaLogger      $digitalFemsaLogger,
         SubjectReader           $subjectReader,
         CartRepositoryInterface $cartRepository,
-        DigitalFemsaFemsaHelper $digitalFemsaHelper
+        DigitalFemsaHelper      $digitalFemsaHelper
     ) {
         $this->_logger = $digitalFemsaLogger;
         $this->_logger->info('Request DiscountLinesBuilder :: __construct');
