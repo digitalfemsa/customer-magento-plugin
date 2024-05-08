@@ -2,7 +2,7 @@
 
 namespace DigitalFemsa\Payments\Helper;
 
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ProductMetadataInterface;
@@ -33,9 +33,9 @@ class Data extends Util
      */
     protected ProductMetadataInterface $_productMetadata;
     /**
-     * @var FemsaLogger
+     * @var DigitalFemsaLogger
      */
-    protected FemsaLogger $femsaLogger;
+    protected DigitalFemsaLogger $digitalFemsaLogger;
 
     /**
      * @var StoreManagerInterface
@@ -69,7 +69,7 @@ class Data extends Util
      * @param ModuleListInterface $moduleList
      * @param EncryptorInterface $encryptor
      * @param ProductMetadataInterface $productMetadata
-     * @param FemsaLogger $femsaLogger
+     * @param DigitalFemsaLogger $digitalFemsaLogger
      * @param CheckoutSession $checkoutSession
      * @param CustomerSession $customerSession
      * @param ProductRepository $productRepository
@@ -83,7 +83,7 @@ class Data extends Util
         ModuleListInterface      $moduleList,
         EncryptorInterface       $encryptor,
         ProductMetadataInterface $productMetadata,
-        FemsaLogger              $femsaLogger,
+        DigitalFemsaLogger       $digitalFemsaLogger,
         CheckoutSession          $checkoutSession,
         CustomerSession          $customerSession,
         ProductRepository        $productRepository,
@@ -95,7 +95,7 @@ class Data extends Util
         $this->_moduleList = $moduleList;
         $this->_encryptor = $encryptor;
         $this->_productMetadata = $productMetadata;
-        $this->femsaLogger = $femsaLogger;
+        $this->femsaLogger = $digitalFemsaLogger;
         $this->checkoutSession = $checkoutSession;
         $this->customerSession = $customerSession;
         $this->productRepository = $productRepository;

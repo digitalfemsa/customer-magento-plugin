@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Command;
 
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Framework\Phrase;
 use Magento\Payment\Gateway\Command\CommandException;
 use Magento\Payment\Gateway\Command\ResultInterface;
@@ -42,15 +42,15 @@ class GatewayCommand implements CommandInterface
     private $validator;
 
     /**
-     * @var FemsaLogger
+     * @var DigitalFemsaLogger
      */
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
 
     /**
      * @param BuilderInterface $requestBuilder
      * @param TransferFactoryInterface $transferFactory
      * @param ClientInterface $client
-     * @param FemsaLogger $femsaLogger
+     * @param DigitalFemsaLogger $digitalFemsaLogger
      * @param HandlerInterface|null $handler
      * @param ValidatorInterface|null $validator
      */
@@ -58,7 +58,7 @@ class GatewayCommand implements CommandInterface
         BuilderInterface         $requestBuilder,
         TransferFactoryInterface $transferFactory,
         ClientInterface          $client,
-        FemsaLogger              $femsaLogger,
+        DigitalFemsaLogger       $digitalFemsaLogger,
         HandlerInterface         $handler = null,
         ValidatorInterface       $validator = null
     ) {
@@ -67,8 +67,8 @@ class GatewayCommand implements CommandInterface
         $this->client = $client;
         $this->handler = $handler;
         $this->validator = $validator;
-        $this->_femsaLogger = $femsaLogger;
-        $this->_femsaLogger->info('Command GatewayCommand :: __construct');
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
+        $this->_digitalFemsaLogger->info('Command GatewayCommand :: __construct');
     }
 
     /**
@@ -82,7 +82,7 @@ class GatewayCommand implements CommandInterface
      */
     public function execute(array $commandSubject)
     {
-        $this->_femsaLogger->info('Command GatewayCommand :: execute');
+        $this->_digitalFemsaLogger->info('Command GatewayCommand :: execute');
 
         // @TODO implement exceptions catching
         $transferO = $this->transferFactory->create(
@@ -124,7 +124,7 @@ class GatewayCommand implements CommandInterface
     private function logExceptions(array $fails)
     {
         foreach ($fails as $failPhrase) {
-            $this->_femsaLogger->critical((string) $failPhrase);
+            $this->_digitalFemsaLogger->critical((string) $failPhrase);
         }
     }
 }

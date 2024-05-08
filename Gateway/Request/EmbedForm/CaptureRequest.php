@@ -1,8 +1,8 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request\EmbedForm;
 
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use DigitalFemsa\Payments\Model\Config;
 use DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider;
 use Magento\Customer\Api\CustomerRepositoryInterface;
@@ -22,13 +22,13 @@ class CaptureRequest implements BuilderInterface
      */
     protected SubjectReader $subjectReader;
     /**
-     * @var FemsaHelper
+     * @var DigitalFemsaHelper
      */
-    protected FemsaHelper $_femsaHelper;
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
     /**
-     * @var FemsaLogger
+     * @var DigitalFemsaLogger
      */
-    protected FemsaLogger $_femsaLogger;
+    protected DigitalFemsaLogger $_digitalFemsaLogger;
     /**
      * @var Config
      */
@@ -46,8 +46,8 @@ class CaptureRequest implements BuilderInterface
      * CaptureRequest constructor.
      * @param ConfigInterface $config
      * @param SubjectReader $subjectReader
-     * @param FemsaHelper $femsaHelper
-     * @param FemsaLogger $femsaLogger
+     * @param DigitalFemsaHelper $digitalFemsaHelper
+     * @param DigitalFemsaLogger $digitalFemsaLogger
      * @param Config $femsaConfig
      * @param CustomerSession $session
      * @param CustomerRepositoryInterface $customerRepository
@@ -55,15 +55,15 @@ class CaptureRequest implements BuilderInterface
     public function __construct(
         ConfigInterface             $config,
         SubjectReader               $subjectReader,
-        FemsaHelper                 $femsaHelper,
-        FemsaLogger                 $femsaLogger,
+        DigitalFemsaHelper          $digitalFemsaHelper,
+        DigitalFemsaLogger          $digitalFemsaLogger,
         Config                      $femsaConfig,
         CustomerSession             $session,
         CustomerRepositoryInterface $customerRepository
     ) {
-        $this->_femsaHelper = $femsaHelper;
-        $this->_femsaLogger = $femsaLogger;
-        $this->_femsaLogger->info('EMBED Request CaptureRequest :: __construct');
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
+        $this->_digitalFemsaLogger->info('EMBED Request CaptureRequest :: __construct');
         $this->config = $config;
         $this->subjectReader = $subjectReader;
         $this->femsaConfig = $femsaConfig;
@@ -73,12 +73,12 @@ class CaptureRequest implements BuilderInterface
 
     public function build(array $buildSubject)
     {
-        $this->_femsaLogger->info('Request CaptureRequest :: build');
+        $this->_digitalFemsaLogger->info('Request CaptureRequest :: build');
 
         $paymentDO = $this->subjectReader->readPayment($buildSubject);
         $payment = $paymentDO->getPayment();
         $order = $paymentDO->getOrder();
-        $this->_femsaLogger->info('Request CaptureRequest :: build additional', $payment->getAdditionalInformation());
+        $this->_digitalFemsaLogger->info('Request CaptureRequest :: build additional', $payment->getAdditionalInformation());
         $iframePayment = $payment->getAdditionalInformation('iframe_payment');
         $iframeOrderId = $payment->getAdditionalInformation('order_id');
         $txnId = $payment->getAdditionalInformation('txn_id');
@@ -86,7 +86,7 @@ class CaptureRequest implements BuilderInterface
 
         $request['metadata'] = [
             'plugin' => 'Magento',
-            'plugin_version' => $this->_femsaHelper->getMageVersion(),
+            'plugin_version' => $this->_digitalFemsaHelper->getMageVersion(),
             'order_id'       => $order->getOrderIncrementId(),
             'soft_validations'  => 'true'
         ];
@@ -101,7 +101,7 @@ class CaptureRequest implements BuilderInterface
 
         $request['digitalfemsa_customer_id'] = $payment->getAdditionalInformation('digitalfemsa_customer_id');
 
-        $this->_femsaLogger->info('Request CaptureRequest :: build : return request', $request);
+        $this->_digitalFemsaLogger->info('Request CaptureRequest :: build : return request', $request);
 
         return $request;
     }
@@ -119,7 +119,7 @@ class CaptureRequest implements BuilderInterface
         ];
         if ($paymentMethod == ConfigProvider::PAYMENT_METHOD_CASH) {
             $reference = $payment->getAdditionalInformation('reference');
-            $expireAt = $this->_femsaHelper->getExpiredAt();
+            $expireAt = $this->_digitalFemsaHelper->getExpiredAt();
             $charge['payment_method']['reference'] = $reference;
             $charge['payment_method']['expires_at'] = $expireAt;
         }

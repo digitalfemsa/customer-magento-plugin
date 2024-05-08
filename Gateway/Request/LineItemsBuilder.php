@@ -1,30 +1,30 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request;
 
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 
 class LineItemsBuilder implements BuilderInterface
 {
 
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
 
-    protected FemsaHelper $_femsaHelper;
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
 
     public function __construct(
-        FemsaHelper $femsaHelper,
-        FemsaLogger $femsaLogger
+        DigitalFemsaHelper $digitalFemsaHelper,
+        DigitalFemsaLogger $digitalFemsaLogger
     ) {
-        $this->_femsaLogger = $femsaLogger;
-        $this->_femsaLogger->info('Request LineItemsBuilder :: __construct');
-        $this->_femsaHelper = $femsaHelper;
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
+        $this->_digitalFemsaLogger->info('Request LineItemsBuilder :: __construct');
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
     }
 
     public function build(array $buildSubject)
     {
-        $this->_femsaLogger->info('Request LineItemsBuilder :: build');
+        $this->_digitalFemsaLogger->info('Request LineItemsBuilder :: build');
 
         if (!isset($buildSubject['payment'])
             || !$buildSubject['payment'] instanceof PaymentDataObjectInterface
@@ -35,9 +35,9 @@ class LineItemsBuilder implements BuilderInterface
         $payment = $buildSubject['payment'];
         $order = $payment->getOrder();
         $items = $order->getItems();
-        $request['line_items'] = $this->_femsaHelper->getLineItems($items, false);
+        $request['line_items'] = $this->_digitalFemsaHelper->getLineItems($items, false);
 
-        $this->_femsaLogger->info('Request LineItemsBuilder :: build : return request', $request);
+        $this->_digitalFemsaLogger->info('Request LineItemsBuilder :: build : return request', $request);
 
         return $request;
     }

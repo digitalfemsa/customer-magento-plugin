@@ -28,7 +28,7 @@ use DigitalFemsa\Model\WebhookUpdateRequest;
 use DigitalFemsa\Payments\Helper\Data as HelperData;
 use GuzzleHttp\Client;
 
-class FemsaApiClient
+class DigitalFemsaApiClient
 {
     /**
      * @var Configuration

@@ -1,21 +1,21 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Config\EmbedForm;
 
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use Magento\Payment\Gateway\Config\ValueHandlerInterface;
 
 class ActiveValueHandler implements ValueHandlerInterface
 {
     /**
-     * @var FemsaHelper
+     * @var DigitalFemsaHelper
      */
-    protected FemsaHelper $_femsaHelper;
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
 
     /**
-     * @param FemsaHelper $femsaHelper
+     * @param DigitalFemsaHelper $digitalFemsaHelper
      */
-    public function __construct(FemsaHelper $femsaHelper) {
-        $this->_femsaHelper = $femsaHelper;
+    public function __construct(DigitalFemsaHelper $digitalFemsaHelper) {
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
     }
 
     /**
@@ -27,6 +27,6 @@ class ActiveValueHandler implements ValueHandlerInterface
      */
     public function handle(array $subject, $storeId = null): bool
     {
-        return $this->_femsaHelper->isCashEnabled();
+        return $this->_digitalFemsaHelper->isCashEnabled();
     }
 }

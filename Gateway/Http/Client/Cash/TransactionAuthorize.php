@@ -2,11 +2,11 @@
 
 namespace DigitalFemsa\Payments\Gateway\Http\Client\Cash;
 
-use DigitalFemsa\Payments\Api\FemsaApiClient;
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
-use DigitalFemsa\Payments\Api\Data\FemsaSalesOrderInterface;
-use DigitalFemsa\Payments\Model\FemsaSalesOrderFactory;
+use DigitalFemsa\Payments\Api\DigitalFemsaApiClient;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
+use DigitalFemsa\Payments\Api\Data\DigitalFemsaSalesOrderInterface;
+use DigitalFemsa\Payments\Model\DigitalFemsaSalesOrderFactory;
 use Magento\Payment\Gateway\Http\ClientInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Model\Method\Logger;
@@ -29,36 +29,36 @@ class TransactionAuthorize implements ClientInterface
      */
     private Logger $logger;
 
-    protected FemsaHelper $_femsaHelper;
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
 
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
 
-    protected FemsaSalesOrderFactory $femsaSalesOrderFactory;
+    protected DigitalFemsaSalesOrderFactory $femsaSalesOrderFactory;
 
     /**
-     * @var FemsaApiClient
+     * @var DigitalFemsaApiClient
      */
-    private FemsaApiClient $femsaApiClient;
+    private DigitalFemsaApiClient $femsaApiClient;
 
     /**
      * @param Logger $logger
-     * @param FemsaHelper $femsaHelper
-     * @param FemsaLogger $femsaLogger
-     * @param FemsaApiClient $femsaApiClient
-     * @param FemsaSalesOrderFactory $femsaSalesOrderFactory
+     * @param DigitalFemsaHelper $digitalFemsaHelper
+     * @param DigitalFemsaLogger $digitalFemsaLogger
+     * @param DigitalFemsaApiClient $femsaApiClient
+     * @param DigitalFemsaSalesOrderFactory $femsaSalesOrderFactory
      */
     public function __construct(
-        Logger                   $logger,
-        FemsaHelper              $femsaHelper,
-        FemsaLogger              $femsaLogger,
-        FemsaApiClient           $femsaApiClient,
-        FemsaSalesOrderFactory $femsaSalesOrderFactory
+        Logger                          $logger,
+        DigitalFemsaHelper              $digitalFemsaHelper,
+        DigitalFemsaLogger              $digitalFemsaLogger,
+        DigitalFemsaApiClient           $femsaApiClient,
+        DigitalFemsaSalesOrderFactory   $femsaSalesOrderFactory
     )
     {
-        $this->_femsaHelper = $femsaHelper;
-        $this->_femsaLogger = $femsaLogger;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
         $this->femsaApiClient = $femsaApiClient;
-        $this->_femsaLogger->info('HTTP Client Cash TransactionAuthorize :: __construct');
+        $this->_digitalFemsaLogger->info('HTTP Client Cash TransactionAuthorize :: __construct');
         $this->logger = $logger;
         $this->femsaSalesOrderFactory = $femsaSalesOrderFactory;
     }
@@ -72,7 +72,7 @@ class TransactionAuthorize implements ClientInterface
      */
     public function placeRequest(TransferInterface $transferObject)
     {
-        $this->_femsaLogger->info('HTTP Client Cash TransactionAuthorize :: placeRequest');
+        $this->_digitalFemsaLogger->info('HTTP Client Cash TransactionAuthorize :: placeRequest');
         $request = $transferObject->getBody();
 
         $orderParams['currency'] = $request['CURRENCY'];
@@ -105,22 +105,22 @@ class TransactionAuthorize implements ClientInterface
                 $this->femsaSalesOrderFactory
                     ->create()
                     ->setData([
-                        FemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID => $ord_id,
-                        FemsaSalesOrderInterface::INCREMENT_ORDER_ID => $orderParams['metadata']['order_id']
+                        DigitalFemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID => $ord_id,
+                        DigitalFemsaSalesOrderInterface::INCREMENT_ORDER_ID => $orderParams['metadata']['order_id']
                     ])
                     ->save();
             } else {
                 $result_code = 666;
             }
         } catch (\Exception $e) {
-            $this->_femsaLogger->error(__('[DigitalFemsa]: Payment capturing error.'));
+            $this->_digitalFemsaLogger->error(__('[DigitalFemsa]: Payment capturing error.'));
             $this->logger->debug(
                 [
                     'request' => $request,
                     'response' => $e->getMessage()
                 ]
             );
-            $this->_femsaLogger->info(
+            $this->_digitalFemsaLogger->info(
                 'HTTP Client Cash TransactionAuthorize :: placeRequest: Payment authorize error ' . $e->getMessage()
             );
             throw new \Exception(__($e->getMessage()));
@@ -150,7 +150,7 @@ class TransactionAuthorize implements ClientInterface
             ]
         );
 
-        $this->_femsaLogger->info(
+        $this->_digitalFemsaLogger->info(
             'HTTP Client Cash TransactionAuthorize :: placeRequest',
             [
                 'request' => $request,
@@ -165,7 +165,7 @@ class TransactionAuthorize implements ClientInterface
 
     protected function generateResponseForCode($resultCode, $txn_id, $ord_id): array
     {
-        $this->_femsaLogger->info('HTTP Client Cash TransactionAuthorize :: generateResponseForCode');
+        $this->_digitalFemsaLogger->info('HTTP Client Cash TransactionAuthorize :: generateResponseForCode');
 
         return array_merge(
             [

@@ -2,9 +2,9 @@
 
 namespace DigitalFemsa\Payments\Model;
 
-use DigitalFemsa\Payments\Api\FemsaApiClient;
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Api\DigitalFemsaApiClient;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Validator\Exception;
 
@@ -12,32 +12,32 @@ class Config
 {
 
     /**
-     * @var FemsaHelper
+     * @var DigitalFemsaHelper
      */
-    protected FemsaHelper $_femsaHelper;
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
     /**
-     * @var FemsaLogger
+     * @var DigitalFemsaLogger
      */
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
 
     /**
-     * @var FemsaApiClient
+     * @var DigitalFemsaApiClient
      */
-    protected FemsaApiClient $femsaApiClient;
+    protected DigitalFemsaApiClient $femsaApiClient;
 
     /**
-     * @param FemsaHelper $femsaHelper
-     * @param FemsaLogger $femsaLogger
-     * @param FemsaApiClient $femsaApiClient
+     * @param DigitalFemsaHelper $digitalFemsaHelper
+     * @param DigitalFemsaLogger $digitalFemsaLogger
+     * @param DigitalFemsaApiClient $femsaApiClient
      */
     public function __construct(
-        FemsaHelper    $femsaHelper,
-        FemsaLogger    $femsaLogger,
-        FemsaApiClient $femsaApiClient
+        DigitalFemsaHelper    $digitalFemsaHelper,
+        DigitalFemsaLogger    $digitalFemsaLogger,
+        DigitalFemsaApiClient $femsaApiClient
     )
     {
-        $this->_femsaHelper = $femsaHelper;
-        $this->_femsaLogger = $femsaLogger;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
         $this->femsaApiClient = $femsaApiClient;
     }
 
@@ -49,7 +49,7 @@ class Config
      */
     public function createWebhook()
     {
-        $urlWebhook = $this->_femsaHelper->getUrlWebhookOrDefault();
+        $urlWebhook = $this->_digitalFemsaHelper->getUrlWebhookOrDefault();
         try {
             $different = true;
             $webhooks = $this->femsaApiClient->getWebhooks();
@@ -64,11 +64,11 @@ class Config
                     'url' => $urlWebhook
                 ]);
             } else {
-                $this->_femsaLogger->info('[DigitalFemsa]: El webhook ' . $urlWebhook . ' ya se encuentra en DigitalFemsa!');
+                $this->_digitalFemsaLogger->info('[DigitalFemsa]: El webhook ' . $urlWebhook . ' ya se encuentra en DigitalFemsa!');
             }
         } catch (\Exception $e) {
             $errorMessage = $e->getMessage();
-            $this->_femsaLogger->info('[DigitalFemsa]: Webhook error, Message: ' . $errorMessage . ' URL: ' . $urlWebhook);
+            $this->_digitalFemsaLogger->info('[DigitalFemsa]: Webhook error, Message: ' . $errorMessage . ' URL: ' . $urlWebhook);
 
             throw new Exception(
                 __('Can not register this webhook ' . $urlWebhook . '<br>'

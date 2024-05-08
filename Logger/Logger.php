@@ -28,9 +28,9 @@ class Logger
     public function addRecord(int $level, string $message, array $context = []): bool
     {
         $objectManager = ObjectManager::getInstance();
-        $femsaHelper = $objectManager->create(Data::class);
+        $digitalFemsaHelper = $objectManager->create(Data::class);
 
-        if ((int)$femsaHelper->getConfigData('digitalfemsa/femsa_global', 'debug')) {
+        if ((int)$digitalFemsaHelper->getConfigData('digitalfemsa/femsa_global', 'debug')) {
             return $this->logger->addRecord($level, $message, $context);
         }
 

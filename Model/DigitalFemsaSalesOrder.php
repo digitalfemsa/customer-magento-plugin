@@ -1,11 +1,11 @@
 <?php
 namespace DigitalFemsa\Payments\Model;
 
-use DigitalFemsa\Payments\Api\Data\FemsaSalesOrderInterface;
+use DigitalFemsa\Payments\Api\Data\DigitalFemsaSalesOrderInterface;
 use Magento\Framework\Model\AbstractModel;
-use DigitalFemsa\Payments\Model\ResourceModel\FemsaSalesOrder as ResourceFemsaSalesOrder;
+use DigitalFemsa\Payments\Model\ResourceModel\DigitalFemsaSalesOrder as ResourceFemsaSalesOrder;
 
-class FemsaSalesOrder extends AbstractModel implements FemsaSalesOrderInterface
+class DigitalFemsaSalesOrder extends AbstractModel implements DigitalFemsaSalesOrderInterface
 {
     /**
      * Construct
@@ -25,7 +25,7 @@ class FemsaSalesOrder extends AbstractModel implements FemsaSalesOrderInterface
      */
     public function setFemsaOrderId($value)
     {
-        $this->setData(FemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID, $value);
+        $this->setData(DigitalFemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID, $value);
     }
 
     /**
@@ -35,7 +35,7 @@ class FemsaSalesOrder extends AbstractModel implements FemsaSalesOrderInterface
      */
     public function getFemsaOrderId()
     {
-        return $this->getData(FemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID);
+        return $this->getData(DigitalFemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID);
     }
 
     /**
@@ -46,7 +46,7 @@ class FemsaSalesOrder extends AbstractModel implements FemsaSalesOrderInterface
      */
     public function setIncrementOrderId($value)
     {
-        $this->setData(FemsaSalesOrderInterface::INCREMENT_ORDER_ID, $value);
+        $this->setData(DigitalFemsaSalesOrderInterface::INCREMENT_ORDER_ID, $value);
     }
 
     /**
@@ -56,7 +56,7 @@ class FemsaSalesOrder extends AbstractModel implements FemsaSalesOrderInterface
      */
     public function getIncrementOrderId()
     {
-        return $this->getData(FemsaSalesOrderInterface::INCREMENT_ORDER_ID);
+        return $this->getData(DigitalFemsaSalesOrderInterface::INCREMENT_ORDER_ID);
     }
 
     /**
@@ -67,7 +67,7 @@ class FemsaSalesOrder extends AbstractModel implements FemsaSalesOrderInterface
      */
     public function loadByFemsaOrderId($femsaOrderId)
     {
-        return $this->loadByAttribute(FemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID, $femsaOrderId);
+        return $this->loadByAttribute(DigitalFemsaSalesOrderInterface::DIGITALFEMSA_ORDER_ID, $femsaOrderId);
     }
 
     /**

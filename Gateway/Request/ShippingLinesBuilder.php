@@ -1,8 +1,8 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request;
 
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Payment\Gateway\Helper\SubjectReader;
@@ -12,19 +12,19 @@ class ShippingLinesBuilder implements BuilderInterface
 {
     private SubjectReader $subjectReader;
 
-    private FemsaLogger $_logger;
+    private DigitalFemsaLogger $_logger;
 
-    private FemsaHelper $_femsaHelper;
+    private DigitalFemsaHelper $_digitalFemsaHelper;
 
     public function __construct(
-        SubjectReader $subjectReader,
-        FemsaLogger   $logger,
-        FemsaHelper   $femsaHelper
+        SubjectReader       $subjectReader,
+        DigitalFemsaLogger  $logger,
+        DigitalFemsaHelper  $digitalFemsaHelper
     ) {
         $this->_logger = $logger;
         $this->_logger->info('Request ShippingLinesBuilder :: __construct');
         $this->subjectReader = $subjectReader;
-        $this->_femsaHelper = $femsaHelper;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
     }
 
     /**
@@ -40,7 +40,7 @@ class ShippingLinesBuilder implements BuilderInterface
 
         $quote_id = $payment->getAdditionalInformation('quote_id');
         
-        $shippingLines = $this->_femsaHelper->getShippingLines($quote_id);
+        $shippingLines = $this->_digitalFemsaHelper->getShippingLines($quote_id);
 
         if (empty($shippingLines)) {
 

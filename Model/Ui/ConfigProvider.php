@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Model\Ui;
 
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\View\Asset\Repository as AssetRepository;
 
@@ -9,23 +9,23 @@ class ConfigProvider implements ConfigProviderInterface
 {
     public const CODE = 'digitalfemsa_global';
     /**
-     * @var FemsaHelper
+     * @var DigitalFemsaHelper
      */
-    protected FemsaHelper $_femsaHelper;
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
     /**
      * @var mixed
      */
     private $_assetRepository;
 
     /**
-     * @param FemsaHelper $femsaHelper
+     * @param DigitalFemsaHelper $digitalFemsaHelper
      * @param AssetRepository $assetRepository
      */
     public function __construct(
-        FemsaHelper     $femsaHelper,
-        AssetRepository $assetRepository
+        DigitalFemsaHelper  $digitalFemsaHelper,
+        AssetRepository     $assetRepository
     ) {
-        $this->_femsaHelper = $femsaHelper;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
         $this->_assetRepository = $assetRepository;
     }
 
@@ -39,7 +39,7 @@ class ConfigProvider implements ConfigProviderInterface
         return [
             'payment' => [
                 self::CODE => [
-                    'publicKey' => $this->_femsaHelper->getPublicKey(),
+                    'publicKey' => $this->_digitalFemsaHelper->getPublicKey(),
                     'femsa_logo' => $this->_assetRepository->getUrl('DigitalFemsa_Payments::images/femsa.png')
                 ]
             ]

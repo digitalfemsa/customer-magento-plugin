@@ -1,9 +1,9 @@
 <?php
-namespace DigitalFemsa\Payments\Model\ResourceModel\FemsaSalesOrder;
+namespace DigitalFemsa\Payments\Model\ResourceModel\DigitalFemsaSalesOrder;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use DigitalFemsa\Payments\Model\FemsaSalesOrder;
-use DigitalFemsa\Payments\Model\ResourceModel\FemsaSalesOrder as ResourceFemsaSalesOrder;
+use DigitalFemsa\Payments\Model\DigitalFemsaSalesOrder;
+use DigitalFemsa\Payments\Model\ResourceModel\DigitalFemsaSalesOrder as ResourceFemsaSalesOrder;
 
 class Collection extends AbstractCollection
 {
@@ -15,7 +15,7 @@ class Collection extends AbstractCollection
     protected function _construct()
     {
         $this->_init(
-            FemsaSalesOrder::class,
+            DigitalFemsaSalesOrder::class,
             ResourceFemsaSalesOrder::class
         );
     }

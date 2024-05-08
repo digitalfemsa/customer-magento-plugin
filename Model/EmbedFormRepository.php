@@ -4,57 +4,57 @@ namespace DigitalFemsa\Payments\Model;
 
 use DigitalFemsa\Model\OrderResponse;
 use DigitalFemsa\ApiException;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
-use DigitalFemsa\Payments\Api\Data\FemsaQuoteInterface;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
+use DigitalFemsa\Payments\Api\Data\DigitalFemsaQuoteInterface;
 use DigitalFemsa\Payments\Api\EmbedFormRepositoryInterface;
 use Exception;
 use Magento\Framework\Exception\NoSuchEntityException;
-use DigitalFemsa\Payments\Api\FemsaApiClient;
-use DigitalFemsa\Payments\Exception\FemsaException;
+use DigitalFemsa\Payments\Api\DigitalFemsaApiClient;
+use DigitalFemsa\Payments\Exception\DigitalFemsaException;
 
 class EmbedFormRepository implements EmbedFormRepositoryInterface
 {
     /**
-     * @var FemsaLogger
+     * @var DigitalFemsaLogger
      */
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
     /**
-     * @var FemsaQuoteInterface
+     * @var DigitalFemsaQuoteInterface
      */
-    private FemsaQuoteInterface $femsaQuoteInterface;
+    private DigitalFemsaQuoteInterface $digitalFemsaQuoteInterface;
     /**
-     * @var FemsaApiClient
+     * @var DigitalFemsaApiClient
      */
-    protected FemsaApiClient $femsaOrderApi;
+    protected DigitalFemsaApiClient $digitalFemsaOrderApi;
     /**
-     * @var FensaQuoteFactory
+     * @var DigitalFemsaQuoteFactory
      */
-    private $femsaQuoteFactory;
+    private $digitalDigitalFemsaQuoteFactory;
     /**
-     * @var FemsaQuoteRepositoryFactory
+     * @var DigitalFemsaQuoteRepositoryFactory
      */
-    private $femsaQuoteRepositoryFactory;
+    private $digitalDigitalFemsaQuoteRepositoryFactory;
 
     /**
-     * @param FemsaLogger $femsaLogger
-     * @param FemsaQuoteInterface $femsaQuoteInterface
-     * @param FemsaApiClient $femsaOrderApi
-     * @param FemsaQuoteFactory $femsaQuoteFactory
-     * @param FemsaQuoteRepositoryFactory $femsaQuoteRepositoryFactory
+     * @param DigitalFemsaLogger $digitalFemsaLogger
+     * @param DigitalFemsaQuoteInterface $digitalFemsaQuoteInterface
+     * @param DigitalFemsaApiClient $digitalFemsaOrderApi
+     * @param DigitalFemsaQuoteFactory $digitalDigitalFemsaQuoteFactory
+     * @param DigitalFemsaQuoteRepositoryFactory $digitalDigitalFemsaQuoteRepositoryFactory
      */
     public function __construct(
-        FemsaLogger                 $femsaLogger,
-        FemsaQuoteInterface         $femsaQuoteInterface,
-        FemsaApiClient              $femsaOrderApi,
-        FemsaQuoteFactory           $femsaQuoteFactory,
-        FemsaQuoteRepositoryFactory $femsaQuoteRepositoryFactory
+        DigitalFemsaLogger                  $digitalFemsaLogger,
+        DigitalFemsaQuoteInterface          $digitalFemsaQuoteInterface,
+        DigitalFemsaApiClient               $digitalFemsaOrderApi,
+        DigitalFemsaQuoteFactory            $digitalDigitalFemsaQuoteFactory,
+        DigitalFemsaQuoteRepositoryFactory  $digitalDigitalFemsaQuoteRepositoryFactory
     )
     {
-        $this->_femsaLogger = $femsaLogger;
-        $this->femsaQuoteInterface = $femsaQuoteInterface;
-        $this->femsaQuoteRepositoryFactory = $femsaQuoteRepositoryFactory;
-        $this->femsaQuoteFactory = $femsaQuoteFactory;
-        $this->femsaOrderApi = $femsaOrderApi;
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
+        $this->digitalFemsaQuoteInterface = $digitalFemsaQuoteInterface;
+        $this->digitalDigitalFemsaQuoteRepositoryFactory = $digitalDigitalFemsaQuoteRepositoryFactory;
+        $this->digitalDigitalFemsaQuoteFactory = $digitalDigitalFemsaQuoteFactory;
+        $this->digitalFemsaOrderApi = $digitalFemsaOrderApi;
     }
 
     /**
@@ -63,13 +63,13 @@ class EmbedFormRepository implements EmbedFormRepositoryInterface
      * @param mixed $orderParameters
      * @param mixed $orderTotal
      * @return void
-     * @throws FemsaException
+     * @throws DigitalFemsaException
      */
     private function validateOrderParameters($orderParameters, $orderTotal)
     {
         //Currency
         if (strtoupper($orderParameters['currency']) !== 'MXN') {
-            throw new FemsaException(
+            throw new DigitalFemsaException(
                 __('Este medio de pago no acepta moneda extranjera')
             );
         }
@@ -80,10 +80,10 @@ class EmbedFormRepository implements EmbedFormRepositoryInterface
             $total += $lineItem['unit_price'] * $lineItem['quantity'];
         }
 
-        if ($total < FemsaQuoteInterface::MINIMUM_AMOUNT_PER_QUOTE * 100) {
-            throw new FemsaException(
+        if ($total < DigitalFemsaQuoteInterface::MINIMUM_AMOUNT_PER_QUOTE * 100) {
+            throw new DigitalFemsaException(
                 __('Para utilizar este medio de pago
-                debe ingresar una compra superior a $' . FemsaQuoteInterface::MINIMUM_AMOUNT_PER_QUOTE)
+                debe ingresar una compra superior a $' . DigitalFemsaQuoteInterface::MINIMUM_AMOUNT_PER_QUOTE)
             );
         }
 
@@ -91,21 +91,21 @@ class EmbedFormRepository implements EmbedFormRepositoryInterface
         if (strlen($orderParameters["shipping_contact"]["phone"]) < 10 ||
             strlen($orderParameters["shipping_contact"]["address"]["phone"]) < 10
         ) {
-            throw new FemsaException(__('Télefono no válido. 
+            throw new DigitalFemsaException(__('Télefono no válido. 
                 El télefono debe tener al menos 10 carácteres. 
                 Los caracteres especiales se desestimaran, solo se puede ingresar como 
                 primer carácter especial: +'));
         }
 
         if (strlen($orderParameters["shipping_contact"]["address"]["postal_code"]) !== 5) {
-            throw new FemsaException(__("Código Postal invalido. Debe tener 5 dígitos"));
+            throw new DigitalFemsaException(__("Código Postal invalido. Debe tener 5 dígitos"));
         }
 
         //cash validations
         if (in_array('cash', $orderParameters["checkout"]["allowed_payment_methods"]) &&
             $orderTotal > 10000
         ) {
-            throw new FemsaException(__('El monto máximo para pagos con Efectivo es de $10.000'));
+            throw new DigitalFemsaException(__('El monto máximo para pagos con Efectivo es de $10.000'));
         }
     }
 
@@ -116,21 +116,21 @@ class EmbedFormRepository implements EmbedFormRepositoryInterface
      * @param array $orderParams
      * @param float $orderTotal
      * @return OrderResponse
-     * @throws FemsaException
+     * @throws DigitalFemsaException
      */
     public function generate($quoteId, $orderParams, $orderTotal): OrderResponse
     {
         //Validate params
         $this->validateOrderParameters($orderParams, $orderTotal);
 
-        $femsaQuoteRepo = $this->femsaQuoteRepositoryFactory->create();
+        $femsaQuoteRepo = $this->digitalDigitalFemsaQuoteRepositoryFactory->create();
 
         $femsaQuote = null;
         $femsaOrder = null;
         $hasToCreateNewOrder = false;
         try {
             $femsaQuote = $femsaQuoteRepo->getByid($quoteId);
-            $femsaOrder = $this->femsaOrderApi->getOrderByID($femsaQuote->getFemsaOrderId());
+            $femsaOrder = $this->digitalFemsaOrderApi->getOrderByID($femsaQuote->getFemsaOrderId());
 
             if (!empty($femsaOrder)) {
                 $checkoutParams = $orderParams['checkout'];
@@ -164,27 +164,27 @@ class EmbedFormRepository implements EmbedFormRepositoryInterface
              *      2.3- checkout parameters has changed
              */
             if ($hasToCreateNewOrder) {
-                $this->_femsaLogger->info('EmbedFormRepository::generate Creates DigitalFemsa order', $orderParams);
+                $this->_digitalFemsaLogger->info('EmbedFormRepository::generate Creates DigitalFemsa order', $orderParams);
                 //Creates checkout order
-                $femsaOrder = $this->femsaOrderApi->createOrder($orderParams);
+                $femsaOrder = $this->digitalFemsaOrderApi->createOrder($orderParams);
 
                 //Save map DigitalFemsa order and quote
-                $femsaQuote = $this->femsaQuoteFactory->create();
+                $femsaQuote = $this->digitalDigitalFemsaQuoteFactory->create();
                 $femsaQuote->setQuoteId($quoteId);
                 $femsaQuote->setFemsaOrderId($femsaOrder->getId());
                 $femsaQuoteRepo->save($femsaQuote);
             } else {
-                $this->_femsaLogger->info('EmbedFormRepository::generate  Updates DigitalFemsa order', $orderParams);
+                $this->_digitalFemsaLogger->info('EmbedFormRepository::generate  Updates DigitalFemsa order', $orderParams);
                 //If map between DigitalFemsa order and quote exist, then just updated DigitalFemsa order
 
                 unset($orderParams['customer_info']);
-                $femsaOrder = $this->femsaOrderApi->updateOrder($femsaQuote->getFemsaOrderId(), $orderParams);
+                $femsaOrder = $this->digitalFemsaOrderApi->updateOrder($femsaQuote->getFemsaOrderId(), $orderParams);
             }
 
             return $femsaOrder;
         } catch (Exception $e) {
-            $this->_femsaLogger->error('EmbedFormRepository::generate Error: ' . $e->getMessage());
-            throw new FemsaException(__($e->getMessage()));
+            $this->_digitalFemsaLogger->error('EmbedFormRepository::generate Error: ' . $e->getMessage());
+            throw new DigitalFemsaException(__($e->getMessage()));
         }
     }
 }

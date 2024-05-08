@@ -1,8 +1,8 @@
 <?php
 namespace DigitalFemsa\Payments\Gateway\Request\Cash;
 
-use DigitalFemsa\Payments\Helper\Data as FemsaHelper;
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Payment\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 
@@ -11,36 +11,36 @@ class AuthorizeRequest implements BuilderInterface
 
     private SubjectReader $subjectReader;
 
-    protected FemsaHelper $_femsaHelper;
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
 
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
 
     public function __construct(
-        SubjectReader $subjectReader,
-        FemsaHelper   $femsaHelper,
-        FemsaLogger $femsaLogger
+        SubjectReader       $subjectReader,
+        DigitalFemsaHelper  $digitalFemsaHelper,
+        DigitalFemsaLogger  $digitalFemsaLogger
     ) {
-        $this->_femsaHelper = $femsaHelper;
-        $this->_femsaLogger = $femsaLogger;
-        $this->_femsaLogger->info('Request Cash AuthorizeRequest :: __construct');
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
+        $this->_digitalFemsaLogger->info('Request Cash AuthorizeRequest :: __construct');
 
         $this->subjectReader = $subjectReader;
     }
 
     public function build(array $buildSubject): array
     {
-        $this->_femsaLogger->info('Request Cash AuthorizeRequest :: build');
+        $this->_digitalFemsaLogger->info('Request Cash AuthorizeRequest :: build');
 
         $paymentDO = $this->subjectReader->readPayment($buildSubject);
         $order = $paymentDO->getOrder();
         
-        $expiry_date = $this->_femsaHelper->getExpiredAt();
-        $amount = $this->_femsaHelper->convertToApiPrice($order->getGrandTotalAmount());
+        $expiry_date = $this->_digitalFemsaHelper->getExpiredAt();
+        $amount = $this->_digitalFemsaHelper->convertToApiPrice($order->getGrandTotalAmount());
 
         $request['metadata'] = [
             'plugin' => 'Magento',
-            'plugin_version' => $this->_femsaHelper->getMageVersion(),
-            'plugin_digitalfemsa_version' => $this->_femsaHelper->pluginVersion(),
+            'plugin_version' => $this->_digitalFemsaHelper->getMageVersion(),
+            'plugin_digitalfemsa_version' => $this->_digitalFemsaHelper->pluginVersion(),
             'order_id'       => $order->getOrderIncrementId(),
             'soft_validations'  => 'true'
         ];

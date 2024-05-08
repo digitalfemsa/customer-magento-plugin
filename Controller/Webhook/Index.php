@@ -1,7 +1,7 @@
 <?php
 namespace DigitalFemsa\Payments\Controller\Webhook;
 
-use DigitalFemsa\Payments\Logger\Logger as FemsaLogger;
+use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use DigitalFemsa\Payments\Model\WebhookRepository;
 use DigitalFemsa\Payments\Service\MissingOrders;
 use Exception;
@@ -41,9 +41,9 @@ class Index extends Action implements CsrfAwareActionInterface
     protected Data $helper;
 
     /**
-     * @var FemsaLogger
+     * @var DigitalFemsaLogger
      */
-    private FemsaLogger $_femsaLogger;
+    private DigitalFemsaLogger $_digitalFemsaLogger;
     /**
      * @var WebhookRepository
      */
@@ -56,21 +56,21 @@ class Index extends Action implements CsrfAwareActionInterface
      * @param JsonFactory $resultJsonFactory
      * @param RawFactory $resultRawFactory
      * @param Data $helper
-     * @param FemsaLogger $femsaLogger
+     * @param DigitalFemsaLogger $digitalFemsaLogger
      * @param WebhookRepository $webhookRepository
      * @param MissingOrders $_missingOrders
      */
     public function __construct(
-        Context           $context,
-        JsonFactory       $resultJsonFactory,
-        RawFactory        $resultRawFactory,
-        Data              $helper,
-        FemsaLogger       $femsaLogger,
-        WebhookRepository $webhookRepository,
-        MissingOrders     $_missingOrders
+        Context             $context,
+        JsonFactory         $resultJsonFactory,
+        RawFactory          $resultRawFactory,
+        Data                $helper,
+        DigitalFemsaLogger  $digitalFemsaLogger,
+        WebhookRepository   $webhookRepository,
+        MissingOrders       $_missingOrders
     ) {
         parent::__construct($context);
-        $this->_femsaLogger = $femsaLogger;
+        $this->_digitalFemsaLogger = $digitalFemsaLogger;
         $this->resultJsonFactory = $resultJsonFactory;
         $this->resultRawFactory = $resultRawFactory;
         $this->helper = $helper;
@@ -123,7 +123,7 @@ class Index extends Action implements CsrfAwareActionInterface
 
             $event = $body['type'];
 
-            $this->_femsaLogger->info('Controller Index :: execute body json ', ['event' => $event]);
+            $this->_digitalFemsaLogger->info('Controller Index :: execute body json ', ['event' => $event]);
 
             switch ($event) {
                 case self::EVENT_WEBHOOK_PING:
@@ -152,7 +152,7 @@ class Index extends Action implements CsrfAwareActionInterface
             }
 
         } catch (Exception $e) {
-            $this->_femsaLogger->error('Controller Index :: '. $e->getMessage());
+            $this->_digitalFemsaLogger->error('Controller Index :: '. $e->getMessage());
             $errorResponse = [
                 'error' => 'Internal Server Error',
                 'message' => $e->getMessage(),

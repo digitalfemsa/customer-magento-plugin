@@ -1,9 +1,9 @@
 <?php
-namespace DigitalFemsa\Payments\Model\ResourceModel\FemsaQuote;
+namespace DigitalFemsa\Payments\Model\ResourceModel\DigitalFemsaQuote;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use DigitalFemsa\Payments\Model\FemsaQuote;
-use DigitalFemsa\Payments\Model\ResourceModel\FemsaQuote as ResourceFemsaQuote;
+use DigitalFemsa\Payments\Model\DigitalFemsaQuote;
+use DigitalFemsa\Payments\Model\ResourceModel\DigitalFemsaQuote as ResourceFemsaQuote;
 
 class Collection extends AbstractCollection
 {
@@ -15,7 +15,7 @@ class Collection extends AbstractCollection
     protected function _construct()
     {
         $this->_init(
-            FemsaQuote::class,
+            DigitalFemsaQuote::class,
             ResourceFemsaQuote::class
         );
     }
