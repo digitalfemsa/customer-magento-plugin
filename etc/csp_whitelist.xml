@@ -10,7 +10,7 @@
         </policy>
         <policy id="connect-src">
             <values>
-                <value id="s3_digitalfemsaapi" type="host">api.digitalfemsa.io</value>
+                <value id="s3_digitalfemsaapi" type="host">api.stg.digitalfemsa.io</value>
             </values>
         </policy>
     </policies>
