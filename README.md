@@ -1,4 +1,4 @@
-![alt tag](https://www.femsa.com/wp-content/uploads/2019/07/femsa.png)
+![alt tag](/view/adminhtml/web/images/logo.png)
 
 Magento 2 Plugin v.1.0.0 (Stable)
 ========================
@@ -28,7 +28,7 @@ php bin/magento setup:di:compile
 
 5. Enable plugin
 ```bash
-php bin/magento module:enable digitalfemsa_payments 
+php bin/magento module:enable DigitalFemsa_Payments 
 ```
 
 6. Update and/or enable cache
@@ -69,7 +69,7 @@ php bin/magento setup:di:compile
 
 8. Enable plugin
 ```bash
-php bin/magento module:enable digitalfemsa_payments 
+php bin/magento module:enable DigitalFemsa_Payments 
 ```
 
 9. Update and/or enable cache

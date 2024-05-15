@@ -27,8 +27,8 @@
             <!-- DigitalFemsa EMBED FORM -->
             <digitalfemsa_ef>
                 <active>1</active>
-                <title>DigitalFemsa - Paga con  efectivo </title>
-                <group>DigitalFemsa</group>
+                <title>Spin - Paga con  efectivo </title>
+                <group>Spin</group>
                 <model>DigitalFemsaPaymentsEmbedFormFacade</model>
                 <iframe_enabled>0</iframe_enabled>
                 <sort_order>1</sort_order>

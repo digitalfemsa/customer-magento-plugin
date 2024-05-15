@@ -3,14 +3,14 @@
     <system>
         <section id="payment">
             <group id="digitalfemsa" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
-                <comment><![CDATA[<div class="femsa-payment-logo"></div><div class="femsa-payment-text">DigitalFemsa Configuration. (v1.0.0) </div>]]></comment>
+                <comment><![CDATA[<div class="femsa-payment-logo"></div><div class="femsa-payment-text">Spin Configuration. (v1.0.0) </div>]]></comment>
                 <fieldset_css>complex femsa-section</fieldset_css>
                 <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Fieldset\Payment</frontend_model>
                 <!--global-->
                 <group id="digitalfemsa_global" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>General Configuration</label>
                     <comment>
-                        <![CDATA[<a href="https://digitalfemsa.io/" target="_blank">Click here to sign up for DigitalFemsa account</a>]]>
+                        <![CDATA[<a href="https://digitalfemsa.io/" target="_blank">Click here to sign up for Spin account</a>]]>
                     </comment>
                     <field id="sandbox_mode" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                         <label>Sandbox</label>
