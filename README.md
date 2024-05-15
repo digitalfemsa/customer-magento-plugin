@@ -28,7 +28,7 @@ php bin/magento setup:di:compile
 
 5. Enable plugin
 ```bash
-php bin/magento module:enable digitalfemsa_payments 
+php bin/magento module:enable DigitalFemsa_Payments 
 ```
 
 6. Update and/or enable cache
@@ -69,7 +69,7 @@ php bin/magento setup:di:compile
 
 8. Enable plugin
 ```bash
-php bin/magento module:enable digitalfemsa_payments 
+php bin/magento module:enable DigitalFemsa_Payments 
 ```
 
 9. Update and/or enable cache
