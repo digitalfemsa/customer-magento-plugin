@@ -40,7 +40,7 @@ class ConfigProvider implements ConfigProviderInterface
             'payment' => [
                 self::CODE => [
                     'publicKey' => $this->_digitalFemsaHelper->getPublicKey(),
-                    'femsa_logo' => $this->_assetRepository->getUrl('DigitalFemsa_Payments::images/femsa.png')
+                    'femsa_logo' => $this->_assetRepository->getUrl('DigitalFemsa_Payments::images/logo.png')
                 ]
             ]
         ];

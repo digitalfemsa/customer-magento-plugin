@@ -1,4 +1,4 @@
-![alt tag](https://www.femsa.com/wp-content/uploads/2019/07/femsa.png)
+![alt tag](/view/adminhtml/web/images/logo.png)
 
 Magento 2 Plugin v.1.0.0 (Stable)
 ========================
