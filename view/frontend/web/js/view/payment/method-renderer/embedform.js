@@ -1,7 +1,6 @@
 define(
     [
         'ko',
-        'femsa',
         'femsaCheckout',
         'Magento_Payment/js/view/payment/cc-form',
         'jquery',
