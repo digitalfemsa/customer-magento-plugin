@@ -20,7 +20,7 @@
     </type>
     <type name="DigitalFemsa\Payments\Logger\Logger">
         <arguments>
-            <argument name="name" xsi:type="string">femsaLogger</argument>
+            <argument name="name" xsi:type="string">digitalFemsaLogger</argument>
             <argument name="handlers"  xsi:type="array">
                 <item name="debug" xsi:type="object">DigitalFemsa\Payments\Logger\Handler</item>
             </argument>

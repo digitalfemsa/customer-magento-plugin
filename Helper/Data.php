@@ -95,7 +95,7 @@ class Data extends Util
         $this->_moduleList = $moduleList;
         $this->_encryptor = $encryptor;
         $this->_productMetadata = $productMetadata;
-        $this->femsaLogger = $digitalFemsaLogger;
+        $this->digitalFemsaLogger = $digitalFemsaLogger;
         $this->checkoutSession = $checkoutSession;
         $this->customerSession = $customerSession;
         $this->productRepository = $productRepository;

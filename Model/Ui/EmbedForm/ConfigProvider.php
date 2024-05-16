@@ -57,7 +57,7 @@ class ConfigProvider implements ConfigProviderInterface
     ) {
         $this->_digitalFemsaHelper = $digitalFemsaHelper;
         $this->_checkoutSession = $checkoutSession;
-        $this->femsaLogger = $digitalFemsaLogger;
+        $this->digitalFemsaLogger = $digitalFemsaLogger;
         $this->url = $url;
     }
 

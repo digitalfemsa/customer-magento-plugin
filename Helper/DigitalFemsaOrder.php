@@ -74,7 +74,7 @@ class DigitalFemsaOrder extends Util
     ) {
         parent::__construct($context);
         $this->femsaApiClient = $femsaApiClient;
-        $this->femsaLogger = $digitalFemsaLogger;
+        $this->digitalFemsaLogger = $digitalFemsaLogger;
         $this->customerSession = $customerSession;
         $this->_digitalFemsaHelper = $digitalFemsaHelper;
         $this->_checkoutSession = $_checkoutSession;
@@ -95,18 +95,18 @@ class DigitalFemsaOrder extends Util
      */
     public function generateOrderParams($guestEmail): array
     {
-        $this->femsaLogger->info('DigitalFemsaOrder.generateOrderParams init');
+        $this->digitalFemsaLogger->info('DigitalFemsaOrder.generateOrderParams init');
 
         $customerRequest = [];
         try {
             $customer = $this->customerSession->getCustomer();
             $femsaCustomerId = $customer->getDigitalFemsaCustomerId();
-            $this->femsaLogger->info('looking customer id', ["digitalfemsa_customer_id"=>$femsaCustomerId]);
+            $this->digitalFemsaLogger->info('looking customer id', ["digitalfemsa_customer_id"=>$femsaCustomerId]);
             if(!empty($femsaCustomerId)) {
                 try {
                     $this->femsaApiClient->findCustomerByID($femsaCustomerId);
                 } catch (Exception $error) {
-                    $this->femsaLogger->info('Create Order. Find Customer: ' . $error->getMessage());
+                    $this->digitalFemsaLogger->info('Create Order. Find Customer: ' . $error->getMessage());
                     $femsaCustomerId = '';
                 }
             }
@@ -128,7 +128,7 @@ class DigitalFemsaOrder extends Util
             $customerRequest['phone'] = $this->removePhoneSpecialCharacter($billingAddress->getTelephone());
             
             if (strlen($customerRequest['phone']) < 10) {
-                $this->femsaLogger->info('Helper.CreateOrder phone validation error', $customerRequest);
+                $this->digitalFemsaLogger->info('Helper.CreateOrder phone validation error', $customerRequest);
                 throw new DigitalFemsaException(__('Télefono no válido. 
                     El télefono debe tener al menos 10 carácteres. 
                     Los caracteres especiales se desestimaran, solo se puede ingresar como 
@@ -148,7 +148,7 @@ class DigitalFemsaOrder extends Util
                 $this->femsaApiClient->updateCustomer($femsaCustomerId, $customerRequest);
             }
         } catch (ApiException $e) {
-            $this->femsaLogger->info($e->getMessage(), $customerRequest);
+            $this->digitalFemsaLogger->info($e->getMessage(), $customerRequest);
             throw new DigitalFemsaException(__($e->getMessage()));
         }
         $orderItems = $this->getQuote()->getAllItems();
