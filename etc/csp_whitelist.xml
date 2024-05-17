@@ -4,8 +4,7 @@
     <policies>
         <policy id="script-src">
             <values>
-                <value id="cdn_digitalfemsa" type="host">cdn.digitalfemsa.io</value>
-                <value id="s3_digitalfemsaapi" type="host">digitalfemsaapi.s3.amazonaws.com</value>
+                <value id="pay_digitalfemsa" type="host">pay.digitalfemsa.io</value>
             </values>
         </policy>
         <policy id="connect-src">

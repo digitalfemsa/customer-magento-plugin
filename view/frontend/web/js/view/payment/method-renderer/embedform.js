@@ -15,7 +15,7 @@ define(
         'Magento_Checkout/js/model/cart/totals-processor/default',
         'Magento_Checkout/js/model/cart/cache'
     ],
-    function (ko, FEMSA, femsaCheckout, Component, $, quote, customer, validator, storage, uiRegistry, domRe, shSP, sBA, totalsProcessor, cartCache) {
+    function (ko, femsaCheckout, Component, $, quote, customer, validator, storage, uiRegistry, domRe, shSP, sBA, totalsProcessor, cartCache) {
         'use strict';
 
         return Component.extend({

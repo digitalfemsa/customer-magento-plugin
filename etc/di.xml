@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="DigitalFemsa\Payments\Api\Data\FemsaSalesOrderInterface" type="DigitalFemsa\Payments\Model\DigitalFemsaSalesOrder"/>
-    <preference for="DigitalFemsa\Payments\Api\Data\FemsaQuoteInterface" type="DigitalFemsa\Payments\Model\DigitalFemsaQuote"/>
+    <preference for="DigitalFemsa\Payments\Api\Data\DigitalFemsaSalesOrderInterface" type="DigitalFemsa\Payments\Model\DigitalFemsaSalesOrder"/>
+    <preference for="DigitalFemsa\Payments\Api\Data\DigitalFemsaQuoteInterface" type="DigitalFemsa\Payments\Model\DigitalFemsaQuote"/>
     <preference for="DigitalFemsa\Payments\Api\EmbedFormRepositoryInterface" type="DigitalFemsa\Payments\Model\EmbedFormRepository"/>
     
     <type name="Magento\Checkout\Model\CompositeConfigProvider">
