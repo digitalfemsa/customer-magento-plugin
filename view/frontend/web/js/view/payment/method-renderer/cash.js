@@ -16,7 +16,6 @@ define(
             },
 
             initialize: function() {
-                console.log('DigitalFemsa_Payments/payment/method-renderer/cash.js')
                 var self = this;
                 this._super();
             },

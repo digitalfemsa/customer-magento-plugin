@@ -37,7 +37,6 @@ define(
             },
 
             initObservable: function () {
-                console.log('initObservable');
                 this._super()
                     .observe([
                         'checkoutId',
@@ -54,7 +53,6 @@ define(
 
                 var baseGrandTotal = quote.totals._latestValue.base_grand_total;
 
-                console.log('initObservable 2')
                 var shippingAddress = '';
                 if (quote.shippingAddress())
                     shippingAddress = JSON.stringify(quote.shippingAddress());
@@ -75,7 +73,6 @@ define(
                 this.renderProperties.guestEmail = quote.guestEmail;
                 this.renderProperties.isLoggedIn = customer.isLoggedIn();
 
-                console.log('initObservable 3')
                 //Suscriptions to re-render
                 quote.totals.subscribe(this.reRender, this);
                 quote.billingAddress.subscribe(this.billingAddressChanges, this);
@@ -89,7 +86,6 @@ define(
             },
 
             initialize: function () {
-                console.log('initialize')
                 var self = this;
                 this._super();
                 if (customer.isLoggedIn() &&
@@ -104,7 +100,6 @@ define(
             },
 
             initializeForm: function () {
-                console.log('initializeForm')
                 //if doesn't rendered yet, then tries to render
                 if (!this.reRender()) {
 
@@ -114,7 +109,6 @@ define(
             },
 
             billingAddressChanges: function () {
-                console.log('billingAddressChanges')
                 var self = this;
 
                 //if no billing info, then form is editing
@@ -137,7 +131,6 @@ define(
             },
 
             reRender: function (total) {
-                console.log('reRender')
                 if (this.isFormLoading())
                     return;
 
@@ -209,7 +202,6 @@ define(
             },
 
             validateRenderEmbedForm: function () {
-                console.log('validateRenderEmbedForm')
                 var isValid = true;
 
                 if (!this.renderProperties.billingAddress) {
@@ -241,7 +233,6 @@ define(
             },
 
             loadCheckoutId: function () {
-                console.log('loadCheckoutId')
                 var self = this;
                 var guest_email = '';
                 if (this.isLoggedIn() === false) {
@@ -252,7 +243,6 @@ define(
                 };
 
                 if (this.validateRenderEmbedForm()) {
-                    console.log('before render iframe')
                     this.validateCheckoutSession()
                     $.ajax({
                         type: 'POST',
@@ -283,7 +273,6 @@ define(
             },
 
             renderizeEmbedForm: function () {
-                console.log('renderizeEmbedForm')
                 var self = this;
                 document.getElementById("femsaIframeContainer").innerHTML = "";
                 window.DigitalFemsaCheckoutComponents.Integration({
