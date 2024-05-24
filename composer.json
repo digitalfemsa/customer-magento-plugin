@@ -3,7 +3,7 @@
     "description": "Digitalfemsa payment gateway",
     "require": {
         "php": ">=7.4",
-        "digitalfemsa/femsa-php": "dev-main"
+        "digitalfemsa/femsa-php": "1.0.0"
     },
     "type": "magento2-module",
     "version": "1.0.0",
@@ -21,10 +21,6 @@
         {
             "type": "composer",
             "url": "https://repo.magento.com/"
-        },
-        {
-            "type": "vcs",
-            "url":  "git@github.com:digitalfemsa/femsa-php.git"
         }
     ],
     "extra": {
@@ -42,6 +38,5 @@
         "magento/framework": "^103.0",
         "magento/payment-services": "*",
         "phpstan/phpstan": "1.10.32"
-    },
-    "minimum-stability": "dev"
+    }
 }
