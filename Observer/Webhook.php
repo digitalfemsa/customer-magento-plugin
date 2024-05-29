@@ -43,10 +43,10 @@ class Webhook implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $section = $observer->getEvent()->getData('section');
-        print "section".$section;
-        if ($section === 'digitalfemsa_payments') {
-            $this->config->createWebhook();
-        }
+        $section = $observer->getEvent()->getData();
+        print_r($section);
+
+        $this->config->createWebhook();
+
     }
 }

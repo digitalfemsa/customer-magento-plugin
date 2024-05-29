@@ -12,4 +12,7 @@
     <event name="sales_order_place_after">
         <observer name="digitalfemsa_payments_status_observer" instance="DigitalFemsa\Payments\Observer\StatusObserver" />
     </event>
+    <event name="admin_system_config_changed_section_payment">
+        <observer name="femsa_observer_check_config" instance="DigitalFemsa\Payments\Observer\Webhook"/>
+    </event>
 </config>
