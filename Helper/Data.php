@@ -4,7 +4,6 @@ namespace DigitalFemsa\Payments\Helper;
 
 use DigitalFemsa\Payments\Logger\Logger as DigitalFemsaLogger;
 use Magento\Framework\App\Helper\Context;
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ProductMetadataInterface;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Exception\LocalizedException;
