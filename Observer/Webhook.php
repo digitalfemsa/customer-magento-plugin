@@ -27,9 +27,11 @@ class Webhook implements ObserverInterface
      * @var ManagerInterface
      */
     protected ManagerInterface $messageManager;
+
     /**
      * @param Config $config
      * @param ManagerInterface $messageManager
+     * @param DigitalFemsaHelper $digitalFemsaHelper
      */
     public function __construct(
         Config $config,
@@ -51,9 +53,6 @@ class Webhook implements ObserverInterface
     public function execute(Observer $observer)
     {
          if (!$this->_digitalFemsaHelper->isCashEnabled()) {
-            return;
-         }
-         if (empty($this->_digitalFemsaHelper->getPrivateKey())) {
             return;
          }
          $this->config->createWebhook();
