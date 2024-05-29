@@ -8,12 +8,17 @@ use Magento\Framework\Message\ManagerInterface;
 use DigitalFemsa\Payments\Model\Config;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Validator\Exception;
+use DigitalFemsa\Payments\Helper\Data as DigitalFemsaHelper;
 
 /**
  * Class CreateWebhook
  */
 class Webhook implements ObserverInterface
 {
+    /**
+     * @var DigitalFemsaHelper
+     */
+    protected DigitalFemsaHelper $_digitalFemsaHelper;
     /**
      * @var Config
      */
@@ -28,10 +33,12 @@ class Webhook implements ObserverInterface
      */
     public function __construct(
         Config $config,
-        ManagerInterface $messageManager
+        ManagerInterface $messageManager,
+        DigitalFemsaHelper    $digitalFemsaHelper
     ) {
         $this->config = $config;
         $this->messageManager = $messageManager;
+        $this->_digitalFemsaHelper = $digitalFemsaHelper;
     }
 
     /**
@@ -43,10 +50,12 @@ class Webhook implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $section = $observer->getEvent()->getData();
-        print_r($section);
-
-        $this->config->createWebhook();
-
+         if (!$this->_digitalFemsaHelper->isCashEnabled()) {
+            return;
+         }
+         if (empty($this->_digitalFemsaHelper->getPrivateKey())) {
+            return;
+         }
+         $this->config->createWebhook();
     }
 }
