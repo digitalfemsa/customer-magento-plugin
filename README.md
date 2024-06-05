@@ -1,6 +1,6 @@
 ![alt tag](/view/adminhtml/web/images/logo.png)
 
-Magento 2 Plugin v.1.0.1 (Stable)
+Magento 2 Plugin v.1.0.0 (Stable)
 ========================
 
 Installation for Magento 2.4
