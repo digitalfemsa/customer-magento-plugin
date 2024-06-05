@@ -1,12 +1,12 @@
 {
     "name": "digitalfemsa/digitalfemsa_payments",
     "description": "Digitalfemsa payment gateway",
+    "version": "1.0.2",
     "require": {
         "php": ">=7.4",
         "digitalfemsa/femsa-php": "1.0.0"
     },
     "type": "magento2-module",
-    "version": "1.0.0",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
