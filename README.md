@@ -1,89 +1,47 @@
-![alt tag](/view/adminhtml/web/images/logo.png)
+# Spin Payment plugin for Magento 2
+Use Spin's plugin for Magento 2 to offer frictionless payments online in-store.
 
-Magento 2 Plugin v.1.0.1 (Stable)
-========================
+## Requirements
+This plugin supports Magento 2 version 2.4.4 and higher.
 
-Installation for Magento 2.4
------------
+## Releases
 
-1. First add this repository in your composer config
-```bash
-composer config repositories.digitalfemsa git https://github.com/digitalfemsa/customer-magento-plugin
+1. **Major** releases are done ONLY when absolutely required. We try to not to introduce breaking changes and do major releases as rare as possible. Current average is **yearly**.
+
+**Note: This can be subject to change based on the load and dependancies of the team.**
+
+## Contributing
+We strongly encourage you to join us in contributing to this repository so everyone can benefit from:
+* New features and functionality
+* Resolved bug fixes and issues
+* Any general improvements
+
+Read our [**contribution guidelines**](CONTRIBUTING.md) to find out how.
+
+
+## Installation
+You can install our plugin through Composer:
 ```
-
-2. Add composer dependency
-```bash
-composer require digitalfemsa/digitalfemsa_payments main
+composer config repositories.digitalfemsa git https://github.com/digitalfemsa/customer-magento-plugin.git
+composer require digitalfemsa/digitalfemsa_payments
+bin/magento module:enable DigitalFemsa_Payments
+bin/magento setup:upgrade
 ```
+For more information see our [installation section](https://developers.digitalfemsa.io/docs/magento-230).
 
-3. Update Magento
-```bash
-php bin/magento setup:upgrade
-```
+## Documentation
+- [Magento 2 documentation](https://developers.digitalfemsa.io/docs/magento-230)
 
-4. Compile the component
-```bash
-php bin/magento setup:di:compile
-```
+## Supported payment methods
 
-5. Enable plugin
-```bash
-php bin/magento module:enable DigitalFemsa_Payments 
-```
+See our [documentation](https://developers.digitalfemsa.io/docs/paso-3-configura-el-plugin-para-magento-23x) for a full list of supported payment methods.
 
-6. Update and/or enable cache
-```bash
-bin/magento c:f
-```
+## Support
+If you have a feature request, or spotted a bug or a technical problem, create a GitHub issue. For other questions, contact our [support team](https://developers.digitalfemsa.io/discuss).
 
-Plugin updates
------------
+## API Library
+This module is using the Digitalfemsa APIs Library for PHP for all (API) connections to Digitalfemsa.
+<a href="https://github.com/digitalfemsa/femsa-php" target="_blank">This library can be found here</a>
 
-1. List all the components
-```bash
-php bin/magento module:status 
-```
-2. Verify that the DigitalFemsa_Payments component is listed
-
-3. Disable the module
-```bash
-php bin/magento module:disable DigitalFemsa_Payments --clear-static-content
-```
-
-4. If it exists, delete the generated files in the folder ```<path_magento>/generated/code/DigitalFemsa/```
-
-5. Add composer dependency
-```bash
-composer require digitalfemsa/digitalfemsa_payments main
-```
-
-6. Update Magento
-```bash
-php bin/magento setup:upgrade
-```
-
-7. Compile the component
-```bash
-php bin/magento setup:di:compile
-```
-
-8. Enable plugin
-```bash
-php bin/magento module:enable DigitalFemsa_Payments 
-```
-
-9. Update and/or enable cache
-```bash
-bin/magento c:f
-```
-
-Magento Version Compatibility
------------------------------
-The plugin has been tested in Magento 2.3 and 2.4 
-Support is not guaranteed for untested versions.
-
-
-#development local
-```
- composer install --ignore-platform-req=ext-gd --ignore-platform-req=ext-intl --ignore-platform-req=ext-xsl
-``
+## License
+MIT license. For more information, see the [LICENSE](LICENSE.txt) file.
