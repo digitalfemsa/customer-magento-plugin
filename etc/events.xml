@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+    <!-- Notification Status Change -->
+    <event name="digitalfemsa_payment_notification_status_change">
+        <observer name="digitalfemsa_payment_notification_status_change_observer" instance="DigitalFemsa\Payments\Observer\NotificationObserver" />
+    </event>
+
+    <event name="payment_method_assign_data">
+        <observer name="digitalfemsa_payment_gateway_data_assign" instance="DigitalFemsa\Payments\Observer\DataAssignObserver" />
+    </event>
+    <event name="sales_order_place_after">
+        <observer name="digitalfemsa_payments_status_observer" instance="DigitalFemsa\Payments\Observer\StatusObserver" />
+    </event>
+</config>

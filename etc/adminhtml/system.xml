@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="digitalfemsa" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                <comment><![CDATA[<div class="femsa-payment-logo"></div><div class="femsa-payment-text">Spin Configuration. (v1.0.2) </div>]]></comment>
+                <fieldset_css>complex femsa-section</fieldset_css>
+                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Fieldset\Payment</frontend_model>
+                <!--global-->
+                <group id="digitalfemsa_global" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>General Configuration</label>
+                    <comment>
+                        <![CDATA[<a href="https://panel.digitalfemsa.io/" target="_blank">Click here to sign up for Spin account</a>]]>
+                    </comment>
+                    <field id="sandbox_mode" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Sandbox</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <!-- Key's Setup -->
+                    <field id="test_public_api_key" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Test Public Key</label>
+                    </field>
+                    <field id="test_private_api_key" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Test Private Key</label>
+                        <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    </field>
+                    <field id="live_public_api_key" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Live Public Key</label>
+                    </field>
+                    <field id="live_private_api_key" translate="label" type="obscure" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Live Private Key</label>
+                        <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    </field>
+                    <!-- // Key's Setup // -->
+                    <field id="digitalfemsa_webhook" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                        <label>Webhook</label>
+                        <comment>
+                            <![CDATA[Default webhook is: <strong>your_magento_host/digitalfemsa/webhook/index</strong>]]>
+                        </comment>
+                    </field>
+                    <field id="debug" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0" >
+                        <label>Debug</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="explanation" translate="label" type="DigitalFemsa\Payments\Block\Adminhtml\ExplanationLabel" sortOrder="75" showInDefault="1" showInWebsite="1" showInStore="0"/>
+                    <field id="metadata_additional_products" translate="label" type="multiselect" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Additional products attributes to send in metadata</label>
+                        <tooltip>(Ctrl + Click to select more options)</tooltip>
+                        <can_be_empty>1</can_be_empty>
+                        <source_model>DigitalFemsa\Payments\Model\System\Config\Source\MetadataProduct</source_model>
+                        <validate>validate-product-attributes</validate>
+                    </field>
+                    <field id="metadata_additional_order" translate="label" type="multiselect" sortOrder="81" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Additional order attributes to send in metadata</label>
+                        <tooltip>(Ctrl + Click to select more options)</tooltip>
+                        <can_be_empty>1</can_be_empty>
+                        <source_model>DigitalFemsa\Payments\Model\System\Config\Source\MetadataOrder</source_model>
+                        <validate>validate-order-attributes</validate>
+                    </field>
+                    <field id="expiry_days" translate="label" type="text" sortOrder="91" showInDefault="1" showInWebsite="1" showInStore="0">
+	                    <label>Expiry (# days)</label>
+                        <validate>integer no-whitespace validate-expiry-days</validate>
+                        <comment>Allowed days from 1 to 365 days. Default value: 1</comment>
+	                </field>
+                    
+                </group>
+
+                <!-- DigitalFemsa Cash -->
+                <group id="digitalfemsa_cash" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cash</label>
+                    <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Enabled</label>
+                        <config_path>payment/digitalfemsa_cash/active</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="min_order_total" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Minimum Order Total</label>
+                        <depends>
+                            <field id="active">1</field>
+                        </depends>
+                        <validate>validate-number validate-number-range number-range-10-10000</validate>
+                        <comment>The minimum amount is $10 [MXN]</comment>
+                        <config_path>payment/digitalfemsa_cash/min_order_total</config_path>
+                    </field>
+                    <field id="max_order_total" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Maximum Order Total</label>
+                        <depends>
+                            <field id="active">1</field>
+                        </depends>
+                        <validate>validate-number validate-number-range number-range-10-10000</validate>
+                        <comment>The maximum amount is $10000 [MXN]</comment>
+                        <config_path>payment/digitalfemsa_cash/max_order_total</config_path>
+                    </field>
+	                <field id="instructions" translate="label" type="textarea" sortOrder="52" showInDefault="1" showInWebsite="1" showInStore="1">
+	                    <label>Instructions</label>
+                        <depends>
+                            <field id="active">1</field>
+                        </depends>
+	                    <config_path>payment/digitalfemsa_cash/instructions</config_path>
+	                </field>
+                    <field id="order_status" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>New Order Status</label>
+                        <source_model>DigitalFemsa\Payments\Model\Source\Order\Status\Pendingpayment</source_model>
+                        <depends>
+                            <field id="active">1</field>
+                        </depends>
+                        <config_path>payment/digitalfemsa_cash/order_status</config_path>
+                    </field>
+                    <field id="sort_order" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Sort Order</label>
+                        <depends>
+                            <field id="active">1</field>
+                        </depends>
+                        <frontend_class>validate-number</frontend_class>
+                        <config_path>payment/digitalfemsa_cash/sort_order</config_path>
+                    </field>
+                </group>
+                <!-- // DigitalFemsa CASH // -->
+
+            </group>
+        </section>
+    </system>
+</config>

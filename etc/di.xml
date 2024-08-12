@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="DigitalFemsa\Payments\Api\Data\DigitalFemsaSalesOrderInterface" type="DigitalFemsa\Payments\Model\DigitalFemsaSalesOrder"/>
+    <preference for="DigitalFemsa\Payments\Api\Data\DigitalFemsaQuoteInterface" type="DigitalFemsa\Payments\Model\DigitalFemsaQuote"/>
+    <preference for="DigitalFemsa\Payments\Api\EmbedFormRepositoryInterface" type="DigitalFemsa\Payments\Model\EmbedFormRepository"/>
+    
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <!-- Global -->
+                <item name="femsa_global_provider" xsi:type="object">DigitalFemsa\Payments\Model\Ui\ConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="DigitalFemsa\Payments\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="DigitalFemsa\Payments\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">digitalFemsaLogger</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="debug" xsi:type="object">DigitalFemsa\Payments\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++ Embed Form ++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Payment Method Facade configuration -->
+    <virtualType name="DigitalFemsaPaymentsEmbedFormFacade" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="const">\DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider::CODE</argument>
+            <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">DigitalFemsa\Payments\Block\EmbedForm\EmbedFormInfo</argument>
+            <argument name="valueHandlerPool" xsi:type="object">DigitalFemsaPaymentsEmbedFormValueHandlerPool</argument>
+            <argument name="commandPool" xsi:type="object">DigitalFemsaPaymentsEmbedFormCommandPool</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Configuration reader -->
+    <virtualType name="DigitalFemsaPaymentsEmbedFormConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">\DigitalFemsa\Payments\Model\Ui\EmbedForm\ConfigProvider::CODE</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Commands infrastructure -->
+    <virtualType name="DigitalFemsaPaymentsEmbedFormCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="authorize" xsi:type="string">DigitalFemsaPaymentsEmbedFormAuthorizeCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+   <!-- Capture command -->
+    <virtualType name="DigitalFemsaPaymentsEmbedFormAuthorizeCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+        <arguments>
+            <argument name="requestBuilder" xsi:type="object">DigitalFemsaPaymentsEmbedFormCaptureRequest</argument>
+            <argument name="handler" xsi:type="object">DigitalFemsaPaymentsEmbedFormResponseHandlerComposite</argument>
+            <argument name="transferFactory" xsi:type="object">DigitalFemsa\Payments\Gateway\Http\TransferFactory</argument>
+            <argument name="client" xsi:type="object">DigitalFemsa\Payments\Gateway\Http\Client\EmbedForm\TransactionAuthorize</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Capture Request -->
+    <virtualType name="DigitalFemsaPaymentsEmbedFormCaptureRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="requestBuilder" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\EmbedForm\CaptureRequest</item>
+                <item name="lineItems" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\LineItemsBuilder</item>
+                <item name="metadata" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\MetadataBuilder</item>
+                <item name="taxLines" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\TaxLinesBuilder</item>
+                <item name="customerInfo" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\CustomerInfoBuilder</item>
+                <item name="shippingLines" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\ShippingLinesBuilder</item>
+                <item name="discountLines" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\DiscountLinesBuilder</item>
+                <item name="shippingContact" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\ShippingContactBuilder</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="DigitalFemsa\Payments\Gateway\Request\EmbedForm\CaptureRequest">
+        <arguments>
+            <argument name="config" xsi:type="object">DigitalFemsaPaymentsEmbedFormConfig</argument>
+        </arguments>
+    </type>
+
+    <!-- Response handlers -->
+    <virtualType name="DigitalFemsaPaymentsEmbedFormResponseHandlerComposite" type="Magento\Payment\Gateway\Response\HandlerChain">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="txnid" xsi:type="string">DigitalFemsa\Payments\Gateway\Response\EmbedForm\TxnIdHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Value handlers infrastructure -->
+    
+    <virtualType name="DigitalFemsaPaymentsEmbedFormValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">DigitalFemsaPaymentsEmbedFormConfigValueHandler</item>
+                <item name="active" xsi:type="string">DigitalFemsa\Payments\Gateway\Config\EmbedForm\ActiveValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="DigitalFemsaPaymentsEmbedFormConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">DigitalFemsaPaymentsEmbedFormConfig</argument>
+        </arguments>
+    </virtualType>
+    
+    <type name="DigitalFemsa\Payments\Block\EmbedForm\EmbedFormInfo">
+        <arguments>
+            <argument name="config" xsi:type="object">DigitalFemsaPaymentsEmbedFormConfig</argument>
+        </arguments>
+    </type>
+    <!-- **************************************** Embed Form END ******************************************* -->
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ Cash +++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Payment Method Facade configuration -->
+    <virtualType name="DigitalFemsaPaymentsCashFacade" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="const">\DigitalFemsa\Payments\Model\Ui\Cash\ConfigProvider::CODE</argument>
+            <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">DigitalFemsa\Payments\Block\Cash\CashInfo</argument>
+            <argument name="valueHandlerPool" xsi:type="object">DigitalFemsaPaymentsCashValueHandlerPool</argument>
+            <argument name="commandPool" xsi:type="object">DigitalFemsaPaymentsCashCommandPool</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Configuration reader -->
+    <virtualType name="DigitalFemsaPaymentsCashConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">\DigitalFemsa\Payments\Model\Ui\Cash\ConfigProvider::CODE</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Logger, initialized with DigitalFemsaPaymentsCashConfig -->
+    <virtualType name="DigitalFemsaPaymentsCashAuthorizeCommand" type="Magento\Payment\Model\Method\Logger">
+        <arguments>
+            <argument name="config" xsi:type="object">DigitalFemsaPaymentsCashConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="DigitalFemsa\Payments\Gateway\Http\Client\Cash\TransactionAuthorize">
+        <arguments>
+            <argument name="logger" xsi:type="object">DigitalFemsaPaymentsCashAuthorizeCommand</argument>
+        </arguments>
+    </type>
+
+    <!-- Commands infrastructure -->
+    <virtualType name="DigitalFemsaPaymentsCashCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="authorize" xsi:type="string">DigitalFemsaPaymentsCashAuthorizeCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Capture command -->
+    <virtualType name="DigitalFemsaPaymentsCashAuthorizeCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+        <arguments>
+            <argument name="requestBuilder" xsi:type="object">DigitalFemsaPaymentsCashAuthorizeRequest</argument>
+            <argument name="handler" xsi:type="object">DigitalFemsaPaymentsCashResponseHandlerComposite</argument>
+            <argument name="transferFactory" xsi:type="object">DigitalFemsa\Payments\Gateway\Http\TransferFactory</argument>
+            <argument name="client" xsi:type="object">DigitalFemsa\Payments\Gateway\Http\Client\Cash\TransactionAuthorize</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Capture Request -->
+    <virtualType name="DigitalFemsaPaymentsCashAuthorizeRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="requestBuilder" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\Cash\AuthorizeRequest</item>
+                <item name="lineItems" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\LineItemsBuilder</item>
+                <item name="metadata" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\MetadataBuilder</item>
+                <item name="taxLines" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\TaxLinesBuilder</item>
+                <item name="customerInfo" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\CustomerInfoBuilder</item>
+                <item name="shippingLines" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\ShippingLinesBuilder</item>
+                <item name="discountLines" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\DiscountLinesBuilder</item>
+                <item name="shippingContact" xsi:type="string">DigitalFemsa\Payments\Gateway\Request\ShippingContactBuilder</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="DigitalFemsa\Payments\Gateway\Request\Cash\AuthorizeRequest">
+        <arguments>
+            <argument name="config" xsi:type="object">DigitalFemsaPaymentsCashConfig</argument>
+        </arguments>
+    </type>
+
+    <!-- Response handlers -->
+    <virtualType name="DigitalFemsaPaymentsCashResponseHandlerComposite" type="Magento\Payment\Gateway\Response\HandlerChain">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="txnid" xsi:type="string">DigitalFemsa\Payments\Gateway\Response\Cash\TxnIdHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Value handlers infrastructure -->
+
+    <virtualType name="DigitalFemsaPaymentsCashValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">DigitalFemsaPaymentsCashConfigValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="DigitalFemsaPaymentsCashConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">DigitalFemsaPaymentsCashConfig</argument>
+        </arguments>
+    </virtualType>
+
+
+    <type name="DigitalFemsa\Payments\Block\Cash\CashInfo">
+        <arguments>
+            <argument name="config" xsi:type="object">DigitalFemsaPaymentsCashConfig</argument>
+        </arguments>
+    </type>
+    <!-- ******************************************* Cash End *********************************************** -->
+
+
+
+</config>

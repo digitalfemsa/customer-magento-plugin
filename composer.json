@@ -1,0 +1,42 @@
+{
+    "name": "digitalfemsa/spin_payments",
+    "description": "Digitalfemsa payment gateway",
+    "require": {
+        "php": ">=7.4",
+        "digitalfemsa/femsa-php": "1.0.0"
+    },
+    "type": "magento2-module",
+    "version": "1.0.2",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "DigitalFemsa\\Payments\\": ""
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ],
+    "extra": {
+        "magento-force": "override"
+    },
+    "config": {
+        "allow-plugins": {
+            "magento/composer-dependency-version-audit-plugin": true,
+            "magento/magento-composer-installer": true
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "squizlabs/php_codesniffer": "^3.7",
+        "magento/framework": "^103.0",
+        "magento/payment-services": "*",
+        "phpstan/phpstan": "1.10.32"
+    }
+}

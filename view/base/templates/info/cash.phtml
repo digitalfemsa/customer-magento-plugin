@@ -1,0 +1,29 @@
+<?php
+$title = $block->escapeHtml($block->getMethod()->getTitle());
+$data = $block->getDataCash();
+?>
+
+<dl class="payment-method">
+    <dt class="title"><?= /* @noEscape */ $title; ?></dt>
+    <?php if ($data) { ?>
+    <dd style="margin: 0 !important; -webkit-margin-start: 0 !important;">
+        <table class="data-table admin__table-secondary">
+            <tbody>
+            <tr>
+                <th><strong><?= /* @noEscape */ __('Reference Number:'); ?></strong></th>
+                <td>
+                    <?= $block->escapeHtml($data['reference']); ?>
+                </td>
+            </tr>
+            <tr>
+                <th><strong><?= /* @noEscape */ __('Expires at:'); ?></strong></th>
+                <td>
+                    <?= $block->escapeHtml(date("Y-m-d", (integer) $data["expires_at"])); ?>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </dd>
+    <?php } ?>
+</dl>
+<?= $block->getChildHtml(); ?>

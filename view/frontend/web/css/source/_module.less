@@ -1,0 +1,108 @@
+//
+//  Common
+//
+
+
+& when (@media-common = true) {
+    .femsa_payment_reference{
+        background: #a9a9a9;
+        color: #000;
+        font-size: 25px;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .payment-method-femsa-payments {
+        &._active {
+            .payment-method-title {
+            }
+        }
+
+        .payment-method-title {
+            label {
+            }
+        }
+
+        .payment-method-content {
+
+            .femsa-message {
+                border-radius: 4px 4px 0 0;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 1px 4px 0 rgba(0, 0, 0, 0.15);
+                margin: 1px;
+                width: 80%;
+
+                .femsa-message-header {
+                    align-items: center;
+                    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16);
+                    display: flex;
+                    font-size: 16px;
+                    height: 80px;
+                    justify-content: space-between;
+                    padding: 0 20px;
+
+                    .femsa-message-title {
+                        color: rgba(0, 0, 0, 0.7);
+                        font-weight: bold;
+                    }
+
+                    .femsa-payment-logo {
+                        background: url("../../../../adminhtml/web/images/logo.png") no-repeat;
+                        display: inline-block;
+                        height: 25px;
+                        padding-left: 20rem;
+                        vertical-align: middle;
+                        width: auto;
+                        background-size: auto 110px;
+                        background-position-y: center;
+                    }
+                }
+
+                .femsa-message-content {
+                    color: rgba(228, 5, 149, 100);
+                    font-size: 16px;
+                    font-weight: bold;
+                    padding: 20px;
+                }
+            }
+        }
+
+        .payment-method-footer {
+            display: none;
+
+            img {
+                height: 30px;
+                position: relative;
+                top: 8px;
+            }
+        }
+    }
+}
+
+//
+//  Mobile @screen__m
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+}
+
+//
+//  Mobile @screen__s
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+}
+
+//
+//  Desktop large
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+}
