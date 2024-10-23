@@ -123,7 +123,6 @@ class DigitalFemsaOrder extends Util
                 $customerRequest['name'] = $billingAddress->getName();
                 $customerRequest['email'] = $guestEmail;
             }
-            $customerRequest['custom_reference'] = $customerId;
             $customerRequest['name'] = $this->removeNameSpecialCharacter($customerRequest['name']);
             $customerRequest['phone'] = $this->removePhoneSpecialCharacter($billingAddress->getTelephone());
             
