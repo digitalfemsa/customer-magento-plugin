@@ -12,5 +12,10 @@
                 <value id="s3_digitalfemsaapi" type="host">api.digitalfemsa.io</value>
             </values>
         </policy>
+        <policy id="frame-src">
+            <values>
+                <value id="pay.digitalfemsa.io" type="host">https://pay.digitalfemsa.io</value>
+            </values>
+        </policy>
     </policies>
 </csp_whitelist>
